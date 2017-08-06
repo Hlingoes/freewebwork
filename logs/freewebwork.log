@@ -1,0 +1,795 @@
+[INFO] [2017-08-06 13:57:09][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 13:57:10][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 13:57:10 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 13:57:10][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 13:57:10][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [ERROR] [2017-08-06 13:57:11][org.springframework.test.context.TestContextManager]Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@1edbc4d] to prepare test instance [freewebwork.TestMyBatis@132bc4a]
+  java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
+	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:101)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:319)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:212)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:232)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:89)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:175)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'taskScheduleJobController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'taskScheduleJobServiceImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.scheduling.quartz.SchedulerFactoryBean com.cn.henry.freewebwork.impl.TaskScheduleJobServiceImpl.schedulerFactoryBean; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.scheduling.quartz.SchedulerFactoryBean] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:307)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:700)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:760)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:121)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:100)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:250)
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContextInternal(CacheAwareContextLoaderDelegate.java:64)
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:91)
+	... 25 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'taskScheduleJobServiceImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.scheduling.quartz.SchedulerFactoryBean com.cn.henry.freewebwork.impl.TaskScheduleJobServiceImpl.schedulerFactoryBean; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.scheduling.quartz.SchedulerFactoryBean] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:292)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1014)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:957)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:855)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:441)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:419)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:544)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:155)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:304)
+	... 41 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.scheduling.quartz.SchedulerFactoryBean com.cn.henry.freewebwork.impl.TaskScheduleJobServiceImpl.schedulerFactoryBean; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.scheduling.quartz.SchedulerFactoryBean] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:508)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:289)
+	... 57 more
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.scheduling.quartz.SchedulerFactoryBean] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:1100)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:960)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:855)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:480)
+	... 59 more
+[INFO] [2017-08-06 14:00:26][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 14:00:26][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 14:00:26 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 14:00:26][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 14:00:26][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [ERROR] [2017-08-06 14:00:27][org.springframework.test.context.TestContextManager]Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@1edbc4d] to prepare test instance [freewebwork.TestMyBatis@132bc4a]
+  java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
+	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:101)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:319)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:212)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:232)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:89)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:175)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'taskScheduleJobController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'taskScheduleJobServiceImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.scheduling.quartz.SchedulerFactoryBean com.cn.henry.freewebwork.impl.TaskScheduleJobServiceImpl.schedulerFactoryBean; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.scheduling.quartz.SchedulerFactoryBean] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:307)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:700)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:760)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:121)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:100)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:250)
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContextInternal(CacheAwareContextLoaderDelegate.java:64)
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:91)
+	... 25 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'taskScheduleJobServiceImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.scheduling.quartz.SchedulerFactoryBean com.cn.henry.freewebwork.impl.TaskScheduleJobServiceImpl.schedulerFactoryBean; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.scheduling.quartz.SchedulerFactoryBean] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:292)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1014)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:957)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:855)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:441)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:419)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:544)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:155)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:304)
+	... 41 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.scheduling.quartz.SchedulerFactoryBean com.cn.henry.freewebwork.impl.TaskScheduleJobServiceImpl.schedulerFactoryBean; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.scheduling.quartz.SchedulerFactoryBean] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:508)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:289)
+	... 57 more
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.scheduling.quartz.SchedulerFactoryBean] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:1100)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:960)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:855)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:480)
+	... 59 more
+[INFO] [2017-08-06 14:02:18][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 14:02:18][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 14:02:18 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 14:02:19][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 14:02:19][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [ERROR] [2017-08-06 14:02:19][org.springframework.test.context.TestContextManager]Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@130c45] to prepare test instance [freewebwork.TestMyBatis@ad3bc1]
+  java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
+	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:101)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:319)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:212)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:232)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:89)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:175)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'taskScheduleJobController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'taskScheduleJobServiceImpl': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.scheduling.quartz.SchedulerFactoryBean] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:307)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:700)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:760)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:121)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:100)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:250)
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContextInternal(CacheAwareContextLoaderDelegate.java:64)
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:91)
+	... 25 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'taskScheduleJobServiceImpl': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.scheduling.quartz.SchedulerFactoryBean] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:307)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1014)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:957)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:855)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:441)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:419)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:544)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:155)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:304)
+	... 41 more
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.scheduling.quartz.SchedulerFactoryBean] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:1100)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:960)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:855)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:441)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:419)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:544)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:155)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:304)
+	... 57 more
+[INFO] [2017-08-06 14:04:51][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 14:04:51][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 14:04:51 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 14:04:52][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 14:04:52][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [ERROR] [2017-08-06 14:04:52][org.springframework.test.context.TestContextManager]Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@1edbc4d] to prepare test instance [freewebwork.TestMyBatis@132bc4a]
+  java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
+	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:101)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:319)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:212)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:232)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:89)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:175)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'taskScheduleJobController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'taskScheduleJobServiceImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.scheduling.quartz.SchedulerFactoryBean com.cn.henry.freewebwork.impl.TaskScheduleJobServiceImpl.schedulerFactoryBean; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.scheduling.quartz.SchedulerFactoryBean] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:307)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:700)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:760)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:121)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:100)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:250)
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContextInternal(CacheAwareContextLoaderDelegate.java:64)
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:91)
+	... 25 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'taskScheduleJobServiceImpl': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.scheduling.quartz.SchedulerFactoryBean com.cn.henry.freewebwork.impl.TaskScheduleJobServiceImpl.schedulerFactoryBean; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.scheduling.quartz.SchedulerFactoryBean] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:292)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1014)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:957)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:855)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:441)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:419)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:544)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:155)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:304)
+	... 41 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.springframework.scheduling.quartz.SchedulerFactoryBean com.cn.henry.freewebwork.impl.TaskScheduleJobServiceImpl.schedulerFactoryBean; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.scheduling.quartz.SchedulerFactoryBean] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:508)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:289)
+	... 57 more
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.springframework.scheduling.quartz.SchedulerFactoryBean] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:1100)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:960)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:855)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:480)
+	... 59 more
+[INFO] [2017-08-06 14:20:15][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 14:20:15][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 14:20:15 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 14:20:15][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 14:20:15][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [ERROR] [2017-08-06 14:20:15][org.springframework.test.context.TestContextManager]Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@2b8b12] to prepare test instance [freewebwork.TestMyBatis@e357dc]
+  java.lang.IllegalStateException: Failed to load ApplicationContext
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:99)
+	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:101)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:109)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:75)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:319)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:212)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:289)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:291)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:232)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:89)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:238)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:63)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:236)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:53)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:229)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:71)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:309)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:175)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:86)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'taskScheduleJobController': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'taskScheduleJobServiceImpl': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.quartz.Scheduler] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:307)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:700)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:760)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:121)
+	at org.springframework.test.context.support.AbstractGenericContextLoader.loadContext(AbstractGenericContextLoader.java:60)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.delegateLoading(AbstractDelegatingSmartContextLoader.java:100)
+	at org.springframework.test.context.support.AbstractDelegatingSmartContextLoader.loadContext(AbstractDelegatingSmartContextLoader.java:250)
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContextInternal(CacheAwareContextLoaderDelegate.java:64)
+	at org.springframework.test.context.CacheAwareContextLoaderDelegate.loadContext(CacheAwareContextLoaderDelegate.java:91)
+	... 25 more
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'taskScheduleJobServiceImpl': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.quartz.Scheduler] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:307)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1014)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:957)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:855)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:441)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:419)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:544)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:155)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:304)
+	... 41 more
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type [org.quartz.Scheduler] found for dependency: expected at least 1 bean which qualifies as autowire candidate for this dependency. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoSuchBeanDefinitionException(DefaultListableBeanFactory.java:1100)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:960)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:855)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:441)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:419)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:544)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:155)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:304)
+	... 57 more
+[INFO] [2017-08-06 14:30:52][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 14:30:52][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 14:30:52 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 14:30:52][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 14:30:52][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-08-06 14:30:53][org.quartz.impl.StdSchedulerFactory]Using default implementation for ThreadExecutor
+  [INFO] [2017-08-06 14:30:53][org.quartz.core.SchedulerSignalerImpl]Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+  [INFO] [2017-08-06 14:30:53][org.quartz.core.QuartzScheduler]Quartz Scheduler v.2.2.3 created.
+  [INFO] [2017-08-06 14:30:53][org.quartz.simpl.RAMJobStore]RAMJobStore initialized.
+  [INFO] [2017-08-06 14:30:53][org.quartz.core.QuartzScheduler]Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactoryBean' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+  [INFO] [2017-08-06 14:30:53][org.quartz.impl.StdSchedulerFactory]Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+  [INFO] [2017-08-06 14:30:53][org.quartz.impl.StdSchedulerFactory]Quartz scheduler version: 2.2.3
+  [INFO] [2017-08-06 14:30:53][org.quartz.core.QuartzScheduler]JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@502377
+  [INFO] [2017-08-06 14:30:53][org.springframework.context.support.DefaultLifecycleProcessor]Starting beans in phase 2147483647
+  [INFO] [2017-08-06 14:30:53][org.springframework.scheduling.quartz.SchedulerFactoryBean]Starting Quartz Scheduler now
+  [INFO] [2017-08-06 14:30:53][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED started.
+  [INFO] [2017-08-06 14:30:55][freewebwork.TestMyBatis]{"age":24,"id":1,"password":"sfasgfaf","userName":"测试"}
+  [INFO] [2017-08-06 14:30:55][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 14:30:52 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 14:30:55][org.springframework.context.support.DefaultLifecycleProcessor]Stopping beans in phase 2147483647
+  [INFO] [2017-08-06 14:30:55][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 14:30:55][org.springframework.scheduling.quartz.SchedulerFactoryBean]Shutting down Quartz Scheduler
+  [INFO] [2017-08-06 14:30:55][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutting down.
+  [INFO] [2017-08-06 14:30:55][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 14:30:55][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutdown complete.
+  [INFO] [2017-08-06 14:55:01][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 14:55:01][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 14:55:01 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 14:55:01][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 14:55:02][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-08-06 14:55:02][org.quartz.impl.StdSchedulerFactory]Using default implementation for ThreadExecutor
+  [INFO] [2017-08-06 14:55:02][org.quartz.core.SchedulerSignalerImpl]Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+  [INFO] [2017-08-06 14:55:02][org.quartz.core.QuartzScheduler]Quartz Scheduler v.2.2.3 created.
+  [INFO] [2017-08-06 14:55:02][org.quartz.simpl.RAMJobStore]RAMJobStore initialized.
+  [INFO] [2017-08-06 14:55:02][org.quartz.core.QuartzScheduler]Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactoryBean' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+  [INFO] [2017-08-06 14:55:02][org.quartz.impl.StdSchedulerFactory]Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+  [INFO] [2017-08-06 14:55:02][org.quartz.impl.StdSchedulerFactory]Quartz scheduler version: 2.2.3
+  [INFO] [2017-08-06 14:55:02][org.quartz.core.QuartzScheduler]JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@502377
+  [INFO] [2017-08-06 14:55:02][org.springframework.context.support.DefaultLifecycleProcessor]Starting beans in phase 2147483647
+  [INFO] [2017-08-06 14:55:02][org.springframework.scheduling.quartz.SchedulerFactoryBean]Starting Quartz Scheduler now
+  [INFO] [2017-08-06 14:55:02][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED started.
+  [INFO] [2017-08-06 14:55:03][freewebwork.TestMyBatis]==========测试结果为 ：1==============
+  [INFO] [2017-08-06 14:55:03][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 14:55:01 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 14:55:03][org.springframework.context.support.DefaultLifecycleProcessor]Stopping beans in phase 2147483647
+  [INFO] [2017-08-06 14:55:03][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 14:55:03][org.springframework.scheduling.quartz.SchedulerFactoryBean]Shutting down Quartz Scheduler
+  [INFO] [2017-08-06 14:55:03][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutting down.
+  [INFO] [2017-08-06 14:55:03][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 14:55:03][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutdown complete.
+  [INFO] [2017-08-06 15:14:38][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 15:14:38][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:14:38 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:14:38][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 15:14:38][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-08-06 15:14:39][org.quartz.impl.StdSchedulerFactory]Using default implementation for ThreadExecutor
+  [INFO] [2017-08-06 15:14:39][org.quartz.core.SchedulerSignalerImpl]Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+  [INFO] [2017-08-06 15:14:39][org.quartz.core.QuartzScheduler]Quartz Scheduler v.2.2.3 created.
+  [INFO] [2017-08-06 15:14:39][org.quartz.simpl.RAMJobStore]RAMJobStore initialized.
+  [INFO] [2017-08-06 15:14:39][org.quartz.core.QuartzScheduler]Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactoryBean' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+  [INFO] [2017-08-06 15:14:39][org.quartz.impl.StdSchedulerFactory]Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+  [INFO] [2017-08-06 15:14:39][org.quartz.impl.StdSchedulerFactory]Quartz scheduler version: 2.2.3
+  [INFO] [2017-08-06 15:14:39][org.quartz.core.QuartzScheduler]JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@502377
+  [INFO] [2017-08-06 15:14:39][org.springframework.context.support.DefaultLifecycleProcessor]Starting beans in phase 2147483647
+  [INFO] [2017-08-06 15:14:39][org.springframework.scheduling.quartz.SchedulerFactoryBean]Starting Quartz Scheduler now
+  [INFO] [2017-08-06 15:14:39][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED started.
+  [INFO] [2017-08-06 15:14:39][freewebwork.TestMyBatis]==========测试结果为 ：1==============
+  [INFO] [2017-08-06 15:14:39][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:14:38 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:14:39][org.springframework.context.support.DefaultLifecycleProcessor]Stopping beans in phase 2147483647
+  [INFO] [2017-08-06 15:14:39][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:14:39][org.springframework.scheduling.quartz.SchedulerFactoryBean]Shutting down Quartz Scheduler
+  [INFO] [2017-08-06 15:14:39][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutting down.
+  [INFO] [2017-08-06 15:14:39][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:14:39][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutdown complete.
+  [INFO] [2017-08-06 15:16:57][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 15:16:57][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:16:57 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:16:57][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 15:16:57][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-08-06 15:16:58][org.quartz.impl.StdSchedulerFactory]Using default implementation for ThreadExecutor
+  [INFO] [2017-08-06 15:16:58][org.quartz.core.SchedulerSignalerImpl]Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+  [INFO] [2017-08-06 15:16:58][org.quartz.core.QuartzScheduler]Quartz Scheduler v.2.2.3 created.
+  [INFO] [2017-08-06 15:16:58][org.quartz.simpl.RAMJobStore]RAMJobStore initialized.
+  [INFO] [2017-08-06 15:16:58][org.quartz.core.QuartzScheduler]Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactoryBean' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+  [INFO] [2017-08-06 15:16:58][org.quartz.impl.StdSchedulerFactory]Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+  [INFO] [2017-08-06 15:16:58][org.quartz.impl.StdSchedulerFactory]Quartz scheduler version: 2.2.3
+  [INFO] [2017-08-06 15:16:58][org.quartz.core.QuartzScheduler]JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@502377
+  [INFO] [2017-08-06 15:16:58][org.springframework.context.support.DefaultLifecycleProcessor]Starting beans in phase 2147483647
+  [INFO] [2017-08-06 15:16:58][org.springframework.scheduling.quartz.SchedulerFactoryBean]Starting Quartz Scheduler now
+  [INFO] [2017-08-06 15:16:58][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED started.
+  [INFO] [2017-08-06 15:16:58][freewebwork.TestMyBatis]==========测试结果为 ：1==============
+  [INFO] [2017-08-06 15:16:58][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:16:57 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:16:58][org.springframework.context.support.DefaultLifecycleProcessor]Stopping beans in phase 2147483647
+  [INFO] [2017-08-06 15:16:58][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:16:58][org.springframework.scheduling.quartz.SchedulerFactoryBean]Shutting down Quartz Scheduler
+  [INFO] [2017-08-06 15:16:58][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutting down.
+  [INFO] [2017-08-06 15:16:58][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:16:58][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutdown complete.
+  [INFO] [2017-08-06 15:20:04][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 15:20:04][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:20:04 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:20:04][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 15:20:04][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-08-06 15:20:04][org.quartz.impl.StdSchedulerFactory]Using default implementation for ThreadExecutor
+  [INFO] [2017-08-06 15:20:04][org.quartz.core.SchedulerSignalerImpl]Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+  [INFO] [2017-08-06 15:20:04][org.quartz.core.QuartzScheduler]Quartz Scheduler v.2.2.3 created.
+  [INFO] [2017-08-06 15:20:04][org.quartz.simpl.RAMJobStore]RAMJobStore initialized.
+  [INFO] [2017-08-06 15:20:04][org.quartz.core.QuartzScheduler]Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactoryBean' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+  [INFO] [2017-08-06 15:20:04][org.quartz.impl.StdSchedulerFactory]Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+  [INFO] [2017-08-06 15:20:04][org.quartz.impl.StdSchedulerFactory]Quartz scheduler version: 2.2.3
+  [INFO] [2017-08-06 15:20:04][org.quartz.core.QuartzScheduler]JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@502377
+  [INFO] [2017-08-06 15:20:04][org.springframework.context.support.DefaultLifecycleProcessor]Starting beans in phase 2147483647
+  [INFO] [2017-08-06 15:20:04][org.springframework.scheduling.quartz.SchedulerFactoryBean]Starting Quartz Scheduler now
+  [INFO] [2017-08-06 15:20:04][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED started.
+  [INFO] [2017-08-06 15:20:05][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+  [INFO] [2017-08-06 15:20:05][org.springframework.jdbc.support.SQLErrorCodesFactory]SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+  [INFO] [2017-08-06 15:20:05][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:20:04 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:20:05][org.springframework.context.support.DefaultLifecycleProcessor]Stopping beans in phase 2147483647
+  [INFO] [2017-08-06 15:20:05][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:20:05][org.springframework.scheduling.quartz.SchedulerFactoryBean]Shutting down Quartz Scheduler
+  [INFO] [2017-08-06 15:20:05][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutting down.
+  [INFO] [2017-08-06 15:20:05][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:20:05][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutdown complete.
+  [INFO] [2017-08-06 15:21:03][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 15:21:03][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:21:03 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:21:03][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 15:21:03][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-08-06 15:21:04][org.quartz.impl.StdSchedulerFactory]Using default implementation for ThreadExecutor
+  [INFO] [2017-08-06 15:21:04][org.quartz.core.SchedulerSignalerImpl]Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+  [INFO] [2017-08-06 15:21:04][org.quartz.core.QuartzScheduler]Quartz Scheduler v.2.2.3 created.
+  [INFO] [2017-08-06 15:21:04][org.quartz.simpl.RAMJobStore]RAMJobStore initialized.
+  [INFO] [2017-08-06 15:21:04][org.quartz.core.QuartzScheduler]Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactoryBean' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+  [INFO] [2017-08-06 15:21:04][org.quartz.impl.StdSchedulerFactory]Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+  [INFO] [2017-08-06 15:21:04][org.quartz.impl.StdSchedulerFactory]Quartz scheduler version: 2.2.3
+  [INFO] [2017-08-06 15:21:04][org.quartz.core.QuartzScheduler]JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@502377
+  [INFO] [2017-08-06 15:21:04][org.springframework.context.support.DefaultLifecycleProcessor]Starting beans in phase 2147483647
+  [INFO] [2017-08-06 15:21:04][org.springframework.scheduling.quartz.SchedulerFactoryBean]Starting Quartz Scheduler now
+  [INFO] [2017-08-06 15:21:04][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED started.
+  [INFO] [2017-08-06 15:21:04][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:21:03 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:21:04][org.springframework.context.support.DefaultLifecycleProcessor]Stopping beans in phase 2147483647
+  [INFO] [2017-08-06 15:21:04][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:21:04][org.springframework.scheduling.quartz.SchedulerFactoryBean]Shutting down Quartz Scheduler
+  [INFO] [2017-08-06 15:21:04][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutting down.
+  [INFO] [2017-08-06 15:21:04][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:21:04][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutdown complete.
+  [INFO] [2017-08-06 15:22:32][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 15:22:33][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:22:33 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:22:33][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 15:22:33][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-08-06 15:22:33][org.quartz.impl.StdSchedulerFactory]Using default implementation for ThreadExecutor
+  [INFO] [2017-08-06 15:22:33][org.quartz.core.SchedulerSignalerImpl]Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+  [INFO] [2017-08-06 15:22:33][org.quartz.core.QuartzScheduler]Quartz Scheduler v.2.2.3 created.
+  [INFO] [2017-08-06 15:22:33][org.quartz.simpl.RAMJobStore]RAMJobStore initialized.
+  [INFO] [2017-08-06 15:22:33][org.quartz.core.QuartzScheduler]Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactoryBean' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+  [INFO] [2017-08-06 15:22:33][org.quartz.impl.StdSchedulerFactory]Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+  [INFO] [2017-08-06 15:22:33][org.quartz.impl.StdSchedulerFactory]Quartz scheduler version: 2.2.3
+  [INFO] [2017-08-06 15:22:33][org.quartz.core.QuartzScheduler]JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@502377
+  [INFO] [2017-08-06 15:22:33][org.springframework.context.support.DefaultLifecycleProcessor]Starting beans in phase 2147483647
+  [INFO] [2017-08-06 15:22:33][org.springframework.scheduling.quartz.SchedulerFactoryBean]Starting Quartz Scheduler now
+  [INFO] [2017-08-06 15:22:33][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED started.
+  [INFO] [2017-08-06 15:22:33][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:22:33 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:22:33][org.springframework.context.support.DefaultLifecycleProcessor]Stopping beans in phase 2147483647
+  [INFO] [2017-08-06 15:22:33][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:22:33][org.springframework.scheduling.quartz.SchedulerFactoryBean]Shutting down Quartz Scheduler
+  [INFO] [2017-08-06 15:22:33][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutting down.
+  [INFO] [2017-08-06 15:22:33][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:22:33][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutdown complete.
+  [INFO] [2017-08-06 15:23:32][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 15:23:32][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:23:32 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:23:32][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 15:23:32][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-08-06 15:23:33][org.quartz.impl.StdSchedulerFactory]Using default implementation for ThreadExecutor
+  [INFO] [2017-08-06 15:23:33][org.quartz.core.SchedulerSignalerImpl]Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+  [INFO] [2017-08-06 15:23:33][org.quartz.core.QuartzScheduler]Quartz Scheduler v.2.2.3 created.
+  [INFO] [2017-08-06 15:23:33][org.quartz.simpl.RAMJobStore]RAMJobStore initialized.
+  [INFO] [2017-08-06 15:23:33][org.quartz.core.QuartzScheduler]Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactoryBean' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+  [INFO] [2017-08-06 15:23:33][org.quartz.impl.StdSchedulerFactory]Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+  [INFO] [2017-08-06 15:23:33][org.quartz.impl.StdSchedulerFactory]Quartz scheduler version: 2.2.3
+  [INFO] [2017-08-06 15:23:33][org.quartz.core.QuartzScheduler]JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@502377
+  [INFO] [2017-08-06 15:23:33][org.springframework.context.support.DefaultLifecycleProcessor]Starting beans in phase 2147483647
+  [INFO] [2017-08-06 15:23:33][org.springframework.scheduling.quartz.SchedulerFactoryBean]Starting Quartz Scheduler now
+  [INFO] [2017-08-06 15:23:33][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED started.
+  [INFO] [2017-08-06 15:23:33][freewebwork.TestMyBatis]==========测试结果为 ：1==============
+  [INFO] [2017-08-06 15:23:33][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:23:32 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:23:33][org.springframework.context.support.DefaultLifecycleProcessor]Stopping beans in phase 2147483647
+  [INFO] [2017-08-06 15:23:33][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:23:33][org.springframework.scheduling.quartz.SchedulerFactoryBean]Shutting down Quartz Scheduler
+  [INFO] [2017-08-06 15:23:33][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutting down.
+  [INFO] [2017-08-06 15:23:33][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:23:33][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutdown complete.
+  [INFO] [2017-08-06 15:25:06][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 15:25:06][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:25:06 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:25:06][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 15:25:06][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-08-06 15:25:06][org.quartz.impl.StdSchedulerFactory]Using default implementation for ThreadExecutor
+  [INFO] [2017-08-06 15:25:06][org.quartz.core.SchedulerSignalerImpl]Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+  [INFO] [2017-08-06 15:25:06][org.quartz.core.QuartzScheduler]Quartz Scheduler v.2.2.3 created.
+  [INFO] [2017-08-06 15:25:06][org.quartz.simpl.RAMJobStore]RAMJobStore initialized.
+  [INFO] [2017-08-06 15:25:06][org.quartz.core.QuartzScheduler]Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactoryBean' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+  [INFO] [2017-08-06 15:25:06][org.quartz.impl.StdSchedulerFactory]Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+  [INFO] [2017-08-06 15:25:06][org.quartz.impl.StdSchedulerFactory]Quartz scheduler version: 2.2.3
+  [INFO] [2017-08-06 15:25:06][org.quartz.core.QuartzScheduler]JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@502377
+  [INFO] [2017-08-06 15:25:06][org.springframework.context.support.DefaultLifecycleProcessor]Starting beans in phase 2147483647
+  [INFO] [2017-08-06 15:25:06][org.springframework.scheduling.quartz.SchedulerFactoryBean]Starting Quartz Scheduler now
+  [INFO] [2017-08-06 15:25:06][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED started.
+  [INFO] [2017-08-06 15:25:07][freewebwork.TestMyBatis]==========测试结果为 ：0==============
+  [INFO] [2017-08-06 15:25:07][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:25:06 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:25:07][org.springframework.context.support.DefaultLifecycleProcessor]Stopping beans in phase 2147483647
+  [INFO] [2017-08-06 15:25:07][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:25:07][org.springframework.scheduling.quartz.SchedulerFactoryBean]Shutting down Quartz Scheduler
+  [INFO] [2017-08-06 15:25:07][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutting down.
+  [INFO] [2017-08-06 15:25:07][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:25:07][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutdown complete.
+  [INFO] [2017-08-06 15:25:25][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 15:25:25][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:25:25 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:25:25][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 15:25:25][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-08-06 15:25:26][org.quartz.impl.StdSchedulerFactory]Using default implementation for ThreadExecutor
+  [INFO] [2017-08-06 15:25:26][org.quartz.core.SchedulerSignalerImpl]Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+  [INFO] [2017-08-06 15:25:26][org.quartz.core.QuartzScheduler]Quartz Scheduler v.2.2.3 created.
+  [INFO] [2017-08-06 15:25:26][org.quartz.simpl.RAMJobStore]RAMJobStore initialized.
+  [INFO] [2017-08-06 15:25:26][org.quartz.core.QuartzScheduler]Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactoryBean' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+  [INFO] [2017-08-06 15:25:26][org.quartz.impl.StdSchedulerFactory]Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+  [INFO] [2017-08-06 15:25:26][org.quartz.impl.StdSchedulerFactory]Quartz scheduler version: 2.2.3
+  [INFO] [2017-08-06 15:25:26][org.quartz.core.QuartzScheduler]JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@502377
+  [INFO] [2017-08-06 15:25:26][org.springframework.context.support.DefaultLifecycleProcessor]Starting beans in phase 2147483647
+  [INFO] [2017-08-06 15:25:26][org.springframework.scheduling.quartz.SchedulerFactoryBean]Starting Quartz Scheduler now
+  [INFO] [2017-08-06 15:25:26][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED started.
+  [INFO] [2017-08-06 15:25:26][freewebwork.TestMyBatis]==========测试结果为 ：1==============
+  [INFO] [2017-08-06 15:25:26][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:25:25 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:25:26][org.springframework.context.support.DefaultLifecycleProcessor]Stopping beans in phase 2147483647
+  [INFO] [2017-08-06 15:25:26][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:25:26][org.springframework.scheduling.quartz.SchedulerFactoryBean]Shutting down Quartz Scheduler
+  [INFO] [2017-08-06 15:25:26][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutting down.
+  [INFO] [2017-08-06 15:25:26][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:25:26][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutdown complete.
+  [INFO] [2017-08-06 15:45:43][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 15:45:43][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:45:43 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:45:43][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 15:45:43][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-08-06 15:45:44][org.quartz.impl.StdSchedulerFactory]Using default implementation for ThreadExecutor
+  [INFO] [2017-08-06 15:45:44][org.quartz.core.SchedulerSignalerImpl]Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+  [INFO] [2017-08-06 15:45:44][org.quartz.core.QuartzScheduler]Quartz Scheduler v.2.2.3 created.
+  [INFO] [2017-08-06 15:45:44][org.quartz.simpl.RAMJobStore]RAMJobStore initialized.
+  [INFO] [2017-08-06 15:45:44][org.quartz.core.QuartzScheduler]Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactoryBean' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+  [INFO] [2017-08-06 15:45:44][org.quartz.impl.StdSchedulerFactory]Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+  [INFO] [2017-08-06 15:45:44][org.quartz.impl.StdSchedulerFactory]Quartz scheduler version: 2.2.3
+  [INFO] [2017-08-06 15:45:44][org.quartz.core.QuartzScheduler]JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@1b194a
+  [INFO] [2017-08-06 15:45:44][org.springframework.context.support.DefaultLifecycleProcessor]Starting beans in phase 2147483647
+  [INFO] [2017-08-06 15:45:44][org.springframework.scheduling.quartz.SchedulerFactoryBean]Starting Quartz Scheduler now
+  [INFO] [2017-08-06 15:45:44][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED started.
+  [INFO] [2017-08-06 15:45:44][freewebwork.TestMyBatis]==========测试结果为 ：1==============
+  [INFO] [2017-08-06 15:45:44][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 15:45:43 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 15:45:44][org.springframework.context.support.DefaultLifecycleProcessor]Stopping beans in phase 2147483647
+  [INFO] [2017-08-06 15:45:44][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:45:44][org.springframework.scheduling.quartz.SchedulerFactoryBean]Shutting down Quartz Scheduler
+  [INFO] [2017-08-06 15:45:44][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutting down.
+  [INFO] [2017-08-06 15:45:44][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 15:45:44][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutdown complete.
+  [INFO] [2017-08-06 18:27:03][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 18:27:04][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 18:27:04 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 18:27:04][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 18:27:04][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-08-06 18:27:04][org.quartz.impl.StdSchedulerFactory]Using default implementation for ThreadExecutor
+  [INFO] [2017-08-06 18:27:04][org.quartz.core.SchedulerSignalerImpl]Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+  [INFO] [2017-08-06 18:27:04][org.quartz.core.QuartzScheduler]Quartz Scheduler v.2.2.3 created.
+  [INFO] [2017-08-06 18:27:04][org.quartz.simpl.RAMJobStore]RAMJobStore initialized.
+  [INFO] [2017-08-06 18:27:04][org.quartz.core.QuartzScheduler]Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactoryBean' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+  [INFO] [2017-08-06 18:27:04][org.quartz.impl.StdSchedulerFactory]Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+  [INFO] [2017-08-06 18:27:04][org.quartz.impl.StdSchedulerFactory]Quartz scheduler version: 2.2.3
+  [INFO] [2017-08-06 18:27:04][org.quartz.core.QuartzScheduler]JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@1b194a
+  [INFO] [2017-08-06 18:27:04][org.springframework.context.support.DefaultLifecycleProcessor]Starting beans in phase 2147483647
+  [INFO] [2017-08-06 18:27:04][org.springframework.scheduling.quartz.SchedulerFactoryBean]Starting Quartz Scheduler now
+  [INFO] [2017-08-06 18:27:04][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED started.
+  [INFO] [2017-08-06 18:27:05][freewebwork.TestMybatisPaging]{"endRow":5,"firstPage":1,"hasNextPage":false,"hasPreviousPage":false,"isFirstPage":true,"isLastPage":true,"lastPage":1,"list":[{"beanClass":"com.snailxr.base.task.TaskTest","cronExpression":"0/1 * * * * ?","description":"test","isConcurrent":"0","jobGroup":"test","jobId":1,"jobName":"test","jobStatus":"0","methodName":"run1","updateTime":1407478654000},{"cronExpression":"0/5 * * * * ?","description":"test2","isConcurrent":"1","jobGroup":"test","jobId":2,"jobName":"test1","jobStatus":"0","methodName":"run","springId":"taskTest","updateTime":1398406639000},{"beanClass":"com.cn.henry.freewebwork.TaskTest","cronExpression":"0/1 * * * * ?","description":"test","isConcurrent":"0","jobGroup":"test","jobId":3,"jobName":"test3","jobStatus":"0","methodName":"run1","updateTime":1501741054000},{"beanClass":"com.cn.henry.freewebwork.TaskTest","cronExpression":"0/2 * * * * ?","description":"test","isConcurrent":"0","jobGroup":"test","jobId":4,"jobName":"test4","jobStatus":"0","methodName":"run1","updateTime":1501741054000},{"beanClass":"com.cn.henry.freewebwork.TaskTest","cronExpression":"0/3 * * * * ?","description":"test","isConcurrent":"0","jobGroup":"test","jobId":5,"jobName":"test5","jobStatus":"0","methodName":"run1","updateTime":1501741054000}],"navigateFirstPage":1,"navigateLastPage":1,"navigatePages":8,"navigatepageNums":[1],"nextPage":0,"pageNum":1,"pageSize":10,"pages":1,"prePage":0,"size":5,"startRow":1,"total":5}
+  [INFO] [2017-08-06 18:27:05][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@b2c100: startup date [Sun Aug 06 18:27:04 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 18:27:05][org.springframework.context.support.DefaultLifecycleProcessor]Stopping beans in phase 2147483647
+  [INFO] [2017-08-06 18:27:05][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 18:27:05][org.springframework.scheduling.quartz.SchedulerFactoryBean]Shutting down Quartz Scheduler
+  [INFO] [2017-08-06 18:27:05][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutting down.
+  [INFO] [2017-08-06 18:27:05][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 18:27:05][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutdown complete.
+  [INFO] [2017-08-06 18:31:06][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [spring-mybatis.xml]
+  [INFO] [2017-08-06 18:31:06][org.springframework.context.support.GenericApplicationContext]Refreshing org.springframework.context.support.GenericApplicationContext@17d0578: startup date [Sun Aug 06 18:31:06 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 18:31:06][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+  [INFO] [2017-08-06 18:31:06][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor]JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+  [INFO] [2017-08-06 18:31:06][org.quartz.impl.StdSchedulerFactory]Using default implementation for ThreadExecutor
+  [INFO] [2017-08-06 18:31:06][org.quartz.core.SchedulerSignalerImpl]Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+  [INFO] [2017-08-06 18:31:06][org.quartz.core.QuartzScheduler]Quartz Scheduler v.2.2.3 created.
+  [INFO] [2017-08-06 18:31:06][org.quartz.simpl.RAMJobStore]RAMJobStore initialized.
+  [INFO] [2017-08-06 18:31:06][org.quartz.core.QuartzScheduler]Scheduler meta-data: Quartz Scheduler (v2.2.3) 'schedulerFactoryBean' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+  [INFO] [2017-08-06 18:31:06][org.quartz.impl.StdSchedulerFactory]Quartz scheduler 'schedulerFactoryBean' initialized from an externally provided properties instance.
+  [INFO] [2017-08-06 18:31:06][org.quartz.impl.StdSchedulerFactory]Quartz scheduler version: 2.2.3
+  [INFO] [2017-08-06 18:31:06][org.quartz.core.QuartzScheduler]JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@171a660
+  [INFO] [2017-08-06 18:31:06][org.springframework.context.support.DefaultLifecycleProcessor]Starting beans in phase 2147483647
+  [INFO] [2017-08-06 18:31:06][org.springframework.scheduling.quartz.SchedulerFactoryBean]Starting Quartz Scheduler now
+  [INFO] [2017-08-06 18:31:06][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED started.
+  [INFO] [2017-08-06 18:31:07][freewebwork.TestMybatisPaging]{"endRow":5,"firstPage":1,"hasNextPage":false,"hasPreviousPage":false,"isFirstPage":true,"isLastPage":true,"lastPage":1,"list":[{"beanClass":"com.snailxr.base.task.TaskTest","cronExpression":"0/1 * * * * ?","description":"test","isConcurrent":"0","jobGroup":"test","jobId":1,"jobName":"test","jobStatus":"0","methodName":"run1","updateTime":1407478654000},{"cronExpression":"0/5 * * * * ?","description":"test2","isConcurrent":"1","jobGroup":"test","jobId":2,"jobName":"test1","jobStatus":"0","methodName":"run","springId":"taskTest","updateTime":1398406639000},{"beanClass":"com.cn.henry.freewebwork.TaskTest","cronExpression":"0/1 * * * * ?","description":"test","isConcurrent":"0","jobGroup":"test","jobId":3,"jobName":"test3","jobStatus":"0","methodName":"run1","updateTime":1501741054000},{"beanClass":"com.cn.henry.freewebwork.TaskTest","cronExpression":"0/2 * * * * ?","description":"test","isConcurrent":"0","jobGroup":"test","jobId":4,"jobName":"test4","jobStatus":"0","methodName":"run1","updateTime":1501741054000},{"beanClass":"com.cn.henry.freewebwork.TaskTest","cronExpression":"0/3 * * * * ?","description":"test","isConcurrent":"0","jobGroup":"test","jobId":5,"jobName":"test5","jobStatus":"0","methodName":"run1","updateTime":1501741054000}],"navigateFirstPage":1,"navigateLastPage":1,"navigatePages":8,"navigatepageNums":[1],"nextPage":0,"pageNum":1,"pageSize":10,"pages":1,"prePage":0,"size":5,"startRow":1,"total":5}
+  [INFO] [2017-08-06 18:31:07][org.springframework.context.support.GenericApplicationContext]Closing org.springframework.context.support.GenericApplicationContext@17d0578: startup date [Sun Aug 06 18:31:06 CST 2017]; root of context hierarchy
+  [INFO] [2017-08-06 18:31:07][org.springframework.context.support.DefaultLifecycleProcessor]Stopping beans in phase 2147483647
+  [INFO] [2017-08-06 18:31:07][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 18:31:07][org.springframework.scheduling.quartz.SchedulerFactoryBean]Shutting down Quartz Scheduler
+  [INFO] [2017-08-06 18:31:07][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutting down.
+  [INFO] [2017-08-06 18:31:07][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED paused.
+  [INFO] [2017-08-06 18:31:07][org.quartz.core.QuartzScheduler]Scheduler schedulerFactoryBean_$_NON_CLUSTERED shutdown complete.
+  

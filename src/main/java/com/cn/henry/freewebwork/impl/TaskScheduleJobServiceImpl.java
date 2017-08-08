@@ -7,8 +7,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
-import org.apache.log4j.Logger; 
-
+import org.apache.log4j.Logger;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;
 import org.quartz.JobBuilder;
@@ -154,6 +153,22 @@ public class TaskScheduleJobServiceImpl implements TaskScheduleJobService{
 			// 按新的trigger重新设置job执行
 			scheduler.rescheduleJob(triggerKey, trigger);
 		}
+	}
+	
+	/**
+	 * 更改任务 cron表达式
+	 * @throws SchedulerException
+	 */
+	public void updateCron(Long jobId, String cron) throws SchedulerException {
+		TaskScheduleJob job = this.selectByPrimaryKey(jobId);
+		if (job == null) {
+			return;
+		}
+		job.setCronExpression(cron);
+		if (TaskScheduleJob.STATUS_RUNNING.equals(job.getJobStatus())) {
+			this.updateJobCron(job);
+		}
+		this.taskScheduleJobMapper.updateByPrimaryKeySelective(job);
 	}
 	
 	/**

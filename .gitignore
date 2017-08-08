@@ -5,8 +5,7 @@
 *.war
 *.ear
 
-# idea Files
-.idea
+# Files
 *.iml
 target
 

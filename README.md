@@ -1,5 +1,5 @@
 # freewebwork
-引用了他人的代码，跟着学习和优化对springmvc， mybatis， quartz，mysql等的使用，做个总结和记录。站在巨人的肩膀上。
+项目中的User类是做基础测试用例使用，调试版本和配置文件。项目的主要功能管理定时任务。前端实践react，后端实践spring。
 
 # 1. 主线配置Spring+SpringMVC+MyBatis(注意jar包版本)
 [参考：SSM框架——详细整合教程（Spring+SpringMVC+MyBatis）](http://blog.csdn.net/zhshulin/article/details/37956105) 

@@ -1,5 +1,5 @@
 # freewebwork
-项目中的User类是做基础测试用例使用，调试版本和配置文件。项目的主要功能管理定时任务。前端实践react，后端实践spring。
+项目中的User类是做基础测试用例使用，调试版本和配置文件。项目的主要功能管理定时任务。使用静态html配合ajax的形式渲染页面。
 
 # 1. 主线配置Spring+SpringMVC+MyBatis(注意jar包版本)
 [参考：SSM框架——详细整合教程（Spring+SpringMVC+MyBatis）](http://blog.csdn.net/zhshulin/article/details/37956105) 

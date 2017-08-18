@@ -38,7 +38,9 @@ var taskHandler = function () {
 		        sortname: 'id', 
 		        sortorder: "desc",
 		        pager: "#" + pager
-		    });
+		    }).navGrid("#" + pager,
+                { edit: true, add: true, del: true, search: false, refresh: true, view: false, position: "left"}
+	        );
 		}
 		return {
 			load: load

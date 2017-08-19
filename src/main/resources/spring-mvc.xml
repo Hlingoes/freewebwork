@@ -18,7 +18,7 @@
 		<mvc:message-converters>
 			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
 				<property name="supportedMediaTypes">
-					<!-- 设置响应支持的类型, json转换消息转换器，并且设置supportedMediaTypes, 否则抛出406 -->  -->  
+					<!-- 设置响应支持的类型, json转换消息转换器，并且设置supportedMediaTypes, 否则抛出406 -->
 					<list>
 						<value>text/html;charset=UTF-8</value> 
 						<value>application/json;charset=UTF-8</value>

@@ -10,9 +10,10 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.alibaba.fastjson.JSON;
 import com.cn.henry.freewebwork.entity.TaskScheduleJob;
 import com.cn.henry.freewebwork.service.TaskScheduleJobService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -22,11 +23,13 @@ public class TestMybatisPaging {
 	
 	private static Logger logger = Logger.getLogger(TestMybatisPaging.class);
 	
+	private static ObjectMapper jsonMapper = new ObjectMapper();
+	
 	@Resource
 	private TaskScheduleJobService taskScheduleJobService;
 
 	@Test
-	public void test1() {
+	public void test1() throws JsonProcessingException {
 		int pageNo = 1;
 		int pageSize = 10;
 		String jobGroup = "test";
@@ -45,7 +48,7 @@ public class TestMybatisPaging {
 		System.out.println(page.getNavigateLastPage());
 		System.out.println(page.isHasPreviousPage());
 		System.out.println(page.isHasNextPage());
-		logger.info(JSON.toJSONString(page));
+		logger.info(jsonMapper.writeValueAsString(page));
 	}
 
 }

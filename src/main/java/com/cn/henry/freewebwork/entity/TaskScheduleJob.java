@@ -2,6 +2,8 @@ package com.cn.henry.freewebwork.entity;
 
 import java.sql.Timestamp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class TaskScheduleJob {
 	
 	public static final String STATUS_RUNNING = "1";
@@ -13,6 +15,8 @@ public class TaskScheduleJob {
 
     private Timestamp createTime;
 
+    //格式化日期属性  
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")  
     private Timestamp updateTime;
 
     private String jobName;

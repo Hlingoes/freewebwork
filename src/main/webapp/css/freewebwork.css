@@ -1,7 +1,12 @@
   .container {
     width: 1440px;
   }
-
-.page-container{
+.page-container {
 	padding-top: 75px;
+}
+th {
+	text-align: center;
+}
+.ui-jqgrid .ui-jqgrid-bdiv {
+    text-align: center;
 }

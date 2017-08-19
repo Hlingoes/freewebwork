@@ -33,6 +33,7 @@ public class TaskScheduleJob {
 
     private String isConcurrent;
 
+    // 项目没有使用spring托管的方式，这个字段没有用处
     private String springId;
 
     private String methodName;

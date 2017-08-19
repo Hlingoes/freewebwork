@@ -15,3 +15,7 @@
 [参考：Spring回顾之七 —— 和Quartz一起进行定时任务](http://veiking.iteye.com/blog/2371511)
 # 4. 配置项目静态文件
 [参考：Maven工程JSP页面无法加载.js文件的解决方案](http://blog.csdn.net/javaee_sunny/article/details/52513160)
+# 5. 常用工具类
+[参考：Java下利用Jackson进行JSON解析和序列化](http://blog.csdn.net/accountwcx/article/details/24585987)<br>
+[参考：Jackson介绍（1）-jackson2.x与Jackson1.9的比较](http://blog.csdn.net/u011179993/article/details/46454059)<br>
+[参考：spring使用jackson实现json输出 ](http://blog.chinaunix.net/uid-192452-id-3967223.html)

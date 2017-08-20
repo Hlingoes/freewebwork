@@ -1,5 +1,5 @@
   .container {
-    width: 1440px;
+    width: 1920px;
   }
 .page-container {
 	padding-top: 75px;
@@ -9,4 +9,9 @@ th {
 }
 .ui-jqgrid .ui-jqgrid-bdiv {
     text-align: center;
+}
+.task-stop, .task-start, .task-update {
+	display: inline-block;
+	padding: 0 5px;
+	cursor: pointer;
 }

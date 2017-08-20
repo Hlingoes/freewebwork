@@ -15,7 +15,6 @@ var taskHandler = function () {
 			$("#" + tableId).jqGrid({
 		        url: pageUrl.loadTableUrl,
 		        mtype: "GET",
-				styleUI : 'Bootstrap',
 		        datatype: "json",
 		        colModel: [
 		            { label: 'Job Name', name: 'jobName', width: 85 },
@@ -28,13 +27,14 @@ var taskHandler = function () {
 		            { label: 'Bean Class', name: 'beanClass', width: 240 },
 		            { label: 'Concurrent', name: 'isConcurrent', width: 95 },
 		            { label: 'Create Time', name: 'createTime', width: 135 },
-		            { label: 'Update Time', name: 'updateTime', width: 135 }
+		            { label: 'Update Time', name: 'updateTime', width: 135 },
+		            { label: 'Operation', name: 'jobId', key: true, width: 130, formatter: formatOperate }
 		        ],
 				viewrecords: true,
 		        rowNum: 10,
 		        rowList:[10,20,30], 
 		        sortname: 'updateTime', 
-                width: 1440,
+                width: 1890,
                 height: 480,
 		        sortorder: "desc",
                 rownumbers: true, // show row numbers
@@ -44,6 +44,18 @@ var taskHandler = function () {
                 { edit: true, add: true, del: true, search: false, refresh: true, view: false, position: "left"}
 	        );
 		}
+		
+		// 给每行加上：停止(stop), 开启(start), 更新cron(update)
+		function formatOperate (value, options, rowObject) {
+			var stop = '<a class="task-stop" args="'+ rowObject.jobId +'"><i class="fa fa-stop"> stop</i></a>';
+			var start = '<a class="task-start" args="'+ rowObject.jobId +'"><i class="fa fa-play"> start</i></a>';
+			var update = '<a class="task-update" args="'+ rowObject.jobId +'"><i class="fa fa-pencil"> update</i></a>';
+			if (parseInt(rowObject.jobStatus, 10) === 0) {
+				return start + update;
+			}
+			return stop + update ;
+		}
+		
 		return {
 			load: load
 		};

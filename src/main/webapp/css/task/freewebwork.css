@@ -1,6 +1,3 @@
-  .container {
-    width: 1920px;
-  }
 .page-container {
 	padding-top: 75px;
 }
@@ -10,8 +7,20 @@ th {
 .ui-jqgrid .ui-jqgrid-bdiv {
     text-align: center;
 }
-.task-stop, .task-start, .task-update {
+.task-operate {
 	display: inline-block;
 	padding: 0 5px;
 	cursor: pointer;
+}
+.red {
+	color: #c7254e;
+}
+.fr {
+	float: right;
+}
+.mr-5 {
+	margin-right: 5px;
+}
+.ml-5 {
+	margin-left: 5px;
 }

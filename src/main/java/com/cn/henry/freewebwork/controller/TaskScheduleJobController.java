@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.quartz.CronScheduleBuilder;
+import org.quartz.JobExecutionContext;
 import org.quartz.SchedulerException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,6 +30,7 @@ import com.github.pagehelper.PageInfo;
  * @time 2017-8-17 23:12:55
  */
 @Controller
+@RequestMapping("/html/task")
 public class TaskScheduleJobController {
 
 	public final Logger log = Logger.getLogger(this.getClass());
@@ -44,7 +46,7 @@ public class TaskScheduleJobController {
 		return "quartzTask/taskPage";
 	}
 	
-	@RequestMapping("/html/task/showJobs")
+	@RequestMapping("/showJobs")
 	@ResponseBody
 	public JqGridPage showJobs(HttpServletRequest request, Model model) {
 		String jobGroup = "test";
@@ -86,7 +88,7 @@ public class TaskScheduleJobController {
 			Class clazz = obj.getClass();
 			Method method = null;
 			try {
-				method = clazz.getMethod(scheduleJob.getMethodName(), null);
+				method = clazz.getMethod(scheduleJob.getMethodName(), new Class<?>[]{JobExecutionContext.class});
 			} catch (Exception e) {
 				// do nothing.....
 			}
@@ -96,7 +98,10 @@ public class TaskScheduleJobController {
 			}
 		}
 		try {
+			// 注册到quartz factory中
 			this.taskScheduleJobService.addJob(scheduleJob);
+			// 插入数据库
+			this.taskScheduleJobService.insert(scheduleJob);
 		} catch (Exception e) {
 			e.printStackTrace();
 			baseResult.setFlag(false);

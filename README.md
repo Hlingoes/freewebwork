@@ -1,6 +1,8 @@
 # freewebwork
-项目中的User类是做基础测试用例使用，调试版本和配置文件。项目的主要功能管理定时任务。使用静态html配合ajax的形式渲染页面。
-
+项目的主要功能：管理定时任务<br>
+项目中的User类是做基础测试用例使用，调试版本和配置文件。
+项目构建环境jdk-1.8，tomcat 8.0，spring 4.0，mysql，配置过程中要注意jar版本，按需调节。
+使用静态html配合ajax的形式渲染页面，基于[bootstrap-v3.3.7](http://www.bootcss.com/)，[jquery](https://jquery.com/)，表格使用[jqGrid](http://www.guriddo.net/demo/bootstrap/)，字体文件[fontawesome](http://fontawesome.dashgame.com/)等比较常用的插件，以使用顺手为主。
 # 1. 主线配置Spring+SpringMVC+MyBatis(注意jar包版本)
 [参考：SSM框架——详细整合教程（Spring+SpringMVC+MyBatis）](http://blog.csdn.net/zhshulin/article/details/37956105) 
 # 2. 副线配置mybatis的代码自动生成和分页查询
@@ -16,6 +18,8 @@
 # 4. 配置项目静态文件
 [参考：Maven工程JSP页面无法加载.js文件的解决方案](http://blog.csdn.net/javaee_sunny/article/details/52513160)
 # 5. 常用工具类
-[参考：Java下利用Jackson进行JSON解析和序列化](http://blog.csdn.net/accountwcx/article/details/24585987)<br>
-[参考：Jackson介绍（1）-jackson2.x与Jackson1.9的比较](http://blog.csdn.net/u011179993/article/details/46454059)<br>
-[参考：spring使用jackson实现json输出 ](http://blog.chinaunix.net/uid-192452-id-3967223.html)
+5.1 [参考：Java下利用Jackson进行JSON解析和序列化](http://blog.csdn.net/accountwcx/article/details/24585987)<br>
+5.2 [参考：Jackson介绍（1）-jackson2.x与Jackson1.9的比较](http://blog.csdn.net/u011179993/article/details/46454059)<br>
+5.3 [参考：spring使用jackson实现json输出 ](http://blog.chinaunix.net/uid-192452-id-3967223.html)
+# 6. 前端插件
+6.1 [bootstrap-validator 小巧的表单验证插件，无需引入额外的css，api不易用](https://github.com/1000hz/bootstrap-validator)

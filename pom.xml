@@ -194,6 +194,13 @@
 		    <version>2.2.3</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/net.sf.oval/oval 开源验证框架 -->
+		<dependency>
+		  <groupId>net.sf.oval</groupId>
+		  <artifactId>oval</artifactId>
+		  <version>1.84</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

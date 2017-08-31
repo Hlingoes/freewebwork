@@ -4,6 +4,9 @@ import java.sql.Timestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import net.sf.oval.constraint.NotEmpty;
+import net.sf.oval.constraint.NotNull;
+
 public class TaskScheduleJob {
 	
 	public static final String STATUS_RUNNING = "1";
@@ -13,22 +16,27 @@ public class TaskScheduleJob {
 	
     private Long jobId;
 
+    //格式化日期属性  
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Timestamp createTime;
 
     //格式化日期属性  
-    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")  
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Timestamp updateTime;
 
+    @NotEmpty(message = "任务名不能为空")
     private String jobName;
 
     private String jobGroup;
 
     private String jobStatus;
 
+    @NotEmpty(message = "cron表达式不能为空")
     private String cronExpression;
 
     private String description;
 
+    @NotEmpty(message = "执行的bean不能为空")
     private String beanClass;
 
     private String isConcurrent;
@@ -36,6 +44,7 @@ public class TaskScheduleJob {
     // 项目没有使用spring托管的方式，这个字段没有用处
     private String springId;
 
+    @NotEmpty(message = "方法名不能为空")
     private String methodName;
 
     public Long getJobId() {
@@ -133,4 +142,5 @@ public class TaskScheduleJob {
     public void setMethodName(String methodName) {
         this.methodName = methodName == null ? null : methodName.trim();
     }
+    
 }

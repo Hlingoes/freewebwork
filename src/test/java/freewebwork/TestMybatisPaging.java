@@ -1,6 +1,8 @@
 package freewebwork;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -34,7 +36,11 @@ public class TestMybatisPaging {
 		int pageSize = 10;
 		String jobGroup = "test";
 		PageHelper.startPage(pageNo, pageSize);
-		List<TaskScheduleJob> list = this.taskScheduleJobService.selectByJobGroup(jobGroup);
+		Map<String, String> condition = new HashMap<String, String> ();
+        condition.put("sidx", "updateTime");
+        condition.put("sord", "desc");
+        condition.put("jobGroup", "test"); // 用作对条件查询的测试
+		List<TaskScheduleJob> list = this.taskScheduleJobService.selectByCondition(condition);
 		// 用PageInfo对结果进行包装
 		PageInfo<TaskScheduleJob> page = new PageInfo<TaskScheduleJob>(list);
 		// 测试PageInfo全部属性

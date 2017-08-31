@@ -1,7 +1,9 @@
 package com.cn.henry.freewebwork.controller;
 
 import java.lang.reflect.Method;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -12,8 +14,8 @@ import org.quartz.CronScheduleBuilder;
 import org.quartz.JobExecutionContext;
 import org.quartz.SchedulerException;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.cn.henry.freewebwork.core.BaseResult;
@@ -23,6 +25,9 @@ import com.cn.henry.freewebwork.service.TaskScheduleJobService;
 import com.cn.henry.freewebwork.utils.SpringUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+
+import net.sf.oval.ConstraintViolation;
+import net.sf.oval.Validator;
 
 /**
  * 任务的增删改调度
@@ -46,14 +51,25 @@ public class TaskScheduleJobController {
 		return "quartzTask/taskPage";
 	}
 	
+	/**  
+	 * RequestParam注解绑定请求参数 
+     * @RequestParam 映射请求参数  
+     * value 请求参数的参数名 ，作为参数映射名称 
+     * required 该参数是否必填，默认为true(必填)，当设置成必填时，如果没有传入参数，报错  
+     * defaultValue 设置请求参数的默认值  
+     */ 
 	@RequestMapping("/showJobs")
 	@ResponseBody
-	public JqGridPage showJobs(HttpServletRequest request, Model model) {
-		String jobGroup = "test";
-		int pageNo = 1;
-    	int pageSize = 10;
-        PageHelper.startPage(pageNo, pageSize);
-        List<TaskScheduleJob> list = this.taskScheduleJobService.selectByJobGroup(jobGroup);
+	public JqGridPage showJobs(@RequestParam(value = "rows", required = true, defaultValue = "10") int pageSize,  
+            						@RequestParam(value = "page", required = true, defaultValue = "1") int pageNum, 
+            						@RequestParam(value = "sidx", required = false, defaultValue = "update_time") String sidx,
+            						@RequestParam(value = "sord", required = false, defaultValue = "desc") String sord) {
+        PageHelper.startPage(pageNum, pageSize);
+        Map<String, String> condition = new HashMap<String, String> ();
+        condition.put("sidx", sidx);
+        condition.put("sord", sord);
+        condition.put("jobGroup", "test"); // 用作对条件查询的测试
+        List<TaskScheduleJob> list = this.taskScheduleJobService.selectByCondition(condition);
         //用PageInfo对结果进行包装
         PageInfo<TaskScheduleJob> pageInfo = new PageInfo<TaskScheduleJob>(list);
 		return new JqGridPage(pageInfo);
@@ -63,7 +79,17 @@ public class TaskScheduleJobController {
 	@ResponseBody
 	public BaseResult addTadk(HttpServletRequest request, TaskScheduleJob scheduleJob) {
 		BaseResult baseResult = new BaseResult();
+		Validator validator = new Validator();
+        List<ConstraintViolation> message = validator.validate(scheduleJob);//完全验证
 		baseResult.setFlag(false);
+		if (message.size() > 0) {
+			String msg = "";
+			for (ConstraintViolation constraintViolation : message) {
+				msg += constraintViolation.getMessage() + "\n";
+			}
+			baseResult.setMsg(msg);
+			return baseResult;
+        }
 		try {
 			CronScheduleBuilder.cronSchedule(scheduleJob.getCronExpression());
 		} catch (Exception e) {

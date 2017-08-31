@@ -52,9 +52,9 @@ var taskHandler = function () {
 		        styleUI: "Bootstrap",
 		        datatype: "json",
 		        colModel: [
-		            { label: 'Job Name', name: 'jobName', width: 85 },
+		            { label: 'Job Name', name: 'jobName', index: 'job_name', width: 85 },
 		            { label: 'Job ID', name: 'jobId', key: true, width:0, hidden: true },
-		            { label: 'Job Group', name: 'jobGroup', width: 100 },
+		            { label: 'Job Group', name: 'jobGroup', sortable: false, width: 100 },
 		            { label: 'Method Name', name: 'methodName', width: 115 },
 		            { label: 'Job Status', name: 'jobStatus', width: 115, formatter: formatStatus },
 		            { label: 'Cron Expression', name: 'cronExpression', width: 140 },
@@ -62,13 +62,13 @@ var taskHandler = function () {
 		            { label: 'Bean Class', name: 'beanClass', width: 240 },
 		            { label: 'Concurrent', name: 'isConcurrent', width: 95, formatter: formatAsync },
 		            { label: 'Create Time', name: 'createTime', width: 145 },
-		            { label: 'Update Time', name: 'updateTime', width: 145 },
+		            { label: 'Update Time', name: 'updateTime', index: 'update_time', width: 145 },
 		            { label: 'Operation', name: 'jobId', key: true, width: 100, title: false, formatter: formatOperate }
 		        ],
 				viewrecords: true,
-		        rowNum: 10,
-		        rowList:[10, 20, 30], 
-		        sortname: 'updateTime', 
+		        rowNum: 5,
+		        rowList:[5, 10, 20], 
+		        sortname: 'update_time', 
                 height: 480,
 		        sortorder: "desc",
 		        pager: $pager
@@ -141,19 +141,18 @@ var taskHandler = function () {
 		
 		// 委托验证并提交表单事件
 		$("form").validator().on('submit', function(e) {
-			// 表示验证成功
-			if ($(this).find("has-error").length === 0) {
-				 $.post("add", $("form").serialize()).done(function (res) {
-					 if (res.flag) {
-						 pageModal.hide();
-						 pageGrid.load();
-					 } else {
-						 alert(res.msg);
-					 }
-				 });
+			if ($(this).find(".has-error").length === 0) {
+				// 表示验证成功
+				$.post("add", $("form").serialize()).done(function(res) {
+					if (res.flag) {
+						pageModal.hide();
+						pageGrid.load();
+					} else {
+						alert(res.msg);
+					}
+				});
 			}
 		});
-		
 		
 	};
 	

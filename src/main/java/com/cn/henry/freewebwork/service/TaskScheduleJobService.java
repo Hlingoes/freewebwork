@@ -1,6 +1,7 @@
 package com.cn.henry.freewebwork.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.quartz.SchedulerException;
 
@@ -8,7 +9,7 @@ import com.cn.henry.freewebwork.core.BaseService;
 import com.cn.henry.freewebwork.entity.TaskScheduleJob;
 
 public interface TaskScheduleJobService extends BaseService<TaskScheduleJob>{
-    List<TaskScheduleJob> selectByJobGroup(String jobGroup);
+    List<TaskScheduleJob> selectByCondition(Map<String, String> condition);
 
 	void changeStatus(Long jobId, String cmd) throws SchedulerException;
 

@@ -3,6 +3,7 @@ package com.cn.henry.freewebwork.impl;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -82,8 +83,8 @@ public class TaskScheduleJobServiceImpl implements TaskScheduleJobService{
 	}
 
 	@Override
-	public List<TaskScheduleJob> selectByJobGroup(String jobGroup) {
-		return this.taskScheduleJobMapper.selectByJobGroup(jobGroup);
+	public List<TaskScheduleJob> selectByCondition(Map<String, String> condition) {
+		return this.taskScheduleJobMapper.selectByCondition(condition);
 	}
 	
 	/**

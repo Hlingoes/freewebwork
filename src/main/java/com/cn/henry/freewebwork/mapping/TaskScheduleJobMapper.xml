@@ -176,15 +176,18 @@
   </update>
 
   <!-- 分页查询回访记录 -->
-  <select id="selectByJobGroup" parameterType="java.lang.String" resultMap="BaseResultMap">
+  <select id="selectByCondition" parameterType="java.util.Map" resultMap="BaseResultMap">
      select 
      <include refid="Base_Column_List" />
 	from task_schedule_job
 	WHERE 1 = 1
-    <if test="jobGroup != null and jobGroup !=''">
-        AND job_group = #{jobGroup,jdbcType=VARCHAR}
+<!--     <foreach collection="_parameter.keys" item="k" separator="and" index="key">
+		<if test="_parameter[k] != null"> ${k}=#{${k}, jdbcType=VARCHAR} </if>
+	</foreach> -->
+	<if test="jobGroup != null and jobGroup !=''">
+        AND job_group = #{jobGroup}
     </if>
-    ORDER BY job_id
+    ORDER BY ${sidx} ${sord}
   </select>
   
 </mapper>

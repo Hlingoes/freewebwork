@@ -28,5 +28,7 @@ public interface TaskScheduleJobService extends BaseService<TaskScheduleJob>{
 	void resumeJob(TaskScheduleJob scheduleJob) throws SchedulerException;
 	
 	void updateCron(Long jobId, String cron) throws SchedulerException;
+	
+	void testHandlerException() throws SchedulerException;
 
 }

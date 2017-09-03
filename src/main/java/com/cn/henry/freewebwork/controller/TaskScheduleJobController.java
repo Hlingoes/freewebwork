@@ -15,6 +15,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.SchedulerException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -28,6 +29,7 @@ import com.github.pagehelper.PageInfo;
 
 import net.sf.oval.ConstraintViolation;
 import net.sf.oval.Validator;
+
 
 /**
  * 任务的增删改调度
@@ -75,9 +77,9 @@ public class TaskScheduleJobController {
 		return new JqGridPage(pageInfo);
 	}
 	
-	@RequestMapping("add")
+	@RequestMapping(value="add", method=RequestMethod.POST)
 	@ResponseBody
-	public BaseResult addTadk(HttpServletRequest request, TaskScheduleJob scheduleJob) {
+	public BaseResult addTadk(TaskScheduleJob scheduleJob) {
 		BaseResult baseResult = new BaseResult();
 		Validator validator = new Validator();
         List<ConstraintViolation> message = validator.validate(scheduleJob);//完全验证
@@ -138,18 +140,12 @@ public class TaskScheduleJobController {
 		return baseResult;
 	}
 
-	@RequestMapping("changeJobStatus")
+	@RequestMapping(value="changeJobStatus", method=RequestMethod.POST)
 	@ResponseBody
-	public BaseResult changeJobStatus(HttpServletRequest request, Long jobId, String cmd) {
+	public BaseResult changeJobStatus(@RequestParam(value = "jobId", required = true) Long jobId,
+			@RequestParam(value = "cmd", required = true) String cmd) throws SchedulerException {
 		BaseResult baseResult = new BaseResult();
-		baseResult.setFlag(false);
-		try {
-			this.taskScheduleJobService.changeStatus(jobId, cmd);
-		} catch (SchedulerException e) {
-			log.error(e.getMessage(), e);
-			baseResult.setMsg("任务状态改变失败！");
-			return baseResult;
-		}
+		this.taskScheduleJobService.changeStatus(jobId, cmd);
 		baseResult.setFlag(true);
 		return baseResult;
 	}
@@ -175,4 +171,14 @@ public class TaskScheduleJobController {
 		return baseResult;
 	}
 	
+	@RequestMapping(value="testHandlerException", method=RequestMethod.POST)
+	@ResponseBody
+	public BaseResult testHandlerException(@RequestParam(value = "jobId", required = true) Long jobId) throws SchedulerException {
+		BaseResult baseResult = new BaseResult();
+		if (jobId < 10) {
+			this.taskScheduleJobService.testHandlerException();
+		}
+		baseResult.setFlag(true);
+		return baseResult;
+	}
 }

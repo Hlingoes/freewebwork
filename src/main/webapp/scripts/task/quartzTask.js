@@ -7,7 +7,9 @@
 });
 var taskHandler = function () {
 	var pageUrl = {
-			loadTableUrl: "showJobs"
+			loadTableUrl: "showJobs",
+			changeJobStatusUrl: "changeJobStatus",
+			testExceptionUrl: "testHandlerException"
 	};
 	
 	var pageModal, pageGrid;
@@ -66,8 +68,8 @@ var taskHandler = function () {
 		            { label: 'Operation', name: 'jobId', key: true, width: 100, title: false, formatter: formatOperate }
 		        ],
 				viewrecords: true,
-		        rowNum: 5,
-		        rowList:[5, 10, 20], 
+		        rowNum: 10,
+		        rowList:[10, 15, 30], 
 		        sortname: 'update_time', 
                 height: 480,
 		        sortorder: "desc",
@@ -90,6 +92,36 @@ var taskHandler = function () {
 			$grid.jqGrid('setGridParam', { page : 1 }).trigger('reloadGrid');
 		};
 		
+		var delegate = function () {
+			
+			// 委托启动和停止定时任务
+			$grid.on("click", ".task-changeStatus", function(){
+				var postData = {
+						jobId: this.getAttribute("args"),
+						cmd: this.getAttribute("cmd")
+				};
+				$.post(pageUrl.changeJobStatusUrl, postData).done(function(res){
+					if (res.flag) {
+						reload();
+					} else {
+						alert(res.msg);
+					}
+				});
+			});
+			$grid.on("click", ".task-remove", function(){
+				var postData = {
+						jobId: this.getAttribute("args")
+				};
+				$.post(pageUrl.testExceptionUrl, postData).done(function(res){
+					if (res.flag) {
+						reload();
+					} else {
+						alert(res.msg);
+					}
+				});
+			});
+		}();
+		
 		// 格式化任务的运行状态
 		function formatStatus (value, options, rowObject) {
 			if (parseInt(rowObject.jobStatus, 10) === 0) {
@@ -110,10 +142,10 @@ var taskHandler = function () {
 		
 		// 给每行加上：停止(stop), 开启(start), 更新cron(update)
 		function formatOperate (value, options, rowObject) {
-			var stop = '<a class="task-stop task-operate" args="'+ rowObject.jobId +'" title="stop"><i class="glyphicon glyphicon-stop"></i></a>';
-			var start = '<a class="task-start task-operate" args="'+ rowObject.jobId +'" title="start"><i class="glyphicon glyphicon-play"></i></a>';
+			var stop = '<a class="task-changeStatus task-operate" args="'+ rowObject.jobId +'" cmd="stop" title="stop"><i class="glyphicon glyphicon-stop"></i></a>';
+			var start = '<a class="task-changeStatus task-operate" args="'+ rowObject.jobId +'" cmd="start" title="start"><i class="glyphicon glyphicon-play"></i></a>';
 			var edit = '<a class="task-update task-operate" args="'+ rowObject.jobId +'" title="edit"><i class="glyphicon glyphicon-edit"></i></a>';
-			var remove = '<a class="task-update task-operate" args="'+ rowObject.jobId +'" title="remove"><i class="glyphicon glyphicon-trash"></i></a>';
+			var remove = '<a class="task-remove task-operate" args="'+ rowObject.jobId +'" title="remove"><i class="glyphicon glyphicon-trash"></i></a>';
 			
 			if (parseInt(rowObject.jobStatus, 10) === 0) {
 				return start + edit + remove;

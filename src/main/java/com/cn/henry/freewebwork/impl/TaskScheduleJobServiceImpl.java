@@ -254,4 +254,12 @@ public class TaskScheduleJobServiceImpl implements TaskScheduleJobService{
 		scheduler.rescheduleJob(triggerKey, trigger);
 	}
 	
+	/**
+	 * 统一异常的测试房
+	 * @author Hlingoes
+	 */
+	@Override
+	public void testHandlerException() throws SchedulerException{
+		throw new SchedulerException();
+	}
 }

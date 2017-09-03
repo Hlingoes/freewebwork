@@ -5,7 +5,6 @@ import java.sql.Timestamp;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import net.sf.oval.constraint.NotEmpty;
-import net.sf.oval.constraint.NotNull;
 
 public class TaskScheduleJob {
 	

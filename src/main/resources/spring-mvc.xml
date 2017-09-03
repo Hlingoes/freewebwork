@@ -10,9 +10,9 @@
                         http://www.springframework.org/schema/mvc    
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">  
     <!-- 如果spring-mybatis文件中已经注解了扫描，这里只需要对controller打开自动扫描即可,使SpringMVC认为包下用了@controller注解的类是控制器 -->
-    <context:component-scan base-package="com.cn.henry.freewebwork.controller" /> 
+    <!-- <context:component-scan base-package="com.cn.henry.freewebwork.controller" />  -->
     <!-- 也可以直接在这里扫描所有，但是就没法做单独的spring-mybatis的整合测试了 -->
-    <!-- <context:component-scan base-package="com.cn.henry.freewebwork" /> -->
+    <context:component-scan base-package="com.cn.henry.freewebwork" />
 
 	<mvc:annotation-driven>
 		<mvc:message-converters>

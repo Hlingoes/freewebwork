@@ -24,6 +24,7 @@
 5.2 [参考：Jackson介绍（1）-jackson2.x与Jackson1.9的比较](http://blog.csdn.net/u011179993/article/details/46454059)<br>
 5.3 [参考：spring使用jackson实现json输出](http://blog.chinaunix.net/uid-192452-id-3967223.html)<br>
 5.4 [参考：java 验证框架oval的使用方法](http://blog.csdn.net/neweastsun/article/details/50473717)<br>
-5.5 [开源的java后端校验框架](http://oval.sourceforge.net/)
+5.5 [开源的java后端校验框架](http://oval.sourceforge.net/)<br>
+5.6 [用于导入导出Excel的Util包，基于Java的POI。可将List<Bean>导出成Excel，或读取Excel成List<Bean>,读取时有验证和Log](https://github.com/SargerasWang/ExcelUtil)
 # 6. 前端插件
 6.1 [bootstrap-validator 小巧的表单验证插件，无需引入额外的css，api不易用](https://github.com/1000hz/bootstrap-validator)

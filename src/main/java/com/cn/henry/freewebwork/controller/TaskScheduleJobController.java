@@ -86,7 +86,7 @@ public class TaskScheduleJobController {
 	
 	@RequestMapping(value="add", method=RequestMethod.POST)
 	@ResponseBody
-	public BaseResult addTadk(TaskScheduleJob scheduleJob) {
+	public BaseResult addTask(TaskScheduleJob scheduleJob) {
 		BaseResult baseResult = new BaseResult();
 		Validator validator = new Validator();
         List<ConstraintViolation> message = validator.validate(scheduleJob);//完全验证
@@ -144,6 +144,15 @@ public class TaskScheduleJobController {
 			return baseResult;
 		}
 		baseResult.setFlag(true);
+		return baseResult;
+	}
+	
+	@RequestMapping(value="getTask", method=RequestMethod.GET)
+	@ResponseBody
+	public BaseResult getTask(@RequestParam(value = "jobId", required = true) Long jobId){
+		BaseResult baseResult = new BaseResult();
+		baseResult.setFlag(true);
+		baseResult.setObj(this.taskScheduleJobService.selectByPrimaryKey(jobId));
 		return baseResult;
 	}
 

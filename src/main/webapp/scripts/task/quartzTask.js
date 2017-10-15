@@ -9,6 +9,8 @@ var taskHandler = function () {
 	var pageUrl = {
 			loadTableUrl: "showJobs",
 			changeJobStatusUrl: "changeJobStatus",
+			addJobUrl: "add",
+			editJobUrl: "getTask",
 			testExceptionUrl: "testHandlerException",
 			downloadExcelUrl: "exportExcel"
 	};
@@ -131,6 +133,20 @@ var taskHandler = function () {
 					}
 				});
 			});
+			
+			$grid.on("click", ".task-update", function(){
+				var postData = {
+						jobId: this.getAttribute("args")
+				};
+				$.get(pageUrl.editJobUrl, postData).done(function(res){
+					if (res.flag) {
+						fillFormDataWithJson($("form").get(0), res.obj);
+						pageModal.show();
+					} else {
+						alert(res.msg);
+					}
+				});
+			});
 		}();
 		
 		// 格式化任务的运行状态
@@ -186,7 +202,7 @@ var taskHandler = function () {
 		$("form").validator().on('submit', function(e) {
 			if ($(this).find(".has-error").length === 0) {
 				// 表示验证成功
-				$.post("add", $("form").serialize()).done(function(res) {
+				$.post(pageUrl.addJobUrl, $("form").serialize()).done(function(res) {
 					if (res.flag) {
 						pageModal.hide();
 						pageGrid.load();

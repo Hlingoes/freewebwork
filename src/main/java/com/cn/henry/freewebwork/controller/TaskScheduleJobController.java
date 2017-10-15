@@ -1,14 +1,20 @@
 package com.cn.henry.freewebwork.controller;
 
+import java.io.IOException;
+import java.io.OutputStream;
 import java.lang.reflect.Method;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.log4j.Logger;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.JobExecutionContext;
@@ -24,6 +30,7 @@ import com.cn.henry.freewebwork.core.JqGridPage;
 import com.cn.henry.freewebwork.entity.TaskScheduleJob;
 import com.cn.henry.freewebwork.service.TaskScheduleJobService;
 import com.cn.henry.freewebwork.utils.SpringUtils;
+import com.cn.henry.freewebwork.utils.Excel.ExcelUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
@@ -165,8 +172,7 @@ public class TaskScheduleJobController {
 			this.taskScheduleJobService.updateCron(jobId, cron);
 		} catch (SchedulerException e) {
 			baseResult.setMsg("cron更新失败！");
-			return baseResult;
-		}
+			return baseResult;		}
 		baseResult.setFlag(true);
 		return baseResult;
 	}
@@ -181,4 +187,32 @@ public class TaskScheduleJobController {
 		baseResult.setFlag(true);
 		return baseResult;
 	}
+	
+	@RequestMapping(value = "/exportExcel ")  
+    public void exportExcel(@RequestParam(value = "sidx", required = false, defaultValue = "update_time") String sidx,
+			@RequestParam(value = "sord", required = false, defaultValue = "desc") String sord, HttpServletResponse response) throws IOException, SchedulerException {  
+		Map<String, String> condition = new HashMap<>();
+		condition.put("sidx", sidx);
+        condition.put("sord", sord);
+		List<TaskScheduleJob> taskList = this.taskScheduleJobService.selectByCondition(condition);
+		String fileName = "task_" + DateFormatUtils.format(new Date(), "yyyyMMddhhmmss") + ".xls";
+		Map<String, String> exportHeadMap = new LinkedHashMap<>();
+		// 用排序的Map，即LinkedHashMap，且Map的键要与ExcelCell注解的index对应
+		exportHeadMap.put("jobName", "任务名");
+		exportHeadMap.put("jobGroup", "任务分组");
+		exportHeadMap.put("jobStatus", "任务状态");
+		exportHeadMap.put("cronExpression", "时间表达式");
+		exportHeadMap.put("description", "功能描述");
+		exportHeadMap.put("beanClass", "实例化的功能类");
+		exportHeadMap.put("methodName", "功能函数名");
+		exportHeadMap.put("createTime", "创建时间");
+		exportHeadMap.put("updateTime", "修改时间");
+        response.setContentType("application/vnd.ms-excel");
+        response.setHeader("Content-disposition", "attachment;filename=" + fileName);  
+        OutputStream ouputStream = response.getOutputStream();
+		ExcelUtil.exportExcel(exportHeadMap, taskList, ouputStream);
+		ouputStream.flush();
+		ouputStream.close();
+   }  
+	
 }

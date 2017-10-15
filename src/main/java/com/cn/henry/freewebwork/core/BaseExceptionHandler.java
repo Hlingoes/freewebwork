@@ -1,5 +1,7 @@
 package com.cn.henry.freewebwork.core;
 
+import java.io.IOException;
+
 import org.apache.log4j.Logger;
 import org.quartz.SchedulerException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -23,6 +25,11 @@ public class BaseExceptionHandler {
 		baseResult.setFlag(false);
 		baseResult.setMsg("任务状态改变失败！");
 		return baseResult;
+	}
+	
+	@ExceptionHandler(IOException.class)
+	public void IOExceptionHandler(IOException e) {
+		log.error(e.getMessage(), e);
 	}
 
 }

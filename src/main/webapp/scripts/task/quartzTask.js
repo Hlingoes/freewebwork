@@ -9,7 +9,8 @@ var taskHandler = function () {
 	var pageUrl = {
 			loadTableUrl: "showJobs",
 			changeJobStatusUrl: "changeJobStatus",
-			testExceptionUrl: "testHandlerException"
+			testExceptionUrl: "testHandlerException",
+			downloadExcelUrl: "exportExcel"
 	};
 	
 	var pageModal, pageGrid;
@@ -84,6 +85,16 @@ var taskHandler = function () {
 				},
 				position : "first",
 				title : "add task",
+				cursor : "pointer"
+			});
+			$grid.jqGrid('navButtonAdd', $pager, {
+				caption : "",
+				buttonicon : "fa fa-download",
+				onClickButton : function() {
+					var postData = $grid.jqGrid("getGridParam", "postData");
+					window.location.href = pageUrl.downloadExcelUrl + "?sidx=" + postData.sidx + "&sord=" + postData.sord;
+				},
+				title : "download excel",
 				cursor : "pointer"
 			});
 		};

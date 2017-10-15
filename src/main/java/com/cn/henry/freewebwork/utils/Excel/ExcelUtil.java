@@ -256,12 +256,12 @@ public class ExcelUtil {
         }
         // 产生表格标题行
         HSSFRow row = sheet.createRow(0);
-        //todo:标题行转中文
+        // 标题行转中文
         Set<String> keys = headers.keySet();
         Iterator<String> it1 = keys.iterator();
         String key = "";    //存放临时键变量
         int c= 0;   //标题列数
-        while (it1.hasNext()){
+        while (it1.hasNext()) {
             key = it1.next();
             if (headers.containsKey(key)) {
                 HSSFCell cell = row.createCell(c);
@@ -292,28 +292,7 @@ public class ExcelUtil {
                         }
                         Object value = map.get(key);
                         HSSFCell cell = row.createCell(cellNum);
-//                        cell.setCellValue(String.valueOf(value));
-                        String textValue = null;
-                        if (value instanceof Integer) {
-                            int intValue = (Integer) value;
-                            cell.setCellValue(intValue);
-                        } else if (value instanceof Float) {
-                            float fValue = (Float) value;
-                            cell.setCellValue(fValue);
-                        } else if (value instanceof Double) {
-                            double dValue = (Double) value;
-                            cell.setCellValue(dValue);
-                        } else if (value instanceof Long) {
-                            long longValue = (Long) value;
-                            cell.setCellValue(longValue);
-                        } else if (value instanceof Boolean) {
-                            boolean bValue = (Boolean) value;
-                            cell.setCellValue(bValue);
-                        } else if (value instanceof Date) {
-                            Date date = (Date) value;
-                            SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-                            textValue = sdf.format(date);
-                        } else if (value instanceof String[]) {
+                        if (value instanceof String[]) {
                             String[] strArr = (String[]) value;
                             for (int j = 0; j < strArr.length; j++) {
                                 String str = strArr[j];
@@ -331,21 +310,14 @@ public class ExcelUtil {
                                 if (val != null) {
                                     cell.setCellValue(val);
                                 }
-
                                 if (j != douArr.length - 1) {
                                     cellNum++;
                                     cell = row.createCell(cellNum);
                                 }
                             }
                         } else {
-                            // 其它数据类型都当作字符串简单处理
-                            String empty = StringUtils.EMPTY;
-                            textValue = value == null ? empty : value.toString();
-                        }
-                        if (textValue != null) {
-                            HSSFRichTextString richString = new HSSFRichTextString(textValue);
-                            cell.setCellValue(richString);
-                        }
+							setCellValue(cell, value, pattern);
+						}
                         cellNum++;
                     }
                 } else {
@@ -356,27 +328,7 @@ public class ExcelUtil {
                         Field field = fields.get(i).getField();
                         field.setAccessible(true);
                         Object value = field.get(t);
-                        String textValue = null;
-                        if (value instanceof Integer) {
-                            int intValue = (Integer) value;
-                            cell.setCellValue(intValue);
-                        } else if (value instanceof Float) {
-                            float fValue = (Float) value;
-                            cell.setCellValue(fValue);
-                        } else if (value instanceof Double) {
-                            double dValue = (Double) value;
-                            cell.setCellValue(dValue);
-                        } else if (value instanceof Long) {
-                            long longValue = (Long) value;
-                            cell.setCellValue(longValue);
-                        } else if (value instanceof Boolean) {
-                            boolean bValue = (Boolean) value;
-                            cell.setCellValue(bValue);
-                        } else if (value instanceof Date) {
-                            Date date = (Date) value;
-                            SimpleDateFormat sdf = new SimpleDateFormat(pattern);
-                            textValue = sdf.format(date);
-                        } else if (value instanceof String[]) {
+                        if (value instanceof String[]) {
                             String[] strArr = (String[]) value;
                             for (int j = 0; j < strArr.length; j++) {
                                 String str = strArr[j];
@@ -400,19 +352,8 @@ public class ExcelUtil {
                                 }
                             }
                         } else {
-                            // 其它数据类型都当作字符串简单处理
-                            String empty = StringUtils.EMPTY;
-                            ExcelCell anno = field.getAnnotation(ExcelCell.class);
-                            if (anno != null) {
-                                empty = anno.defaultValue();
-                            }
-                            textValue = value == null ? empty : value.toString();
-                        }
-                        if (textValue != null) {
-                            HSSFRichTextString richString = new HSSFRichTextString(textValue);
-                            cell.setCellValue(richString);
-                        }
-
+							setCellValue(cell, value, pattern);
+						}
                         cellNum++;
                     }
                 }
@@ -675,6 +616,44 @@ public class ExcelUtil {
     }
 
     /**
+     * 将原作者sargeras.wang的方法做了提取
+     * @param cell
+     * @param value
+     * @author Hlingoes 2017-10-15 15:24:09
+     */
+	private static void setCellValue(HSSFCell cell, Object value, String pattern) {
+		String textValue = null;
+        if (value instanceof Integer) {
+            int intValue = (Integer) value;
+            cell.setCellValue(intValue);
+        } else if (value instanceof Float) {
+            float fValue = (Float) value;
+            cell.setCellValue(fValue);
+        } else if (value instanceof Double) {
+            double dValue = (Double) value;
+            cell.setCellValue(dValue);
+        } else if (value instanceof Long) {
+            long longValue = (Long) value;
+            cell.setCellValue(longValue);
+        } else if (value instanceof Boolean) {
+            boolean bValue = (Boolean) value;
+            cell.setCellValue(bValue);
+        } else if (value instanceof Date) {
+            Date date = (Date) value;
+            SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+            textValue = sdf.format(date);
+        } else {
+            // 其它数据类型都当作字符串简单处理
+            String empty = StringUtils.EMPTY;
+            textValue = value == null ? empty : value.toString();
+        }
+        if (textValue != null) {
+            HSSFRichTextString richString = new HSSFRichTextString(textValue);
+            cell.setCellValue(richString);
+        }
+	}
+	
+	/**
      * 根据annotation的seq排序后的栏位
      *
      * @param clazz

@@ -1,7 +1,7 @@
 package com.cn.henry.freewebwork.utils.Excel;
 
 import java.util.Collection;
-import java.util.Map;
+import java.util.LinkedHashMap;
 
 /**
  * 用于汇出多个sheet的Vo The <code>ExcelSheet</code>
@@ -11,7 +11,7 @@ import java.util.Map;
  */
 public class ExcelSheet<T> {
     private String sheetName;
-    private Map<String,String> headers;
+    private LinkedHashMap<String,String> headers;
     private Collection<T> dataset;
 
     /**
@@ -36,7 +36,7 @@ public class ExcelSheet<T> {
      * 
      * @return the headers
      */
-    public Map<String,String> getHeaders() {
+    public LinkedHashMap<String,String> getHeaders() {
         return headers;
     }
 
@@ -44,7 +44,7 @@ public class ExcelSheet<T> {
      * @param headers
      *            the headers to set
      */
-    public void setHeaders(Map<String,String> headers) {
+    public void setHeaders(LinkedHashMap<String,String> headers) {
         this.headers = headers;
     }
 

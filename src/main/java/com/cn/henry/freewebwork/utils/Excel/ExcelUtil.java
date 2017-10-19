@@ -279,12 +279,13 @@ public class ExcelUtil {
             row = sheet.createRow(index);
             T t = (T) it.next();
             try {
-                if (t instanceof Map) {
+            	if (t instanceof Map) {
+                    @SuppressWarnings("unchecked")
                     Map<String, Object> map = (Map<String, Object>) t;
                     int cellNum = 0;
-                    // 遍历列名
+                    //遍历列名
                     Iterator<String> it2 = keys.iterator();
-                    while (it2.hasNext()){
+                    while (it2.hasNext()) {
                         key = it2.next();
                         if (!headers.containsKey(key)) {
                             LG.error("Map 中 不存在 key [" + key + "]");
@@ -292,32 +293,7 @@ public class ExcelUtil {
                         }
                         Object value = map.get(key);
                         HSSFCell cell = row.createCell(cellNum);
-                        if (value instanceof String[]) {
-                            String[] strArr = (String[]) value;
-                            for (int j = 0; j < strArr.length; j++) {
-                                String str = strArr[j];
-                                cell.setCellValue(str);
-                                if (j != strArr.length - 1) {
-                                    cellNum++;
-                                    cell = row.createCell(cellNum);
-                                }
-                            }
-                        } else if (value instanceof Double[]) {
-                            Double[] douArr = (Double[]) value;
-                            for (int j = 0; j < douArr.length; j++) {
-                                Double val = douArr[j];
-                                // 值不为空则set Value
-                                if (val != null) {
-                                    cell.setCellValue(val);
-                                }
-                                if (j != douArr.length - 1) {
-                                    cellNum++;
-                                    cell = row.createCell(cellNum);
-                                }
-                            }
-                        } else {
-							setCellValue(cell, value, pattern);
-						}
+                        cellNum = setCellValue(cell,value,pattern,cellNum,null,row);
                         cellNum++;
                     }
                 } else {
@@ -328,32 +304,7 @@ public class ExcelUtil {
                         Field field = fields.get(i).getField();
                         field.setAccessible(true);
                         Object value = field.get(t);
-                        if (value instanceof String[]) {
-                            String[] strArr = (String[]) value;
-                            for (int j = 0; j < strArr.length; j++) {
-                                String str = strArr[j];
-                                cell.setCellValue(str);
-                                if (j != strArr.length - 1) {
-                                    cellNum++;
-                                    cell = row.createCell(cellNum);
-                                }
-                            }
-                        } else if (value instanceof Double[]) {
-                            Double[] douArr = (Double[]) value;
-                            for (int j = 0; j < douArr.length; j++) {
-                                Double val = douArr[j];
-                                // 值不为空则set Value
-                                if (val != null) {
-                                    cell.setCellValue(val);
-                                }
-                                if (j != douArr.length - 1) {
-                                    cellNum++;
-                                    cell = row.createCell(cellNum);
-                                }
-                            }
-                        } else {
-							setCellValue(cell, value, pattern);
-						}
+                        cellNum = setCellValue(cell,value,pattern,cellNum,field,row);
                         cellNum++;
                     }
                 }
@@ -621,8 +572,8 @@ public class ExcelUtil {
      * @param value
      * @author Hlingoes 2017-10-15 15:24:09
      */
-	private static void setCellValue(HSSFCell cell, Object value, String pattern) {
-		String textValue = null;
+    private static int setCellValue(HSSFCell cell, Object value, String pattern, int cellNum, Field field, HSSFRow row){
+        String textValue = null;
         if (value instanceof Integer) {
             int intValue = (Integer) value;
             cell.setCellValue(intValue);
@@ -642,16 +593,47 @@ public class ExcelUtil {
             Date date = (Date) value;
             SimpleDateFormat sdf = new SimpleDateFormat(pattern);
             textValue = sdf.format(date);
+        } else if (value instanceof String[]) {
+            String[] strArr = (String[]) value;
+            for (int j = 0; j < strArr.length; j++) {
+                String str = strArr[j];
+                cell.setCellValue(str);
+                if (j != strArr.length - 1) {
+                    cellNum++;
+                    cell = row.createCell(cellNum);
+                }
+            }
+        } else if (value instanceof Double[]) {
+            Double[] douArr = (Double[]) value;
+            for (int j = 0; j < douArr.length; j++) {
+                Double val = douArr[j];
+                // 值不为空则set Value
+                if (val != null) {
+                    cell.setCellValue(val);
+                }
+
+                if (j != douArr.length - 1) {
+                    cellNum++;
+                    cell = row.createCell(cellNum);
+                }
+            }
         } else {
             // 其它数据类型都当作字符串简单处理
             String empty = StringUtils.EMPTY;
+            if(field != null) {
+                ExcelCell anno = field.getAnnotation(ExcelCell.class);
+                if (anno != null) {
+                    empty = anno.defaultValue();
+                }
+            }
             textValue = value == null ? empty : value.toString();
         }
         if (textValue != null) {
             HSSFRichTextString richString = new HSSFRichTextString(textValue);
             cell.setCellValue(richString);
         }
-	}
+        return cellNum;
+    }
 	
 	/**
      * 根据annotation的seq排序后的栏位

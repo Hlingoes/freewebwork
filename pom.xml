@@ -219,6 +219,25 @@
 		  <version>1.84</version>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-all 权限管理框架 -->
+		<dependency>
+		  <groupId>org.apache.shiro</groupId>
+		  <artifactId>shiro-all</artifactId>
+		  <version>1.4.0</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+		<dependency>
+		  <groupId>org.apache.directory.studio</groupId>
+		  <artifactId>org.apache.httpcomponents.httpcore</artifactId>
+		  <version>4.1.2</version>
+		</dependency>
+		<dependency>
+		  <groupId>org.apache.directory.studio</groupId>
+		  <artifactId>org.apache.httpcomponents.httpclient</artifactId>
+		  <version>4.1.2</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

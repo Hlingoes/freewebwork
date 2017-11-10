@@ -30,6 +30,6 @@
 6.1 [bootstrap-validator 小巧的表单验证插件，无需引入额外的css，api不易用](https://github.com/1000hz/bootstrap-validator)
 
 # 参考项目
-[SSM框架做的客户关系管理系统](https://github.com/fankay/crm)<br>
-[quartz spring结合实现动态任务管理](https://github.com/snailxr/quartz-spring_demo)<br>
-[用于导入导出Excel的Util包，基于Java的POI](https://github.com/snailxr/quartz-spring_demo)
+1. [snailxr/quartz-spring_demo, SSM框架做的客户关系管理系统](https://github.com/fankay/crm)<br>
+2. [SargerasWang/ExcelUtil, quartz spring结合实现动态任务管理](https://github.com/snailxr/quartz-spring_demo)<br>
+3. [fankay/crm, 用于导入导出Excel的Util包，基于Java的POI](https://github.com/snailxr/quartz-spring_demo)

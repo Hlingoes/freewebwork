@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cn.henry.freewebwork.dao.RoleUserMapper" >
+  <resultMap id="BaseResultMap" type="com.cn.henry.freewebwork.entity.RoleUserKey" >
+    <id column="roleid" property="roleid" jdbcType="INTEGER" />
+    <id column="userid" property="userid" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="com.cn.henry.freewebwork.entity.RoleUserKey" >
+    delete from role_user
+    where roleid = #{roleid,jdbcType=INTEGER}
+      and userid = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.henry.freewebwork.entity.RoleUserKey" >
+    insert into role_user (roleid, userid)
+    values (#{roleid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.henry.freewebwork.entity.RoleUserKey" >
+    insert into role_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleid != null" >
+        roleid,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleid != null" >
+        #{roleid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

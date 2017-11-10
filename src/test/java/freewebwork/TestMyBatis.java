@@ -37,9 +37,7 @@ public class TestMyBatis {
 	
 	public void test03() throws JsonProcessingException {
 		User user = new User();
-		user.setAge(28);
 		user.setPassword("No-one");
-		user.setUserName("guest");
 		int result = this.userService.insert(user);
 		logger.info("==========测试结果为 ：" + jsonMapper.writeValueAsString(result) + "==============");
 	}
@@ -48,9 +46,7 @@ public class TestMyBatis {
 		User user = new User();
 		// id为主键，此方法会判断id=3是否在表中存在
 		user.setId(3);
-		user.setAge(28);
 		user.setPassword("everyone");
-		user.setUserName("guest");
 		int result = this.userService.updateByPrimaryKey(user);
 		logger.info("==========测试结果为 ：" + jsonMapper.writeValueAsString(result) + "==============");
 	}
@@ -60,7 +56,6 @@ public class TestMyBatis {
 		User user = new User();
 		// id为主键，此方法会判断id=3是否在表中存在
 		user.setId(3);
-		user.setAge(28);
 		int result = this.userService.updateByPrimaryKeySelective(user);
 		logger.info("==========测试结果为 ：" + jsonMapper.writeValueAsString(result) + "==============");
 	}

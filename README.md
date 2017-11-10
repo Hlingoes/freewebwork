@@ -28,3 +28,8 @@
 5.6 [用于导入导出Excel的Util包，基于Java的POI。可将List<Bean>导出成Excel，或读取Excel成List<Bean>,读取时有验证和Log](https://github.com/SargerasWang/ExcelUtil)
 # 6. 前端插件
 6.1 [bootstrap-validator 小巧的表单验证插件，无需引入额外的css，api不易用](https://github.com/1000hz/bootstrap-validator)
+
+# 参考项目
+[SSM框架做的客户关系管理系统](https://github.com/fankay/crm)<br>
+[quartz spring结合实现动态任务管理](https://github.com/snailxr/quartz-spring_demo)<br>
+[用于导入导出Excel的Util包，基于Java的POI](https://github.com/snailxr/quartz-spring_demo)

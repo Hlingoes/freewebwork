@@ -26,8 +26,10 @@
 5.4 [参考：java 验证框架oval的使用方法](http://blog.csdn.net/neweastsun/article/details/50473717)<br>
 5.5 [开源的java后端校验框架](http://oval.sourceforge.net/)<br>
 5.6 [用于导入导出Excel的Util包，基于Java的POI。可将List<Bean>导出成Excel，或读取Excel成List<Bean>,读取时有验证和Log](https://github.com/SargerasWang/ExcelUtil)
-# 6. 前端插件
-6.1 [bootstrap-validator 小巧的表单验证插件，无需引入额外的css，api不易用](https://github.com/1000hz/bootstrap-validator)
+# 6. 整合shiro权限管理
+6.1 [SpringMVC+Shiro整合配置文件详解](http://blog.csdn.net/dawangxiong123/article/details/53020424)<br>
+# 7. 前端插件
+7.1 [bootstrap-validator 小巧的表单验证插件，无需引入额外的css，api不易用](https://github.com/1000hz/bootstrap-validator)
 
 # 参考项目
 1. [snailxr/quartz-spring_demo, SSM框架做的客户关系管理系统](https://github.com/fankay/crm)<br>

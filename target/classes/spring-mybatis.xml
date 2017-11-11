@@ -10,13 +10,12 @@
                             http://www.springframework.org/schema/mvc    
                             http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 	<!-- 单独测试mybatis+spring的时候需要自动扫描，整合springmvc之后，可以将扫描都放在springmvc的xml配置中 -->
-    <context:component-scan base-package="com.cn.henry.freewebwork" /> 
+    <!-- <context:component-scan base-package="com.cn.henry.freewebwork" />  -->
 	<!-- 引入配置文件 -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:jdbc.properties" />
 	</bean>
-
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="${driver}" />
@@ -53,22 +52,17 @@
                  </bean>
             </array>
         </property>
+        <!-- 引入mybatis的个性化设置，比如打印SQL语句等 -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
 	</bean>
-
 	<!-- DAO接口所在包名，Spring会自动查找其下的类 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.cn.henry.freewebwork.dao" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
 	</bean>
-	
 	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	
-	<!-- quartz与spring的整合  -->
-	<bean id="schedulerFactoryBean"
-		class="org.springframework.scheduling.quartz.SchedulerFactoryBean" />
-
 </beans>  

@@ -1,17 +1,27 @@
 package com.cn.henry.freewebwork.dao;
 
+import java.util.List;
+
 import com.cn.henry.freewebwork.entity.ProgressFile;
 
 public interface ProgressFileMapper {
-    int deleteByPrimaryKey(Integer id);
+    /**
+     * 保存
+     * @param progressFile
+     */
+    void save(ProgressFile progressFile);
 
-    int insert(ProgressFile record);
+    /**
+     * 根据进度Id查询关联文件
+     * @param progressId
+     * @return
+     */
+    List<ProgressFile> findByProgressId(Integer progressId);
 
-    int insertSelective(ProgressFile record);
-
-    ProgressFile selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(ProgressFile record);
-
-    int updateByPrimaryKey(ProgressFile record);
+    /**
+     * 根据客户ID，获取关联的文件
+     * @param id
+     * @return
+     */
+    List<ProgressFile> findByCustId(Integer id);
 }

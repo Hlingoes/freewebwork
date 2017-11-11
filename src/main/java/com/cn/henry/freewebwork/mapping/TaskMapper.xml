@@ -1,128 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.cn.henry.freewebwork.dao.TaskMapper" >
-  <resultMap id="BaseResultMap" type="com.cn.henry.freewebwork.entity.Task" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="worktime" property="worktime" jdbcType="VARCHAR" />
-    <result column="task" property="task" jdbcType="VARCHAR" />
-    <result column="done" property="done" jdbcType="BIT" />
-    <result column="donetime" property="donetime" jdbcType="VARCHAR" />
-    <result column="createtime" property="createtime" jdbcType="VARCHAR" />
-    <result column="userid" property="userid" jdbcType="INTEGER" />
-    <result column="custid" property="custid" jdbcType="INTEGER" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, worktime, task, done, donetime, createtime, userid, custid
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from t_task
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from t_task
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.cn.henry.freewebwork.entity.Task" >
-    insert into t_task (id, worktime, task, 
-      done, donetime, createtime, 
-      userid, custid)
-    values (#{id,jdbcType=INTEGER}, #{worktime,jdbcType=VARCHAR}, #{task,jdbcType=VARCHAR}, 
-      #{done,jdbcType=BIT}, #{donetime,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}, 
-      #{userid,jdbcType=INTEGER}, #{custid,jdbcType=INTEGER})
-  </insert>
-  <insert id="insertSelective" parameterType="com.cn.henry.freewebwork.entity.Task" >
-    insert into t_task
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="worktime != null" >
-        worktime,
-      </if>
-      <if test="task != null" >
-        task,
-      </if>
-      <if test="done != null" >
-        done,
-      </if>
-      <if test="donetime != null" >
-        donetime,
-      </if>
-      <if test="createtime != null" >
-        createtime,
-      </if>
-      <if test="userid != null" >
-        userid,
-      </if>
-      <if test="custid != null" >
-        custid,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="worktime != null" >
-        #{worktime,jdbcType=VARCHAR},
-      </if>
-      <if test="task != null" >
-        #{task,jdbcType=VARCHAR},
-      </if>
-      <if test="done != null" >
-        #{done,jdbcType=BIT},
-      </if>
-      <if test="donetime != null" >
-        #{donetime,jdbcType=VARCHAR},
-      </if>
-      <if test="createtime != null" >
-        #{createtime,jdbcType=VARCHAR},
-      </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=INTEGER},
-      </if>
-      <if test="custid != null" >
-        #{custid,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cn.henry.freewebwork.entity.Task" >
-    update t_task
-    <set >
-      <if test="worktime != null" >
-        worktime = #{worktime,jdbcType=VARCHAR},
-      </if>
-      <if test="task != null" >
-        task = #{task,jdbcType=VARCHAR},
-      </if>
-      <if test="done != null" >
-        done = #{done,jdbcType=BIT},
-      </if>
-      <if test="donetime != null" >
-        donetime = #{donetime,jdbcType=VARCHAR},
-      </if>
-      <if test="createtime != null" >
-        createtime = #{createtime,jdbcType=VARCHAR},
-      </if>
-      <if test="userid != null" >
-        userid = #{userid,jdbcType=INTEGER},
-      </if>
-      <if test="custid != null" >
-        custid = #{custid,jdbcType=INTEGER},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.cn.henry.freewebwork.entity.Task" >
-    update t_task
-    set worktime = #{worktime,jdbcType=VARCHAR},
-      task = #{task,jdbcType=VARCHAR},
-      done = #{done,jdbcType=BIT},
-      donetime = #{donetime,jdbcType=VARCHAR},
-      createtime = #{createtime,jdbcType=VARCHAR},
-      userid = #{userid,jdbcType=INTEGER},
-      custid = #{custid,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.cn.henry.freewebwork.dao.TaskMapper">
+    <insert id="save">
+        INSERT  INTO t_task(task,createtime,done,donetime,userid,custid,worktime)
+        VALUES (#{task},#{createtime},#{done},#{donetime},#{userid},#{custid},#{worktime})
+    </insert>
+    <update id="update">
+        UPDATE t_task SET task = #{task},done = #{done},donetime=#{donetime},custid=#{custid},
+        worktime = #{worktime} where id = #{id}
+    </update>
+    <select id="findByUserId" resultType="com.cn.henry.freewebwork.entity.Task">
+        SELECT * FROM t_task WHERE userid = #{currentUserId} order by worktime asc
+    </select>
+    <select id="findById" resultType="com.cn.henry.freewebwork.entity.Task">
+        SELECT * FROM t_task WHERE id = #{taskId}
+    </select>
+    <select id="findByCustIdAndState" resultType="com.cn.henry.freewebwork.entity.Task">
+        SELECT * FROM t_task WHERE custid = #{param1} and done = #{param2}
+    </select>
 </mapper>

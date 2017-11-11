@@ -2,11 +2,15 @@ package com.cn.henry.freewebwork.core;
 
 import java.io.IOException;
 
+import javax.ws.rs.NotFoundException;
+
 import org.apache.log4j.Logger;
 import org.quartz.SchedulerException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 /**
  * @description 统一处理controller抛出的异常
@@ -19,7 +23,7 @@ public class BaseExceptionHandler {
 	
 	@ExceptionHandler(SchedulerException.class)
 	@ResponseBody
-	public BaseResult SchedulerExceptionHandler(SchedulerException e) {
+	public BaseResult schedulerExceptionHandler(SchedulerException e) {
 		log.error(e.getMessage(), e);
 		BaseResult baseResult = new BaseResult();
 		baseResult.setFlag(false);
@@ -28,7 +32,17 @@ public class BaseExceptionHandler {
 	}
 	
 	@ExceptionHandler(IOException.class)
-	public void IOExceptionHandler(IOException e) {
+	public void iOExceptionHandler(IOException e) {
+		log.error(e.getMessage(), e);
+	}
+	
+	@ExceptionHandler(NotFoundException.class)
+	public void notFoundExceptionHandler (NotFoundException e){
+		log.error(e.getMessage(), e);
+	}
+	
+	@ExceptionHandler(JsonProcessingException.class)
+	public void jsonProcessingExceptionHandler(IOException e) {
 		log.error(e.getMessage(), e);
 	}
 

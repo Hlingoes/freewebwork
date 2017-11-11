@@ -1,188 +1,74 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.cn.henry.freewebwork.dao.CustomerMapper" >
-  <resultMap id="BaseResultMap" type="com.cn.henry.freewebwork.entity.Customer" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="custname" property="custname" jdbcType="VARCHAR" />
-    <result column="contact" property="contact" jdbcType="VARCHAR" />
-    <result column="tel" property="tel" jdbcType="VARCHAR" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
-    <result column="wechar" property="wechar" jdbcType="VARCHAR" />
-    <result column="qq" property="qq" jdbcType="VARCHAR" />
-    <result column="mark" property="mark" jdbcType="VARCHAR" />
-    <result column="userid" property="userid" jdbcType="INTEGER" />
-    <result column="progress" property="progress" jdbcType="VARCHAR" />
-    <result column="progresstime" property="progresstime" jdbcType="VARCHAR" />
-    <result column="createtime" property="createtime" jdbcType="VARCHAR" />
-  </resultMap>
-  <sql id="Base_Column_List" >
-    id, custname, contact, tel, address, email, wechar, qq, mark, userid, progress, progresstime, 
-    createtime
-  </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from t_customer
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from t_customer
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.cn.henry.freewebwork.entity.Customer" >
-    insert into t_customer (id, custname, contact, 
-      tel, address, email, 
-      wechar, qq, mark, userid, 
-      progress, progresstime, createtime
-      )
-    values (#{id,jdbcType=INTEGER}, #{custname,jdbcType=VARCHAR}, #{contact,jdbcType=VARCHAR}, 
-      #{tel,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{wechar,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{mark,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, 
-      #{progress,jdbcType=VARCHAR}, #{progresstime,jdbcType=VARCHAR}, #{createtime,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.cn.henry.freewebwork.entity.Customer" >
-    insert into t_customer
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="custname != null" >
-        custname,
-      </if>
-      <if test="contact != null" >
-        contact,
-      </if>
-      <if test="tel != null" >
-        tel,
-      </if>
-      <if test="address != null" >
-        address,
-      </if>
-      <if test="email != null" >
-        email,
-      </if>
-      <if test="wechar != null" >
-        wechar,
-      </if>
-      <if test="qq != null" >
-        qq,
-      </if>
-      <if test="mark != null" >
-        mark,
-      </if>
-      <if test="userid != null" >
-        userid,
-      </if>
-      <if test="progress != null" >
-        progress,
-      </if>
-      <if test="progresstime != null" >
-        progresstime,
-      </if>
-      <if test="createtime != null" >
-        createtime,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="custname != null" >
-        #{custname,jdbcType=VARCHAR},
-      </if>
-      <if test="contact != null" >
-        #{contact,jdbcType=VARCHAR},
-      </if>
-      <if test="tel != null" >
-        #{tel,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="wechar != null" >
-        #{wechar,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null" >
-        #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="mark != null" >
-        #{mark,jdbcType=VARCHAR},
-      </if>
-      <if test="userid != null" >
-        #{userid,jdbcType=INTEGER},
-      </if>
-      <if test="progress != null" >
-        #{progress,jdbcType=VARCHAR},
-      </if>
-      <if test="progresstime != null" >
-        #{progresstime,jdbcType=VARCHAR},
-      </if>
-      <if test="createtime != null" >
-        #{createtime,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.cn.henry.freewebwork.entity.Customer" >
-    update t_customer
-    <set >
-      <if test="custname != null" >
-        custname = #{custname,jdbcType=VARCHAR},
-      </if>
-      <if test="contact != null" >
-        contact = #{contact,jdbcType=VARCHAR},
-      </if>
-      <if test="tel != null" >
-        tel = #{tel,jdbcType=VARCHAR},
-      </if>
-      <if test="address != null" >
-        address = #{address,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="wechar != null" >
-        wechar = #{wechar,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null" >
-        qq = #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="mark != null" >
-        mark = #{mark,jdbcType=VARCHAR},
-      </if>
-      <if test="userid != null" >
-        userid = #{userid,jdbcType=INTEGER},
-      </if>
-      <if test="progress != null" >
-        progress = #{progress,jdbcType=VARCHAR},
-      </if>
-      <if test="progresstime != null" >
-        progresstime = #{progresstime,jdbcType=VARCHAR},
-      </if>
-      <if test="createtime != null" >
-        createtime = #{createtime,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.cn.henry.freewebwork.entity.Customer" >
-    update t_customer
-    set custname = #{custname,jdbcType=VARCHAR},
-      contact = #{contact,jdbcType=VARCHAR},
-      tel = #{tel,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      wechar = #{wechar,jdbcType=VARCHAR},
-      qq = #{qq,jdbcType=VARCHAR},
-      mark = #{mark,jdbcType=VARCHAR},
-      userid = #{userid,jdbcType=INTEGER},
-      progress = #{progress,jdbcType=VARCHAR},
-      progresstime = #{progresstime,jdbcType=VARCHAR},
-      createtime = #{createtime,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+<mapper namespace="com.cn.henry.freewebwork.dao.CustomerMapper">
+    <insert id="save">
+        INSERT into t_customer(custname,contact,tel,email,address,wechar,qq,createtime,mark,userid,progress)
+        VALUES (#{custname},#{contact},#{tel},#{email},#{address},#{wechar},#{qq},#{createtime},#{mark},#{userid},#{progress})
+    </insert>
+    <update id="update">
+        UPDATE t_customer SET custname = #{custname},contact = #{contact},tel = #{tel},
+        email = #{email},qq = #{qq},address = #{address},wechar = #{wechar},mark = #{mark},
+        progress = #{progress},progresstime = #{progresstime},userid = #{userid}
+        where id = #{id}
+    </update>
+    <delete id="del">
+        DELETE FROM t_customer WHERE id = #{id}
+    </delete>
+
+    <select id="findByParam" parameterType="map" resultType="com.cn.henry.freewebwork.entity.Customer">
+        SELECT * FROM t_customer
+        <where>
+            <if test="seaName != null and seaName != ''">
+                (custname LIKE #{seaName} or contact like #{seaName})
+            </if>
+            <if test="seaTel != null and seaTel != ''">
+                and tel like #{seaTel}
+            </if>
+            <if test="seaState != null and seaState != ''">
+               and progress = #{seaState}
+            </if>
+            <if test="userid != null and userid != ''">
+                and userid = #{userid} or userid is null
+            </if>
+        </where>
+        order by ${orderColumn} ${orderType}
+        limit ${start},${length}
+    </select>
+
+    <select id="count" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM t_customer
+    </select>
+    <select id="countByParam" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM t_customer
+        <where>
+            <if test="seaName != null and seaName != ''">
+                (custname LIKE #{seaName} or contact like #{seaName})
+            </if>
+            <if test="seaTel != null and seaTel != ''">
+                and tel like #{seaTel}
+            </if>
+            <if test="seaState != null and seaState != ''">
+                and progress = #{seaState}
+            </if>
+            <if test="userid != null and userid != ''">
+                and userid = #{userid} or userid is null
+            </if>
+        </where>
+    </select>
+    <select id="findById" resultType="com.cn.henry.freewebwork.entity.Customer">
+        SELECT * FROM t_customer WHERE id = #{id}
+    </select>
+    <select id="findByUserIdAndEmptyUserId" resultType="com.cn.henry.freewebwork.entity.Customer">
+        SELECT * FROM t_customer WHERE userid = #{currentUserId} or userid is null
+    </select>
+    <select id="findTotal" resultType="java.util.Map">
+        SELECT temp.custtype,
+        (SELECT COUNT(*) FROM t_customer WHERE t_customer.progress = temp.custtype) AS total
+        FROM (SELECT '初访' AS 'custtype'
+        UNION SELECT '意向'
+        UNION SELECT '报价'
+        UNION SELECT '成交'
+        UNION SELECT '暂时搁置'
+        UNION SELECT '无') AS temp
+    </select>
 </mapper>

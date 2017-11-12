@@ -1,4 +1,4 @@
-package com.cn.henry.freewebwork.impl;
+package com.cn.henry.freewebwork.controller;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.cn.henry.freewebwork.dao.ProgressMapper">
-    <insert id="save" parameterType="Progress" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.cn.henry.freewebwork.entity.Progress" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO t_progress(progress,createtime,userid,custid,mark)
         VALUES (#{progress},#{createtime},#{userid},#{custid},#{mark})
     </insert>
@@ -50,17 +50,15 @@
         SELECT * FROM t_progress WHERE custid = #{id} order by id desc
     </select>
 
-    <resultMap id="progressMap" type="Progress">
+    <resultMap id="progressMap" type="com.cn.henry.freewebwork.entity.Progress">
         <id property="id" column="id"/>
         <result property="createtime" column="createtime"/>
         <result property="custid" column="custid"/>
         <result property="mark" column="mark"/>
         <result property="progress" column="progress"/>
         <result property="userid" column="userid"/>
-        <association property="user" column="userid" javaType="User" select="com.cn.henry.freewebwork.dao.UserMapper.findById"/>
-        <association property="customer" column="custid" javaType="Customer" select="com.cn.henry.freewebwork.dao.CustomerMapper.findById"/>
-        <collection property="progressFileList" column="id" ofType="ProgressFile" select="com.cn.henry.freewebwork.dao.ProgressFileMapper.findByProgressId"/>
+        <association property="user" column="userid" javaType="com.cn.henry.freewebwork.entity.User" select="com.cn.henry.freewebwork.dao.UserMapper.findById"/>
+        <association property="customer" column="custid" javaType="com.cn.henry.freewebwork.entity.Customer" select="com.cn.henry.freewebwork.dao.CustomerMapper.findById"/>
+        <collection property="progressFileList" column="id" ofType="com.cn.henry.freewebwork.entity.ProgressFile" select="com.cn.henry.freewebwork.dao.ProgressFileMapper.findByProgressId"/>
     </resultMap>
-
-
 </mapper>

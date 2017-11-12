@@ -15,14 +15,14 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Controller;
 
 import com.cn.henry.freewebwork.dao.RoleMapper;
 import com.cn.henry.freewebwork.dao.UserMapper;
 import com.cn.henry.freewebwork.entity.Role;
 import com.cn.henry.freewebwork.entity.User;
 
-@Service
+@Controller
 public class MyShiroRealm extends AuthorizingRealm {
 
 	@Resource

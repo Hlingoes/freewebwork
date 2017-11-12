@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cn.henry.freewebwork.dao.UserMapper">
-    <insert id="save" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.cn.henry.freewebwork.entity.User" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO t_user(username,password,tel,state,createtime,userid,weixinid)
         VALUES (#{username},#{password},#{tel},#{state},#{createtime},#{userid},#{weixinid})
     </insert>
@@ -30,7 +30,7 @@
         SELECT * FROM t_user
     </select>
 
-    <select id="findByParam" parameterType="map" resultType="User" resultMap="userMap2">
+    <select id="findByParam" parameterType="map" resultType="com.cn.henry.freewebwork.entity.User" resultMap="userMap2">
         SELECT * from t_user
         <where>
             <if test="keyword != null and keyword != ''">
@@ -65,27 +65,27 @@
         SELECT * FROM t_user WHERE userid = #{userId}
     </select>
 
-    <resultMap id="userMap" type="User">
+    <resultMap id="userMap" type="com.cn.henry.freewebwork.entity.User">
         <id column="id" property="id"/>
         <result column="username" property="username"/>
         <result property="password" column="password"/>
         <result property="createtime" column="createtime"/>
         <result property="tel" column="tel"/>
         <result property="state" column="state"/>
-        <collection property="roleList" ofType="Role">
+        <collection property="roleList" ofType="com.cn.henry.freewebwork.entity.Role">
             <id property="id" column="roleid"/>
             <result property="rolename" column="rolename"/>
         </collection>
     </resultMap>
 
-    <resultMap id="userMap2" type="User">
+    <resultMap id="userMap2" type="com.cn.henry.freewebwork.entity.User">
         <id column="id" property="id"/>
         <result column="username" property="username"/>
         <result property="password" column="password"/>
         <result property="createtime" column="createtime"/>
         <result property="tel" column="tel"/>
         <result property="state" column="state"/>
-        <collection property="roleList" ofType="Role" column="id" select="com.cn.henry.freewebwork.dao.RoleMapper.findByUserId"/>
+        <collection property="roleList" ofType="com.cn.henry.freewebwork.entity.Role" column="id" select="com.cn.henry.freewebwork.dao.RoleMapper.findByUserId"/>
     </resultMap>
 
 </mapper>

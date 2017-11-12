@@ -17,6 +17,8 @@
 		<!-- log4j日志文件管理包版本 -->
 		<slf4j.version>1.7.7</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
+		<!-- shrio权限控制包版本 -->
+		<shiro.version>1.4.0</shiro.version>
 	</properties>
 
 	<dependencies>
@@ -219,7 +221,33 @@
 		  <version>1.84</version>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-all 权限管理框架 -->
+		<!-- https://mvnrepository.com/artifact/org.apache.shiro 权限管理框架 -->
+		<dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+		    <groupId>org.apache.shiro</groupId>
+		    <artifactId>shiro-quartz</artifactId>
+		    <version>${shiro.version}</version>
+		</dependency>
+
 		<dependency>
 		  <groupId>org.apache.shiro</groupId>
 		  <artifactId>shiro-all</artifactId>

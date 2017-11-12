@@ -5,7 +5,7 @@
 		http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.0.xsd"
 	default-lazy-init="true">
 	<!-- 继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的ShiroDbRealm.java -->  
-    <bean id="myRealm" class="com.papio.realm.MyRealm"/>
+    <bean id="MyShiroRealm" class="com.cn.henry.freewebwork.controller.MyShiroRealm"/>
     <!-- 定义缓存管理器 --> 
    	<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" /> 
    	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
@@ -18,7 +18,7 @@
     <!-- 即<property name="sessionMode" value="native"/>,详细说明见官方文档 -->  
     <!-- 这里主要是设置自定义的单Realm应用,若有多个Realm,可使用'realms'属性代替 -->  
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  
-        <property name="realm" ref="ShiroRealm"/>
+        <property name="realm" ref="MyShiroRealm"/>
         <!-- 使用配置的缓存管理器 --> 
      	<property name="cacheManager" ref="cacheManager"></property> 
      	<!-- 会话管理 -->
@@ -26,7 +26,7 @@
   	</bean>  
     <!-- Shiro主过滤器本身功能十分强大,其强大之处就在于它支持任何基于URL路径表达式的、自定义的过滤器的执行 -->  
     <!-- Web应用中,Shiro可控制的Web请求必须经过Shiro主过滤器的拦截,Shiro对基于Spring的Web应用提供了完美的支持 -->  
-    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">  
+    <bean id="freeWebWorkShiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">  
         <!-- Shiro的核心安全接口,这个属性是必须的 -->  
         <property name="securityManager" ref="securityManager"/>  
         <!-- 要求登录时的链接(可根据项目的URL进行替换),非必须的属性,默认会自动寻找Web工程根目录下的"/login.jsp"页面 -->  

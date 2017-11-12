@@ -3,7 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
-	<!-- Web容器加载顺序ServletContext--context-param--listener--filter--servlet -->  
+	<!-- Web容器加载顺序ServletContext -> context param -> listener -> filter -> servlet -->  
 	<display-name>Archetype Created Web Application</display-name>
 	<!-- 指定Spring的配置文件 -->  
     <!-- 否则Spring会默认从WEB-INF下寻找配置文件,contextConfigLocation属性是Spring内部固定的 -->

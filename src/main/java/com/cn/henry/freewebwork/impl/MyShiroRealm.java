@@ -23,7 +23,7 @@ import com.cn.henry.freewebwork.entity.Role;
 import com.cn.henry.freewebwork.entity.User;
 
 @Service
-public class ShiroRealmImpl extends AuthorizingRealm {
+public class MyShiroRealm extends AuthorizingRealm {
 
 	@Resource
 	private UserMapper userMapper;

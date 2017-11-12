@@ -4,6 +4,8 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
 		http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.0.xsd"
 	default-lazy-init="true">
+	<!-- 继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的ShiroDbRealm.java -->  
+    <bean id="myRealm" class="com.papio.realm.MyRealm"/>
     <!-- 定义缓存管理器 --> 
    	<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" /> 
    	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
@@ -16,7 +18,7 @@
     <!-- 即<property name="sessionMode" value="native"/>,详细说明见官方文档 -->  
     <!-- 这里主要是设置自定义的单Realm应用,若有多个Realm,可使用'realms'属性代替 -->  
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  
-        <property name="realm" ref="ShiroRealmImpl"/>
+        <property name="realm" ref="ShiroRealm"/>
         <!-- 使用配置的缓存管理器 --> 
      	<property name="cacheManager" ref="cacheManager"></property> 
      	<!-- 会话管理 -->

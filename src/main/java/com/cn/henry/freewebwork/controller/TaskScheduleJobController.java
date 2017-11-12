@@ -12,6 +12,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
@@ -20,6 +21,8 @@ import org.quartz.CronScheduleBuilder;
 import org.quartz.JobExecutionContext;
 import org.quartz.SchedulerException;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,9 +36,6 @@ import com.cn.henry.freewebwork.utils.SpringUtils;
 import com.cn.henry.freewebwork.utils.Excel.ExcelUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-
-import net.sf.oval.ConstraintViolation;
-import net.sf.oval.Validator;
 
 
 /**
@@ -86,19 +86,19 @@ public class TaskScheduleJobController {
 	
 	@RequestMapping(value="add", method=RequestMethod.POST)
 	@ResponseBody
-	public BaseResult addTask(TaskScheduleJob scheduleJob) {
+	public BaseResult addTask(@Valid TaskScheduleJob scheduleJob, BindingResult result) {
 		BaseResult baseResult = new BaseResult();
-		Validator validator = new Validator();
-        List<ConstraintViolation> message = validator.validate(scheduleJob);//完全验证
-		baseResult.setFlag(false);
-		if (message.size() > 0) {
-			String msg = "";
-			for (ConstraintViolation constraintViolation : message) {
-				msg += constraintViolation.getMessage() + "\n";
+		if (result.hasErrors()) { 
+			baseResult.setFlag(false);
+			
+			StringBuffer msg = new StringBuffer();  
+			List<ObjectError> errorObjects = result.getAllErrors();
+			for (ObjectError objectError : errorObjects) {
+				msg.append(objectError.getDefaultMessage());
 			}
-			baseResult.setMsg(msg);
+			baseResult.setMsg(msg.toString());
 			return baseResult;
-        }
+		}
 		try {
 			CronScheduleBuilder.cronSchedule(scheduleJob.getCronExpression());
 		} catch (Exception e) {

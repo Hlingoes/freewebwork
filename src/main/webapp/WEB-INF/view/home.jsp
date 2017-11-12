@@ -13,7 +13,7 @@
     <title>CRM-客户关系管理系统</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
     <link href="/static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -22,7 +22,7 @@
     <link href="/static/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/font-awesome.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/static/js/morris/morris.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -69,10 +69,10 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
 <script src="/static/js/metisMenu/metisMenu.min.js"></script>

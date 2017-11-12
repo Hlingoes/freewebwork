@@ -3,7 +3,7 @@ package com.cn.henry.freewebwork.controller;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
+import javax.annotation.Resource;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shiro.SecurityUtils;
@@ -32,15 +32,15 @@ public class HomeController {
     @Value("${user.salt}")
     private String passwordSalt;
 
-    @Inject
+    @Resource
     private CustomerService customerService;
 
     /**
      * 登录页面
      * @return
      */
-    @RequestMapping(value = "/",method = RequestMethod.GET)
-    public String index(Model model) {
+    @RequestMapping(value = "/register",method = RequestMethod.GET)
+    public String register(Model model) {
 
         return "index";
     }
@@ -51,7 +51,7 @@ public class HomeController {
      * @param password
      * @return
      */
-    @RequestMapping(value = "/",method = RequestMethod.POST)
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String login(String tel, String password, RedirectAttributes redirectAttributes) {
 
         //获取认证主体，如果主体已存在，则将当前的主体退出

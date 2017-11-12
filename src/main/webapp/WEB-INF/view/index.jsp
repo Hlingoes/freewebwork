@@ -14,13 +14,13 @@
     <title>CRM-系统登录</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="/static/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/font-awesome.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="/static/js/metisMenu/metisMenu.min.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -71,10 +71,10 @@
 </div>
 
 <!-- jQuery -->
-<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap.js"></script>
 <script src="/static/js/metisMenu/metisMenu.min.js"></script>
 <!-- Custom Theme JavaScript -->
 <script src="/static/js/sb-admin-2.js"></script>

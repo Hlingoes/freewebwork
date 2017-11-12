@@ -2,10 +2,10 @@ package com.cn.henry.freewebwork.entity;
 
 import java.sql.Timestamp;
 
+import javax.validation.constraints.NotNull;
+
 import com.cn.henry.freewebwork.utils.Excel.ExcelCell;
 import com.fasterxml.jackson.annotation.JsonFormat;
-
-import net.sf.oval.constraint.NotEmpty;
 
 public class TaskScheduleJob {
 	
@@ -26,7 +26,7 @@ public class TaskScheduleJob {
     @ExcelCell(index = 8)
     private Timestamp updateTime;
 
-    @NotEmpty(message = "任务名不能为空")
+    @NotNull(message = "任务名不能为空")
     @ExcelCell(index = 0)
     private String jobName;
 
@@ -36,14 +36,14 @@ public class TaskScheduleJob {
     @ExcelCell(index = 2)
     private String jobStatus;
 
-    @NotEmpty(message = "cron表达式不能为空")
+    @NotNull(message = "cron表达式不能为空")
     @ExcelCell(index = 3)
     private String cronExpression;
 
     @ExcelCell(index = 4)
     private String description;
 
-    @NotEmpty(message = "执行的bean不能为空")
+    @NotNull(message = "执行的bean不能为空")
     @ExcelCell(index = 5)
     private String beanClass;
 
@@ -52,7 +52,7 @@ public class TaskScheduleJob {
     // 项目没有使用spring托管的方式，这个字段没有用处
     private String springId;
 
-    @NotEmpty(message = "方法名不能为空")
+    @NotNull(message = "方法名不能为空")
     @ExcelCell(index = 6)
     private String methodName;
 

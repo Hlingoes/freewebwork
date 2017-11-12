@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
+import javax.annotation.Resource;
 import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.NotFoundException;
 
@@ -26,9 +26,9 @@ import com.cn.henry.freewebwork.service.TaskService;
 @RequestMapping("/task")
 public class TaskController {
 
-    @Inject
+    @Resource
     private TaskService taskService;
-    @Inject
+    @Resource
     private CustomerService customerService;
 
     @RequestMapping(method = RequestMethod.GET)

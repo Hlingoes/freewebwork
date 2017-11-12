@@ -2,7 +2,7 @@ package com.cn.henry.freewebwork.controller;
 
 import java.util.List;
 
-import javax.inject.Inject;
+import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,11 +25,11 @@ import com.github.pagehelper.PageInfo;
 @RequestMapping("/progress")
 public class ProgressController {
 
-    @Inject
+    @Resource
     private UserService userService;
-    @Inject
+    @Resource
     private CustomerService customerService;
-    @Inject
+    @Resource
     private ProgressService progressService;
 
     /**

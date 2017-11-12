@@ -16,7 +16,7 @@
     <!-- 即<property name="sessionMode" value="native"/>,详细说明见官方文档 -->  
     <!-- 这里主要是设置自定义的单Realm应用,若有多个Realm,可使用'realms'属性代替 -->  
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  
-        <property name="realm" ref="shiroRealm"/>
+        <property name="realm" ref="ShiroRealmImpl"/>
         <!-- 使用配置的缓存管理器 --> 
      	<property name="cacheManager" ref="cacheManager"></property> 
      	<!-- 会话管理 -->

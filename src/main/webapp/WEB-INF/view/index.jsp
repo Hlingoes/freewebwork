@@ -4,7 +4,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,14 +13,14 @@
     <title>CRM-系统登录</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/static/css/sb-admin-2.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="/static/css/font-awesome.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="/static/js/metisMenu/metisMenu.min.css">
+    <link href="${pageContext.request.contextPath}/static/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/js/metisMenu/metisMenu.min.css">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -47,7 +46,7 @@
                             ${message.message}
                         </div>
                     </c:if>
-                    <form id="loginForm" method="post">
+                    <form id="loginForm" method="post" action="login">
                         <fieldset>
                             <div class="form-group">
                                 <input class="form-control" placeholder="账号" name="tel" type="text" id="tel" autofocus>
@@ -71,17 +70,16 @@
 </div>
 
 <!-- jQuery -->
-<script src="/static/js/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/static/js/bootstrap.js"></script>
-<script src="/static/js/metisMenu/metisMenu.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/metisMenu/metisMenu.min.js"></script>
 <!-- Custom Theme JavaScript -->
-<script src="/static/js/sb-admin-2.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/sb-admin-2.js"></script>
 
 <script>
     $(function(){
-
         $("#loginBtn").click(function(){
             if(!$("#tel").val()) {
                 $("#tel").focus();
@@ -93,12 +91,7 @@
             }
             $("#loginForm").submit();
         });
-
-
     });
 </script>
-
-
 </body>
-
 </html>

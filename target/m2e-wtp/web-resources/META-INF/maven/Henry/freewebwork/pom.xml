@@ -17,6 +17,8 @@
 		<!-- log4j日志文件管理包版本 -->
 		<slf4j.version>1.7.7</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
+		<!-- shrio权限控制包版本 -->
+		<shiro.version>1.4.0</shiro.version>
 	</properties>
 
 	<dependencies>
@@ -212,19 +214,45 @@
 		    <version>2.2.3</version>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/net.sf.oval/oval 开源验证框架 -->
+		<!-- 开源验证框架 -->
 		<dependency>
-		  <groupId>net.sf.oval</groupId>
-		  <artifactId>oval</artifactId>
-		  <version>1.84</version>
+		  <groupId>org.hibernate</groupId>
+		  <artifactId>hibernate-validator</artifactId>
+		  <version>5.0.2.Final</version>
 		</dependency>
 		
-		<!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-all 权限管理框架 -->
+		<!-- https://mvnrepository.com/artifact/org.apache.shiro 权限管理框架 -->
 		<dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>${shiro.version}</version>
+        </dependency>
+        <dependency>
+		    <groupId>org.apache.shiro</groupId>
+		    <artifactId>shiro-quartz</artifactId>
+		    <version>${shiro.version}</version>
+		</dependency>
+
+		<!-- <dependency>
 		  <groupId>org.apache.shiro</groupId>
 		  <artifactId>shiro-all</artifactId>
 		  <version>1.4.0</version>
-		</dependency>
+		</dependency> -->
 		
 		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
 		<dependency>

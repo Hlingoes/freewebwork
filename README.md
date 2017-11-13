@@ -28,7 +28,8 @@
 5.6 [用于导入导出Excel的Util包，基于Java的POI。可将List<Bean>导出成Excel，或读取Excel成List<Bean>,读取时有验证和Log](https://github.com/SargerasWang/ExcelUtil)
 # 6. 整合shiro权限管理
 6.1 [SpringMVC+Shiro整合配置文件详解](http://blog.csdn.net/dawangxiong123/article/details/53020424)<br>
-6.2 [解决org.apache.shiro.session.UnknownSessionException: There is no session with id的问题](https://www.cnblogs.com/hafiz/p/7247005.html)
+6.2 [在SSM中使用shiro实现登录验证（附密码加密）](http://blog.csdn.net/xiangwanpeng/article/details/54793768)<br>
+6.3 [shrio 权限管理filterChainDefinitions过滤器配置 ](http://www.cppblog.com/guojingjia2006/archive/2014/05/14/206956.html)
 # 7. 前端插件
 7.1 [bootstrap-validator 小巧的表单验证插件，无需引入额外的css，api不易用](https://github.com/1000hz/bootstrap-validator)
 

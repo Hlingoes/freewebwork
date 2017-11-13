@@ -62,7 +62,7 @@ public class HomeController {
 
         try {
             //登录，调用ShiroRealm类中的登录认证方法
-            subject.login(new UsernamePasswordToken(tel, DigestUtils.md5Hex(password+passwordSalt)));
+            subject.login(new UsernamePasswordToken(tel, DigestUtils.md5Hex(password + passwordSalt)));
 
             //将登录的对象放入到Session中
             Session session = subject.getSession();

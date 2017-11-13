@@ -46,7 +46,7 @@
                             ${message.message}
                         </div>
                     </c:if>
-                    <form id="loginForm" method="post" action="login">
+                    <form id="loginForm" method="post" action="${pageContext.request.contextPath}/login">
                         <fieldset>
                             <div class="form-group">
                                 <input class="form-control" placeholder="账号" name="tel" type="text" id="tel" autofocus>

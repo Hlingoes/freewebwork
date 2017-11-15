@@ -2,7 +2,7 @@
 项目的主要功能：管理定时任务<br>
 项目中的User类是做基础测试用例使用，调试版本和配置文件。
 项目构建环境jdk-1.8，tomcat 8.0，spring 4.0，mysql，配置过程中务必要注意jar版本，按需调节。
-使用静态html配合ajax的形式渲染页面，基于[bootstrap-v3.3.7](http://www.bootcss.com/)，[jquery](https://jquery.com/)，表格使用[jqGrid](http://www.guriddo.net/demo/bootstrap/)，字体文件[fontawesome](http://fontawesome.dashgame.com/)等比较常用的插件，以使用顺手为主。
+使用静态html配合ajax的形式渲染页面，基于[bootstrap-v3.3.7](http://www.bootcss.com/)，[jquery](https://jquery.com/)，表格使用[jqGrid](http://www.guriddo.net/demo/bootstrap/)，字体文件[font-awesome](http://fontawesome.dashgame.com/)等比较常用的插件，以使用顺手为主。
 # 1. 主线配置Spring+SpringMVC+MyBatis(注意jar包版本)
 [SSM框架——详细整合教程（Spring+SpringMVC+MyBatis）](http://blog.csdn.net/zhshulin/article/details/37956105) 
 # 2. 副线配置mybatis的代码自动生成和分页查询

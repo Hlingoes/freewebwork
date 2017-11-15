@@ -5,7 +5,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.LockedAccountException;
@@ -13,7 +12,6 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,9 +27,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 @Controller
 public class HomeController {
 
-    @Value("${user.salt}")
-    private String passwordSalt;
-
     @Resource
     private CustomerService customerService;
 
@@ -41,7 +36,6 @@ public class HomeController {
      */
     @RequestMapping(value = "/register",method = RequestMethod.GET)
     public String register(Model model) {
-
         return "index";
     }
 
@@ -51,34 +45,34 @@ public class HomeController {
      * @param password
      * @return
      */
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    @SuppressWarnings("finally")
+	@RequestMapping(value = "/login",method = RequestMethod.POST)
     public String login(String tel, String password, RedirectAttributes redirectAttributes) {
 
         //获取认证主体，如果主体已存在，则将当前的主体退出
-        Subject subject = SecurityUtils.getSubject();
-        if(subject.isAuthenticated()) {
-            subject.logout();
+        Subject currentUser  = SecurityUtils.getSubject();
+        if(currentUser .isAuthenticated()) {
+        	currentUser .logout();
         }
-
         try {
+        	UsernamePasswordToken upToken = new UsernamePasswordToken(tel, password);
+            upToken.setRememberMe(false);
             //登录，调用ShiroRealm类中的登录认证方法
-            subject.login(new UsernamePasswordToken(tel, DigestUtils.md5Hex(password + passwordSalt)));
-
+            currentUser .login(upToken);
             //将登录的对象放入到Session中
-            Session session = subject.getSession();
-            session.setAttribute(User.SESSION_KEY,(User)subject.getPrincipal());
-
-            return "redirect:/home";
+            Session session = currentUser.getSession();
+            session.setAttribute(User.SESSION_KEY, (User)currentUser.getPrincipal());
+            return "redirect:/account";
         } catch (LockedAccountException ex) {
             redirectAttributes.addFlashAttribute("message",new Message(Message.ERROR,ex.getMessage()));
-            return "redirect:/";
         } catch (UnknownAccountException ex) {
             redirectAttributes.addFlashAttribute("message",new Message(Message.ERROR,ex.getMessage()));
-            return "redirect:/";
         } catch (AuthenticationException ex) {
             redirectAttributes.addFlashAttribute("message",new Message(Message.ERROR,"账号或密码错误"));
-            return "redirect:/";
-        }
+        } finally {
+        	return "redirect:/register";
+		}
+        
     }
 
 

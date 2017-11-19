@@ -14,18 +14,19 @@
 
     <title>CRM-客户关系管理系统</title>
 
+	<link href="${pageContext.request.contextPath}/static/pic/favicon.png" rel="shortcut icon" />
     <!-- Bootstrap Core CSS -->
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="/static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/static/css/sb-admin-2.css" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/timeline.css">
+    <link href="${pageContext.request.contextPath}/static/css/sb-admin-2.css" rel="stylesheet">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/timeline.css">
 
     <!-- Custom Fonts -->
-    <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/static/css/font-awesome.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -268,7 +269,7 @@
                 <h4 class="modal-title">新增跟进记录</h4>
             </div>
             <div class="modal-body">
-                <form action="/customer/progress/new" method="post" id="newForm" enctype="multipart/form-data">
+                <form action="${pageContext.request.contextPath}/customer/progress/new" method="post" id="newForm" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>客户</label>
                         <input type="hidden" value="${customer.id}" name="custid">
@@ -303,16 +304,16 @@
 </div><!-- /.modal -->
 
 <!-- jQuery -->
-<script src="/static/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
-<script src="/static/js/metisMenu/metisMenu.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/metisMenu/metisMenu.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/static/js/sb-admin-2.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/sb-admin-2.js"></script>
 <script>
     $(function () {
 
@@ -336,7 +337,7 @@
         //公开客户
         $("#publicCustomer").click(function () {
             if (confirm("客户公开后，所有的用户都可以看到该客户的信息,确定吗")) {
-                $.post("/customer/public/${customer.id}").done(function (result) {
+                $.post("${pageContext.request.contextPath}/customer/public/${customer.id}").done(function (result) {
                     if (result.state != "success") {
                         alert(result.message);
                     } else {
@@ -355,7 +356,7 @@
         $("#tranBtn").click(function () {
             var userId = $("#userid").val();
             if (userId) {
-                $.post("/customer/tran/${customer.id}/" + userId).done(function (result) {
+                $.post("${pageContext.request.contextPath}/customer/tran/${customer.id}/" + userId).done(function (result) {
                     if (result.state != "success") {
                         alert(result.message);
                     } else {
@@ -376,17 +377,14 @@
         $(".ckTask").click(function(){
             var $this = $(this);
             var id = $this.attr("rel");
-            $.post("/customer/change/taskstate",{"taskId":id,"state":"true"}).done(function(result){
+            $.post("${pageContext.request.contextPath}/customer/change/taskstate",{"taskId":id,"state":"true"}).done(function(result){
                 if(result == "success") {
                     $this.parent().remove();
                 }
             }).fail(function(){
                 alert("操作失败");
             });
-
         });
-
-
     });
 </script>
 

@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Task Manage</title>
-<link href="${pageContext.request.contextPath}/pic/favicon.png" rel="shortcut icon" />
+<link href="${pageContext.request.contextPath}/static/pic/favicon.png" rel="shortcut icon" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-v3.3.7.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/ui.jqgrid-bootstrap.css" />
 </head>

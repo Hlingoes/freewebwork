@@ -12,7 +12,7 @@
     <meta name="author" content="">
 
     <title>CRM-客户关系管理系统</title>
-
+	<link href="${pageContext.request.contextPath}/static/pic/favicon.png" rel="shortcut icon" />
     <!-- Bootstrap Core CSS -->
     <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet">
 

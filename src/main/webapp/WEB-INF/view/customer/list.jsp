@@ -12,19 +12,19 @@
     <title>CRM-客户关系管理系统</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="/static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/static/css/sb-admin-2.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/static/css/font-awesome.css" rel="stylesheet" type="text/css">
 
     <%--DataTables css--%>
-    <link rel="stylesheet" href="/static/js/datatables/media/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/js/datatables/media/css/dataTables.bootstrap.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -183,19 +183,19 @@
 
 
 <!-- jQuery -->
-<script src="/static/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
-<script src="/static/js/metisMenu/metisMenu.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/metisMenu/metisMenu.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/static/js/sb-admin-2.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/sb-admin-2.js"></script>
 <%-- DataTables JS--%>
-<script src="/static/js/datatables/media/js/jquery.dataTables.min.js"></script>
-<script src="/static/js/datatables/media/js/dataTables.bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/datatables/media/js/dataTables.bootstrap.min.js"></script>
 <script>
     $(function(){
 
@@ -207,7 +207,7 @@
             "lengthMenu":[10,25,50,100],//每页显示数据条数菜单
             "ordering":false,
             "ajax":{
-                url:"/customer/customers.json", //获取数据的URL
+                url:"${pageContext.request.contextPath}/customer/customers.json", //获取数据的URL
                 type:"get", //获取数据的方式
                 data:function(d){
                     d.seaName = $("#seaName").val();
@@ -221,14 +221,11 @@
                 }},
                 {"data":"id","name":"id"},
                 {"data":function(row){
-                    var result = "<a href='/customer/"+row.id+"'>"+row.custname+"</a>";
+                    var result = "<a href='${pageContext.request.contextPath}/customer/"+row.id+"'>"+row.custname+"</a>";
                     if(!row.userid) {
                         result += " <i class='fa fa-unlock text-muted'></i>";
                     }
                     return result;
-
-
-
                 },"name":"custname"},
                 {"data":"contact","name":"contact"},
                 {"data":"tel","name":"tel"},
@@ -270,7 +267,7 @@
         });
 
         $("#saveBtn").click(function(){
-            $.post("/customer/new",$("#newCustForm").serialize()).done(function(result){
+            $.post("${pageContext.request.contextPath}/customer/new",$("#newCustForm").serialize()).done(function(result){
                 if(result == "success") {
                     $("#newCustForm")[0].reset();
                     $("#newCustomer_Modal").modal('hide');

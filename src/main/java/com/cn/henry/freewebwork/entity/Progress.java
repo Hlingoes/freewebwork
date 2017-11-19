@@ -1,5 +1,7 @@
 package com.cn.henry.freewebwork.entity;
 
+import java.util.List;
+
 public class Progress {
     private Integer id;
 
@@ -12,6 +14,12 @@ public class Progress {
     private Integer userid;
 
     private String mark;
+    
+    private User user;
+    
+    private Customer customer;
+    
+    private List<ProgressFile> progressFileList;
 
     public Integer getId() {
         return id;
@@ -60,4 +68,29 @@ public class Progress {
     public void setMark(String mark) {
         this.mark = mark == null ? null : mark.trim();
     }
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public List<ProgressFile> getProgressFileList() {
+		return progressFileList;
+	}
+
+	public void setProgressFileList(List<ProgressFile> progressFileList) {
+		this.progressFileList = progressFileList;
+	}
+    
 }

@@ -14,17 +14,17 @@
     <title>CRM-客户关系管理系统</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="/static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/static/css/sb-admin-2.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="/static/js/datepicker/css/bootstrap-datepicker3.min.css">
+    <link href="${pageContext.request.contextPath}/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/js/datepicker/css/bootstrap-datepicker3.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -120,8 +120,6 @@
                             </c:forEach>
                         </div>
                     </div>
-
-
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -142,7 +140,7 @@
                 <h4 class="modal-title">新增待办事项</h4>
             </div>
             <div class="modal-body">
-                <form action="/task/new" method="post" id="newTaskForm">
+                <form action="${pageContext.request.contextPath}/task/new" method="post" id="newTaskForm">
                     <div class="form-group">
                         <label>待办内容</label>
                         <textarea name="task" class="form-control" rows="3"></textarea>
@@ -169,18 +167,18 @@
 
 
 <!-- jQuery -->
-<script src="/static/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
-<script src="/static/js/metisMenu/metisMenu.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/metisMenu/metisMenu.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/static/js/sb-admin-2.js"></script>
-<script src="/static/js/datepicker/js/bootstrap-datepicker.min.js"></script>
-<script src="/static/js/datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/sb-admin-2.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
 
 <script>
     $(function(){
@@ -206,7 +204,7 @@
             alert("doneLink");
             var $this = $(this);
             var id = $this.attr("rel");
-            $.post("/task/state/change",{"taskId":id,"state":"true"}).done(function(result){
+            $.post("${pageContext.request.contextPath}/task/state/change",{"taskId":id,"state":"true"}).done(function(result){
                 if(result.state == "success") {
                     $this.attr("class","unLink");
                     $this.text("撤销已完成");
@@ -228,7 +226,7 @@
             alert("unLink");
             var $this = $(this);
             var id = $this.attr("rel");
-            $.post("/task/state/change",{"taskId":id,"state":"false"}).done(function(result){
+            $.post("${pageContext.request.contextPath}/task/state/change",{"taskId":id,"state":"false"}).done(function(result){
                 if(result.state == "success") {
                     $this.attr("class","doneLink");
                     $this.text("标记已完成");

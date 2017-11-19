@@ -45,7 +45,6 @@ public class HomeController {
      * @param password
      * @return
      */
-    @SuppressWarnings("finally")
 	@RequestMapping(value = "/login",method = RequestMethod.POST)
     public String login(String tel, String password, RedirectAttributes redirectAttributes) {
 
@@ -65,13 +64,14 @@ public class HomeController {
             return "redirect:/account";
         } catch (LockedAccountException ex) {
             redirectAttributes.addFlashAttribute("message",new Message(Message.ERROR,ex.getMessage()));
+            return "redirect:/register";
         } catch (UnknownAccountException ex) {
             redirectAttributes.addFlashAttribute("message",new Message(Message.ERROR,ex.getMessage()));
+            return "redirect:/register";
         } catch (AuthenticationException ex) {
             redirectAttributes.addFlashAttribute("message",new Message(Message.ERROR,"账号或密码错误"));
-        } finally {
-        	return "redirect:/register";
-		}
+            return "redirect:/register";
+        } 
         
     }
 

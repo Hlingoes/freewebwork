@@ -13,17 +13,17 @@
     <title>CRM-客户关系管理系统</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="/static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/static/css/sb-admin-2.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="/static/css/font-awesome.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="/static/js/morris/morris.css">
+    <link href="${pageContext.request.contextPath}/static/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/js/morris/morris.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -69,18 +69,18 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-<script src="/static/js/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/static/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
-<script src="/static/js/metisMenu/metisMenu.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/metisMenu/metisMenu.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/static/js/sb-admin-2.js"></script>
-<script src="/static/js/morris/raphael-min.js"></script>
-<script src="/static/js/morris/morris.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/sb-admin-2.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/morris/raphael-min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/morris/morris.min.js"></script>
 <script>
     $(function(){
         Morris.Bar({

@@ -9,7 +9,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="home.html"><i class="fa fa-coffee"></i> CRM</a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/home"><i class="fa fa-coffee"></i> CRM</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -23,7 +23,7 @@
                 <li><a href="#"><i class="fa fa-gear fa-fw"></i> 设置</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i> 安全退出</a>
+                <li><a href="${pageContext.request.contextPath}/logout"><i class="fa fa-sign-out fa-fw"></i> 安全退出</a>
                 </li>
             </ul>
             <!-- /.dropdown-user -->
@@ -36,17 +36,17 @@
         <div class="sidebar-nav navbar-collapse">
             <ul class="nav" id="side-menu">
                 <li>
-                    <a href="/home"><i class="fa fa-dashboard fa-fw"></i> 首页</a>
+                    <a href="${pageContext.request.contextPath}/home"><i class="fa fa-dashboard fa-fw"></i> 首页</a>
                 </li>
                 <li>
-                    <a href="/customer"><i class="fa fa-users fa-fw"></i> 客户</a>
+                    <a href="${pageContext.request.contextPath}/customer"><i class="fa fa-users fa-fw"></i> 客户</a>
                     <!-- /.nav-second-level -->
                 </li>
                 <li>
-                    <a href="/progress"><i class="fa fa-table fa-fw"></i> 跟进</a>
+                    <a href="${pageContext.request.contextPath}/progress"><i class="fa fa-table fa-fw"></i> 跟进</a>
                 </li>
                 <li>
-                    <a href="/task"><i class="fa fa-edit fa-fw"></i> 待办</a>
+                    <a href="${pageContext.request.contextPath}/task"><i class="fa fa-edit fa-fw"></i> 待办</a>
                 </li>
                 <li>
                     <a href="chart.html"><i class="fa fa-bar-chart"></i> 统计</a>
@@ -55,7 +55,7 @@
                 </li>
                 <shiro:hasRole name="管理员">
                     <li>
-                        <a href="/account"><i class="fa fa-sitemap fa-fw"></i> 用户管理</a>
+                        <a href="${pageContext.request.contextPath}/account"><i class="fa fa-sitemap fa-fw"></i> 用户管理</a>
                     </li>
                 </shiro:hasRole>
             </ul>

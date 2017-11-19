@@ -15,16 +15,16 @@
     <title>CRM-客户关系管理系统</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
-    <link href="/static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="/static/css/sb-admin-2.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/sb-admin-2.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="/static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/static/css/font-awesome.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -100,7 +100,7 @@
                             <button class="btn btn-primary pull-right btn-xs" id="newBtn"><i class="fa fa-plus"></i> 新增跟进信息</button>
                         </div>
                         <div class="panel-body">
-                            <c:forEach items="${page.items}" var="pro">
+                            <c:forEach items="${page.list}" var="pro">
                             <c:choose>
                             <c:when test="${pro.progress == '成交'}">
                             <div class="panel panel-success">
@@ -187,7 +187,7 @@
                 <h4 class="modal-title">新增跟进记录</h4>
             </div>
             <div class="modal-body">
-                <form action="/progress/new" method="post" id="newForm" enctype="multipart/form-data">
+                <form action="${pageContext.request.contextPath}/progress/new" method="post" id="newForm" enctype="multipart/form-data">
                     <div class="form-group">
                         <label>选择客户</label>
                         <select name="custid" class="form-control">
@@ -228,17 +228,17 @@
 
 
 <!-- jQuery -->
-<script src="/static/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="/static/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
-<script src="/static/js/metisMenu/metisMenu.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/metisMenu/metisMenu.min.js"></script>
 
 <!-- Custom Theme JavaScript -->
-<script src="/static/js/sb-admin-2.js"></script>
-<script src="/static/js/jquery.twbsPagination.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/sb-admin-2.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/jquery.twbsPagination.min.js"></script>
 <script>
     $(function(){
 

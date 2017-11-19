@@ -1,10 +1,11 @@
 # freewebwork
-项目的主要功能：整合客户关系管理(CRM)和内容管理(CMS)的基本结构，融合定时管理和其他通用框架功能。
-项目中的User类是做基础测试用例使用，调试版本和配置文件，使用creat_user_t.sql进行初始项目整合测试，后续使用ssm-crm.sql和quartz-demo.sql运行。
-初始访问：localhost:8080/freewebwork/register 账号：158，密码：123123 <br>
-定时任务控制访问：localhost:8080/freewebwork/static/html/task/taskPage.html <br>
-项目用maven构建，建议使用jdk1.8，tomcat 8.0，spring 4.0，mybatis 3.0，mysq 5.6，shiri 1.4，配置过程中务必要注意jar版本。
-CRM项目使用jsp的方式做权限控制，定时任务管理使用静态html配合ajax的形式渲染。前端页面基于[bootstrap](http://www.bootcss.com/)，[jquery](https://jquery.com/)，表格使用[jqGrid](http://www.guriddo.net/demo/bootstrap/)，[datatables](https://datatables.net/examples/),字体文件[font-awesome](http://fontawesome.dashgame.com/)等比较常用的插件，以使用顺手为主。<br>
+项目的主要功能：整合客户关系管理(CRM)和内容管理(CMS)的基本结构，融合定时管理和其他通用框架功能。<br>
+用creat_user_t.sql和User.java做基础测试用例，调试版本和常用配置文件，后续使用ssm-crm.sql和quartz-demo.sql运行。<br>
+项目启动后访问：localhost:8080/freewebwork/register 账号：158，密码：123123 <br>
+定时任务页面：localhost:8080/freewebwork/static/html/task/taskPage.html <br>
+项目用maven构建，建议使用jdk1.8，tomcat 8.0，spring 4.0，mybatis 3.0，mysql 5.6，shirio 1.4，配置过程中务必要注意jar版本。
+CRM项目使用jsp的方式做权限控制，定时任务管理使用静态html配合ajax的形式渲染。前端页面基于[bootstrap](http://www.bootcss.com/)，[jquery](https://jquery.com/)，表格使用[jqGrid](http://www.guriddo.net/demo/bootstrap/)，[datatables](https://datatables.net/examples/),字体文件[font-awesome](http://fontawesome.dashgame.com/)等比较常用的插件，以使用顺手为主。
+#### 项目结构和功能展示
 ![project_frame](https://github.com/Hlingoes/freewebwork/blob/master/introduction/project_frame.png)
 ![login_page](https://github.com/Hlingoes/freewebwork/blob/master/introduction/login_page.png)
 ![user_manage](https://github.com/Hlingoes/freewebwork/blob/master/introduction/user_manage.png)

@@ -23,7 +23,6 @@ public class AccountController {
     @Resource
     private UserService userService;
 
-
     @RequestMapping(method = RequestMethod.GET)
     public String list() {
         return "account/list";

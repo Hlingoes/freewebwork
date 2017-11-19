@@ -44,7 +44,7 @@ import com.github.pagehelper.PageInfo;
  * @time 2017-8-17 23:12:55
  */
 @Controller
-@RequestMapping("/html/task")
+@RequestMapping("static/html/task")
 public class TaskScheduleJobController {
 
 	public final Logger log = Logger.getLogger(this.getClass());

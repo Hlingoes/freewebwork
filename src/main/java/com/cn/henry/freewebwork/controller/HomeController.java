@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.LockedAccountException;
@@ -54,14 +55,14 @@ public class HomeController {
         	currentUser .logout();
         }
         try {
-        	UsernamePasswordToken upToken = new UsernamePasswordToken(tel, password);
+        	UsernamePasswordToken upToken = new UsernamePasswordToken(tel, DigestUtils.md5Hex(password + tel));
             upToken.setRememberMe(false);
             //登录，调用ShiroRealm类中的登录认证方法
             currentUser .login(upToken);
             //将登录的对象放入到Session中
             Session session = currentUser.getSession();
             session.setAttribute(User.SESSION_KEY, (User)currentUser.getPrincipal());
-            return "redirect:/account";
+            return "redirect:/home";
         } catch (LockedAccountException ex) {
             redirectAttributes.addFlashAttribute("message",new Message(Message.ERROR,ex.getMessage()));
             return "redirect:/register";
@@ -84,8 +85,7 @@ public class HomeController {
     public String logout(RedirectAttributes redirectAttributes) {
         Subject subject = SecurityUtils.getSubject();
         subject.logout();
-        redirectAttributes.addFlashAttribute("message",new Message(Message.SUCCESS,"你已安全退出"));
-        return "redirect:/";
+        return "redirect:/register";
     }
 
     /**
@@ -99,11 +99,4 @@ public class HomeController {
         model.addAttribute("json", mapper.writeValueAsString(result));
         return "home";
     }
-
-
-
-
-
-
-
 }

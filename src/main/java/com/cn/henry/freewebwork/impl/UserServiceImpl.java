@@ -10,7 +10,6 @@ import javax.annotation.Resource;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.cn.henry.freewebwork.dao.UserMapper;
@@ -26,9 +25,6 @@ public class UserServiceImpl implements UserService{
 	@Resource
 	private UserMapper userMapper;
 	
-	@Value("${user.salt}")
-	private String passwordSalt;
-
 	public List<User> findAllUser() {
 		return userMapper.findAll();
 	}
@@ -71,7 +67,7 @@ public class UserServiceImpl implements UserService{
 	public void saveNewUser(User user, String[] role) {
 		// 产生微信端使用的userid
 		user.setUserid(String.valueOf(System.currentTimeMillis()));
-		user.setPassword(DigestUtils.md5Hex(user.getPassword() + passwordSalt));
+		user.setPassword(DigestUtils.md5Hex(user.getPassword() + user.getTel()));
 		user.setCreatetime(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").format(LocalDateTime.now()));
 		user.setState(User.USER_STATE_OK);
 		userMapper.save(user);

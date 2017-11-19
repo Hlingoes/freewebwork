@@ -40,12 +40,6 @@
                     <h3 class="panel-title"><i class="fa fa-coffee"></i> CRM系统登录</h3>
                 </div>
                 <div class="panel-body">
-                    <c:if test="${not empty message}">
-                        <div class="alert ${message.state}">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            ${message.message}
-                        </div>
-                    </c:if>
                     <form id="loginForm" method="post" action="${pageContext.request.contextPath}/login">
                         <fieldset>
                             <div class="form-group">

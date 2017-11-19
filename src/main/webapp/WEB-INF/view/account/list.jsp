@@ -131,13 +131,13 @@
                         <div class="col-sm-10">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="role" value="8"> 管理员
+                                    <input type="checkbox" name="role" value="1"> 管理员
                                 </label>
                                 <label>
-                                    <input type="checkbox" name="role" value="9"> 经理
+                                    <input type="checkbox" name="role" value="2"> 经理
                                 </label>
                                 <label>
-                                    <input type="checkbox" name="role" value="10"> 普通员工
+                                    <input type="checkbox" name="role" value="3"> 普通员工
                                 </label>
                             </div>
                         </div>
@@ -181,13 +181,13 @@
                         <div class="col-sm-10">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="role" value="8" class="role"> 管理员
+                                    <input type="checkbox" name="role" value="1" class="role"> 管理员
                                 </label>
                                 <label>
-                                    <input type="checkbox" name="role" value="9" class="role"> 经理
+                                    <input type="checkbox" name="role" value="2" class="role"> 经理
                                 </label>
                                 <label>
-                                    <input type="checkbox" name="role" value="10" class="role"> 普通员工
+                                    <input type="checkbox" name="role" value="3" class="role"> 普通员工
                                 </label>
                             </div>
                         </div>
@@ -302,7 +302,7 @@
             $("#newUserModal").modal('show');
         });
         $("#saveBtn").click(function(){
-            $.post("/account/new",$("#newUserForm").serialize())
+            $.post("${pageContext.request.contextPath}/account/new",$("#newUserForm").serialize())
                     .done(function(result){
                         if("success" == result) {
                             $("#newUserForm")[0].reset();
@@ -319,7 +319,7 @@
         $(document).delegate(".delLink","click",function(){
             var id = $(this).attr("data-id");
             if(confirm("确定要删除该数据吗?")) {
-                $.post("/account/del",{"id":id}).done(function(result){
+                $.post("${pageContext.request.contextPath}/account/del",{"id":id}).done(function(result){
                     if("success" == result) {
                         dt.ajax.reload();
                     }
@@ -334,7 +334,7 @@
         $(document).delegate(".editLink","click",function(){
             $("#editUserForm")[0].reset();
             var id = $(this).attr("data-id");
-            $.get("/account/user.json",{"id":id}).done(function(result){
+            $.get("${pageContext.request.contextPath}/account/user.json",{"id":id}).done(function(result){
                 $("#id").val(result.id);
                 $("#username").val(result.username);
                 $("#tel").val(result.tel);
@@ -354,9 +354,6 @@
                 } else {
                     $("#disable")[0].checked = true;
                 }
-
-
-
             }).fail(function(){
 
             });
@@ -365,8 +362,7 @@
         });
 
         $("#editBtn").click(function(){
-
-            $.post("/account/edit",$("#editUserForm").serialize()).done(function(result){
+            $.post("${pageContext.request.contextPath}/account/edit",$("#editUserForm").serialize()).done(function(result){
                 if(result == "success") {
                     $("#editUserModal").modal("hide");
                     dt.ajax.reload();

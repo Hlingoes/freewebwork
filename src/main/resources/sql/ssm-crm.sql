@@ -31,7 +31,8 @@ values
 (10,'王溜溜','f76a319dbd7ad4d3c153c775ad503f37','1870000000','2016-04-29 15:11','正常'),
 (11,'jack','f76a319dbd7ad4d3c153c775ad503f37','190','2016-04-29 15:13','正常'),
 (12,'rose','f76a319dbd7ad4d3c153c775ad503f37','111','2016-04-29 15:13','正常'),
-(13,'郑哲丽','f76a319dbd7ad4d3c153c775ad503f37','1300000000','2016-04-29 15:14','禁用');
+(13,'郑哲丽','f76a319dbd7ad4d3c153c775ad503f37','1300000000','2016-04-29 15:14','禁用'),
+(17,'administrator','e61374fe22b90a60404a5afd94c4833b','158','2017-11-19 16:17','正常');
 
 /*Table structure for table `t_user_log` */
 DROP TABLE IF EXISTS `t_user_log`;
@@ -177,4 +178,4 @@ CREATE TABLE `role_user` (
   CONSTRAINT `fk_t_role_has_t_user_t_user1` FOREIGN KEY (`userid`) REFERENCES `t_user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*Data for the table `role_user` */
-insert  into `role_user`(`roleid`,`userid`) values (1,1),(1,8),(2,8),(3,9),(3,10),(3,11),(1,12),(2,12),(3,12),(2,13);
+insert  into `role_user`(`roleid`,`userid`) values (1,1),(1,8),(2,8),(3,9),(3,10),(3,11),(1,12),(2,12),(3,12),(2,13),(1,17),(2,17),(3,17);

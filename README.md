@@ -29,7 +29,8 @@
 # 6. 整合shiro权限管理
 6.1 [SpringMVC+Shiro整合配置文件详解](http://blog.csdn.net/dawangxiong123/article/details/53020424)<br>
 6.2 [在SSM中使用shiro实现登录验证（附密码加密）](http://blog.csdn.net/xiangwanpeng/article/details/54793768)<br>
-6.3 [shrio 权限管理filterChainDefinitions过滤器配置 ](http://www.cppblog.com/guojingjia2006/archive/2014/05/14/206956.html)
+6.3 [30分钟学会如何使用Shiro](https://www.cnblogs.com/learnhow/p/5694876.html)
+6.4 [shrio 权限管理filterChainDefinitions过滤器配置 ](http://www.cppblog.com/guojingjia2006/archive/2014/05/14/206956.html)
 # 7. 前端插件
 7.1 [bootstrap-validator 小巧的表单验证插件，无需引入额外的css，api不易用](https://github.com/1000hz/bootstrap-validator)
 

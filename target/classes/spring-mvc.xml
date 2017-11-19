@@ -61,7 +61,7 @@
         <property name="prefix" value="/WEB-INF/view/" />  
         <property name="suffix" value=".jsp" />  
     </bean>  
-    <!--静态资源配置-->
+    <!--静态资源和带有static的url请求的过滤配置，不会被拦截-->
     <mvc:resources mapping="/static/**" location="/static/"/>
     <!-- quartz与spring的整合  -->
 	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" />

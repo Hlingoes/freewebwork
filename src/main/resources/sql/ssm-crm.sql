@@ -11,7 +11,9 @@ CREATE TABLE `t_user` (
   `password` VARCHAR(100) DEFAULT NULL COMMENT '密码',
   `tel` VARCHAR(45) DEFAULT NULL COMMENT '手机号码',
   `createtime` VARCHAR(45) DEFAULT NULL COMMENT '创建时间',
-  `state` VARCHAR(45) DEFAULT NULL COMMENT '员工状态',
+  `state` VARCHAR(15) DEFAULT NULL COMMENT '员工状态',
+  `userid` VARCHAR(15) DEFAULT NULL COMMENT '登录微信使用的id',
+  `weixinid` VARCHAR(15) DEFAULT NULL COMMENT '微信号',
   PRIMARY KEY (`id`)
 ) ENGINE=INNODB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*Data for the table `t_user` */

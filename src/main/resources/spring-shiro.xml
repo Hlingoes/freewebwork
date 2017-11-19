@@ -5,7 +5,7 @@
 		http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.0.xsd"
 	default-lazy-init="true">
 	<!-- 继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的MyShiroRealm.java -->  
-    <bean id="MyShiroRealm" class="com.cn.henry.freewebwork.controller.MyShiroRealm"/>
+    <bean id="MyShiroRealm" class="com.cn.henry.freewebwork.controller.MyShiroRealm" />
     <!-- 定义缓存管理器 --> 
    	<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" /> 
    	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">

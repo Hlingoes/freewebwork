@@ -28,12 +28,13 @@ CRM项目使用jsp的方式做权限控制，定时任务管理使用静态html�
 #### 4. 配置项目静态文件
 [Maven工程JSP页面无法加载.js文件的解决方案](http://blog.csdn.net/javaee_sunny/article/details/52513160)
 #### 5. 常用工具类
-5.1 [Java下利用Jackson进行JSON解析和序列化](http://blog.csdn.net/accountwcx/article/details/24585987)<br>
+5.1 [Java下利用Jackson进行JSON解析和序列化](https://www.cnblogs.com/winner-0715/p/6109225.html)<br>
 5.2 [Jackson介绍（1）-jackson2.x与Jackson1.9的比较](http://blog.csdn.net/u011179993/article/details/46454059)<br>
 5.3 [spring使用jackson实现json输出](http://blog.chinaunix.net/uid-192452-id-3967223.html)<br>
 5.4 [Spring4新特性——集成Bean Validation 1.1(JSR-349)到SpringMVC](http://jinnianshilongnian.iteye.com/blog/1990081)<br>
 5.5 [spring MVC中基于hibernate validator的form表单验证](http://blog.csdn.net/wuyt2008/article/details/8597312)<br>
-5.6 [用于导入导出Excel的Util包，基于Java的POI。可将List<Bean>导出成Excel，或读取Excel成List<Bean>,读取时有验证和Log](https://github.com/SargerasWang/ExcelUtil)
+5.6 [用于导入导出Excel的Util包，基于Java的POI。可将List<Bean>导出成Excel，或读取Excel成List<Bean>,读取时有验证和Log](https://github.com/SargerasWang/ExcelUtil)<br>
+5.7 [log4j输出多个自定义日志文件，动态配置路径](http://blog.csdn.net/wiwipetter/article/details/4390579)
 #### 6. 整合shiro权限管理
 6.1 [SpringMVC+Shiro整合配置文件详解](http://blog.csdn.net/dawangxiong123/article/details/53020424)<br>
 6.2 [在SSM中使用shiro实现登录验证（附密码加密）](http://blog.csdn.net/xiangwanpeng/article/details/54793768)<br>

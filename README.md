@@ -42,6 +42,8 @@ CRM项目使用jsp的方式做权限控制，定时任务管理使用静态html�
 6.4 [shrio 权限管理filterChainDefinitions过滤器配置 ](http://www.cppblog.com/guojingjia2006/archive/2014/05/14/206956.html)
 #### 7. 前端插件
 7.1 [bootstrap-validator 小巧的表单验证插件，无需引入额外的css，api不易用](https://github.com/1000hz/bootstrap-validator)
+7.2 [bootstrap-fileinput 契合bootstrap样式的文件上传插件，比较好用](https://github.com/kartik-v/bootstrap-fileinput)
+7.3 [Bootstrap fileinput.js，最好用的文件上传组件 ](http://blog.csdn.net/qing_gee/article/details/48949701)
 
 ## 参考项目
 1. [snailxr/quartz-spring_demo, SSM框架做的客户关系管理系统](https://github.com/fankay/crm)<br>

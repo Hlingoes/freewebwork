@@ -14,7 +14,8 @@
 	<link href="${pageContext.request.contextPath}/static/pic/favicon.png" rel="shortcut icon" />
     <!-- Bootstrap Core CSS -->
     <link href="${pageContext.request.contextPath}/static/css/bootstrap.css" rel="stylesheet">
-
+	<link href="${pageContext.request.contextPath}/static/css/bootstrap-fileinput-4.4.7.css" rel="stylesheet">
+	
     <!-- MetisMenu CSS -->
     <link href="${pageContext.request.contextPath}/static/js/metisMenu/metisMenu.min.css" rel="stylesheet">
 
@@ -141,7 +142,12 @@
                                 </label>
                             </div>
                         </div>
-
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">文件</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control file" name="testFile">
+                        </div>
                     </div>
                 </form>
             </div>
@@ -222,6 +228,7 @@
 
 <!-- Bootstrap Core JavaScript -->
 <script src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/bootstrap-fileinput-4.4.7.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
 <script src="${pageContext.request.contextPath}/static/js/metisMenu/metisMenu.min.js"></script>
@@ -229,7 +236,7 @@
 <!-- Custom Theme JavaScript -->
 <script src="${pageContext.request.contextPath}/static/js/sb-admin-2.js"></script>
 <script src="${pageContext.request.contextPath}/static/js/datatables/media/js/jquery.dataTables.min.js"></script>
-<script src="${pageContext.request.contextPath}/static/js/datatables/media/js/dataTables.bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/datatables/media/js/jquery.dataTables.min.js"></script>
 <script>
     $(function(){
 
@@ -302,17 +309,24 @@
             $("#newUserModal").modal('show');
         });
         $("#saveBtn").click(function(){
-            $.post("${pageContext.request.contextPath}/account/new",$("#newUserForm").serialize())
-                    .done(function(result){
-                        if("success" == result) {
-                            $("#newUserForm")[0].reset();
-                            $("#newUserModal").modal("hide");
-                            dt.ajax.reload();
-                        }
-                    }).fail(function(){
-                        alert("添加时出现异常");
-                    });
-
+        	var formData = new FormData(document.getElementById('newUserForm'));
+			$.ajax({
+                url: "${pageContext.request.contextPath}/account/new",
+                type: "post",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(res){
+                	if("success" == res) {
+                        $("#newUserForm")[0].reset();
+                        $("#newUserModal").modal("hide");
+                        dt.ajax.reload();
+                    }
+                },
+                error:function(e){
+                	alert("添加时出现异常");
+                }
+            });
         });
 
         //删除用户

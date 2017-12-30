@@ -202,14 +202,25 @@ var taskHandler = function () {
 		$("form").validator().on('submit', function(e) {
 			if ($(this).find(".has-error").length === 0) {
 				// 表示验证成功
-				$.post(pageUrl.addJobUrl, $("form").serialize()).done(function(res) {
-					if (res.flag) {
-						pageModal.hide();
-						pageGrid.load();
-					} else {
-						alert(res.msg);
-					}
-				});
+				var formData = new FormData(this);
+				$.ajax({
+	                url: pageUrl.addJobUrl,
+	                type: "post",
+	                data: formData,
+	                processData: false,
+	                contentType: false,
+	                success: function(res){
+	                    if (res.flag) {
+							pageModal.hide();
+							pageGrid.load();
+						} else {
+							alert(res.msg);
+						}
+	                },
+	                error:function(e){
+	                    alert("错误！！");
+	                }
+	            });   
 			}
 		});
 		

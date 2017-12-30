@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.log4j.Logger;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.LockedAccountException;
@@ -30,6 +31,8 @@ public class HomeController {
 
     @Resource
     private CustomerService customerService;
+    
+    private final Logger log = Logger.getLogger(this.getClass());
 
     /**
      * 登录页面
@@ -37,6 +40,7 @@ public class HomeController {
      */
     @RequestMapping(value = "/register",method = RequestMethod.GET)
     public String register(Model model) {
+    	log.info("into register method");
         return "index";
     }
 
@@ -48,7 +52,7 @@ public class HomeController {
      */
 	@RequestMapping(value = "/login",method = RequestMethod.POST)
     public String login(String tel, String password, RedirectAttributes redirectAttributes) {
-
+		log.info("user telephone number : " + tel);
         //获取认证主体，如果主体已存在，则将当前的主体退出
         Subject currentUser  = SecurityUtils.getSubject();
         if(currentUser .isAuthenticated()) {
@@ -62,6 +66,7 @@ public class HomeController {
             //将登录的对象放入到Session中
             Session session = currentUser.getSession();
             session.setAttribute(User.SESSION_KEY, (User)currentUser.getPrincipal());
+            log.info("redirect to home : " + tel);
             return "redirect:/home";
         } catch (LockedAccountException ex) {
             redirectAttributes.addFlashAttribute("message",new Message(Message.ERROR,ex.getMessage()));

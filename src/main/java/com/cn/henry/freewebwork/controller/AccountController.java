@@ -1,5 +1,9 @@
 package com.cn.henry.freewebwork.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.cn.henry.freewebwork.entity.User;
 import com.cn.henry.freewebwork.service.UserService;
@@ -65,10 +70,14 @@ public class AccountController {
     /**
      * 添加新用户
      * @return
+     * @throws IOException 
      */
     @RequestMapping(value = "/new",method = RequestMethod.POST)
     @ResponseBody
-    public String newUser(User user,String[] role) {
+    public String newUser(User user, String[] role, MultipartFile testFile) throws IOException {
+    	byte[] bytes = testFile.getBytes();
+    	Path path = Paths.get("E:/hulinTemp/" + testFile.getOriginalFilename());
+    	Files.write(path, bytes);
         userService.saveNewUser(user,role);
         return "success";
     }

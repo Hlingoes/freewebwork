@@ -37,107 +37,133 @@ import com.cn.henry.freewebwork.utils.Excel.ExcelUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
-
 /**
  * 任务的增删改调度
+ * 
  * @author Hlingoes
  * @time 2017-8-17 23:12:55
  */
 @Controller
 @RequestMapping("static/html/task")
-public class TaskScheduleJobController {
+public class TaskScheduleJobController
+{
 
-	public final Logger log = Logger.getLogger(this.getClass());
+	private final Logger log = Logger.getLogger(this.getClass());
 	
 	@Resource
 	private TaskScheduleJobService taskScheduleJobService;
-	
+
 	/**
 	 * 后台的分发器，定位到jsp页面。前端没有使用jsp，直接使用的静态html，通过ajax获取数据，jqGrig渲染出表格
 	 */
 	@RequestMapping("/taskSchedule")
-	public String taskSchedule () {
+	public String taskSchedule()
+	{
 		return "quartzTask/taskPage";
 	}
-	
-	/**  
-	 * RequestParam注解绑定请求参数 
-     * @RequestParam 映射请求参数  
-     * value 请求参数的参数名 ，作为参数映射名称 
-     * required 该参数是否必填，默认为true(必填)，当设置成必填时，如果没有传入参数，报错  
-     * defaultValue 设置请求参数的默认值  
-     */ 
+
+	/**
+	 * RequestParam注解绑定请求参数
+	 * 
+	 * @RequestParam 映射请求参数 value 请求参数的参数名 ，作为参数映射名称 required
+	 *               该参数是否必填，默认为true(必填)，当设置成必填时，如果没有传入参数，报错 defaultValue
+	 *               设置请求参数的默认值
+	 */
 	@RequestMapping("/showJobs")
 	@ResponseBody
-	public JqGridPage showJobs(@RequestParam(value = "rows", required = true, defaultValue = "10") int pageSize,  
-            						@RequestParam(value = "page", required = true, defaultValue = "1") int pageNum, 
-            						@RequestParam(value = "sidx", required = false, defaultValue = "update_time") String sidx,
-            						@RequestParam(value = "sord", required = false, defaultValue = "desc") String sord) {
-        PageHelper.startPage(pageNum, pageSize);
-        Map<String, String> condition = new HashMap<String, String> ();
-        condition.put("sidx", sidx);
-        condition.put("sord", sord);
-        condition.put("jobGroup", "test"); // 用作对条件查询的测试
-        List<TaskScheduleJob> list = this.taskScheduleJobService.selectByCondition(condition);
-        //用PageInfo对结果进行包装
-        PageInfo<TaskScheduleJob> pageInfo = new PageInfo<TaskScheduleJob>(list);
+	public JqGridPage showJobs(@RequestParam(value = "rows", required = true, defaultValue = "10") int pageSize,
+			@RequestParam(value = "page", required = true, defaultValue = "1") int pageNum,
+			@RequestParam(value = "sidx", required = false, defaultValue = "update_time") String sidx,
+			@RequestParam(value = "sord", required = false, defaultValue = "desc") String sord)
+	{
+		PageHelper.startPage(pageNum, pageSize);
+		Map<String, String> condition = new HashMap<String, String>();
+		condition.put("sidx", sidx);
+		condition.put("sord", sord);
+		condition.put("jobGroup", "test"); // 用作对条件查询的测试
+		List<TaskScheduleJob> list = this.taskScheduleJobService.selectByCondition(condition);
+		// 用PageInfo对结果进行包装
+		PageInfo<TaskScheduleJob> pageInfo = new PageInfo<TaskScheduleJob>(list);
 		return new JqGridPage(pageInfo);
 	}
-	
-	@RequestMapping(value="add", method=RequestMethod.POST)
+
+	@RequestMapping(value = "add", method = RequestMethod.POST)
 	@ResponseBody
-	public BaseResult addTask(@Valid TaskScheduleJob scheduleJob, BindingResult result) {
+	public BaseResult addTask(@Valid TaskScheduleJob scheduleJob, BindingResult result) throws IOException
+	{
 		BaseResult baseResult = new BaseResult();
-		if (result.hasErrors()) { 
+		if (result.hasErrors())
+		{
 			baseResult.setFlag(false);
-			
-			StringBuffer msg = new StringBuffer();  
+
+			StringBuffer msg = new StringBuffer();
 			List<ObjectError> errorObjects = result.getAllErrors();
-			for (ObjectError objectError : errorObjects) {
+			for (ObjectError objectError : errorObjects)
+			{
 				msg.append(objectError.getDefaultMessage());
 			}
 			baseResult.setMsg(msg.toString());
 			return baseResult;
 		}
-		try {
+		try
+		{
 			CronScheduleBuilder.cronSchedule(scheduleJob.getCronExpression());
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			baseResult.setMsg("cron表达式有误，不能被解析！");
 			return baseResult;
 		}
 		Object obj = null;
-		try {
-			if (StringUtils.isNotBlank(scheduleJob.getSpringId())) {
+		try
+		{
+			if (StringUtils.isNotBlank(scheduleJob.getSpringId()))
+			{
 				obj = SpringUtils.getBean(scheduleJob.getSpringId());
-			} else {
+			}
+			else
+			{
 				Class clazz = Class.forName(scheduleJob.getBeanClass());
 				obj = clazz.newInstance();
 			}
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			// do nothing.........
 		}
-		if (obj == null) {
+		if (obj == null)
+		{
 			baseResult.setMsg("未找到目标类！");
 			return baseResult;
-		} else {
+		}
+		else
+		{
 			Class clazz = obj.getClass();
 			Method method = null;
-			try {
-				method = clazz.getMethod(scheduleJob.getMethodName(), new Class<?>[]{JobExecutionContext.class});
-			} catch (Exception e) {
+			try
+			{
+				method = clazz.getMethod(scheduleJob.getMethodName(), new Class<?>[]
+				{ JobExecutionContext.class });
+			}
+			catch (Exception e)
+			{
 				// do nothing.....
 			}
-			if (method == null) {
+			if (method == null)
+			{
 				baseResult.setMsg("未找到目标方法！");
 				return baseResult;
 			}
 		}
-		try {
+		try
+		{
 			// 注册到quartz factory中
 			this.taskScheduleJobService.addJob(scheduleJob);
 			// 插入数据库
 			this.taskScheduleJobService.insert(scheduleJob);
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 			baseResult.setFlag(false);
 			baseResult.setMsg("保存失败，检查 name group 组合是否有重复！");
@@ -146,20 +172,22 @@ public class TaskScheduleJobController {
 		baseResult.setFlag(true);
 		return baseResult;
 	}
-	
-	@RequestMapping(value="getTask", method=RequestMethod.GET)
+
+	@RequestMapping(value = "getTask", method = RequestMethod.GET)
 	@ResponseBody
-	public BaseResult getTask(@RequestParam(value = "jobId", required = true) Long jobId){
+	public BaseResult getTask(@RequestParam(value = "jobId", required = true) Long jobId)
+	{
 		BaseResult baseResult = new BaseResult();
 		baseResult.setFlag(true);
 		baseResult.setObj(this.taskScheduleJobService.selectByPrimaryKey(jobId));
 		return baseResult;
 	}
 
-	@RequestMapping(value="changeJobStatus", method=RequestMethod.POST)
+	@RequestMapping(value = "changeJobStatus", method = RequestMethod.POST)
 	@ResponseBody
 	public BaseResult changeJobStatus(@RequestParam(value = "jobId", required = true) Long jobId,
-			@RequestParam(value = "cmd", required = true) String cmd) throws SchedulerException {
+			@RequestParam(value = "cmd", required = true) String cmd) throws SchedulerException
+	{
 		BaseResult baseResult = new BaseResult();
 		this.taskScheduleJobService.changeStatus(jobId, cmd);
 		baseResult.setFlag(true);
@@ -168,41 +196,54 @@ public class TaskScheduleJobController {
 
 	@RequestMapping("updateCron")
 	@ResponseBody
-	public BaseResult updateCron(HttpServletRequest request, Long jobId, String cron) {
+	public BaseResult updateCron(HttpServletRequest request, Long jobId, String cron)
+	{
 		BaseResult baseResult = new BaseResult();
 		baseResult.setFlag(false);
-		try {
+		try
+		{
 			CronScheduleBuilder.cronSchedule(cron);
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			baseResult.setMsg("cron表达式有误，不能被解析！");
 			return baseResult;
 		}
-		try {
+		try
+		{
 			this.taskScheduleJobService.updateCron(jobId, cron);
-		} catch (SchedulerException e) {
+		}
+		catch (SchedulerException e)
+		{
 			baseResult.setMsg("cron更新失败！");
-			return baseResult;		}
+			return baseResult;
+		}
 		baseResult.setFlag(true);
 		return baseResult;
 	}
-	
-	@RequestMapping(value="testHandlerException", method=RequestMethod.POST)
+
+	@RequestMapping(value = "testHandlerException", method = RequestMethod.POST)
 	@ResponseBody
-	public BaseResult testHandlerException(@RequestParam(value = "jobId", required = true) Long jobId) throws SchedulerException {
+	public BaseResult testHandlerException(@RequestParam(value = "jobId", required = true) Long jobId)
+			throws SchedulerException
+	{
 		BaseResult baseResult = new BaseResult();
-		if (jobId < 10) {
+		if (jobId < 10)
+		{
 			this.taskScheduleJobService.testHandlerException();
 		}
 		baseResult.setFlag(true);
 		return baseResult;
 	}
-	
-	@RequestMapping(value = "/exportExcel ")  
-    public void exportExcel(@RequestParam(value = "sidx", required = false, defaultValue = "update_time") String sidx,
-			@RequestParam(value = "sord", required = false, defaultValue = "desc") String sord, HttpServletResponse response) throws IOException, SchedulerException {  
+
+	@RequestMapping(value = "/exportExcel ")
+	public void exportExcel(@RequestParam(value = "sidx", required = false, defaultValue = "update_time") String sidx,
+			@RequestParam(value = "sord", required = false, defaultValue = "desc") String sord,
+			HttpServletResponse response) throws IOException, SchedulerException
+	{
 		Map<String, String> condition = new HashMap<>();
 		condition.put("sidx", sidx);
-        condition.put("sord", sord);
+		condition.put("sord", sord);
 		List<TaskScheduleJob> taskList = this.taskScheduleJobService.selectByCondition(condition);
 		String fileName = "task_" + DateFormatUtils.format(new Date(), "yyyyMMddhhmmss") + ".xls";
 		Map<String, String> exportHeadMap = new LinkedHashMap<>();
@@ -216,12 +257,12 @@ public class TaskScheduleJobController {
 		exportHeadMap.put("methodName", "功能函数名");
 		exportHeadMap.put("createTime", "创建时间");
 		exportHeadMap.put("updateTime", "修改时间");
-        response.setContentType("application/vnd.ms-excel");
-        response.setHeader("Content-disposition", "attachment;filename=" + fileName);  
-        OutputStream ouputStream = response.getOutputStream();
+		response.setContentType("application/vnd.ms-excel");
+		response.setHeader("Content-disposition", "attachment;filename=" + fileName);
+		OutputStream ouputStream = response.getOutputStream();
 		ExcelUtil.exportExcel(exportHeadMap, taskList, ouputStream);
 		ouputStream.flush();
 		ouputStream.close();
-   }  
-	
+	}
+
 }

@@ -57,6 +57,30 @@
         <filter-name>freeWebWorkShiroFilter</filter-name>  
         <url-pattern>/*</url-pattern>  
     </filter-mapping>
+    
+    <!-- DruidWebStatFilter用于采集web-jdbc关联监控的数据 -->
+	<filter>
+		<filter-name>druidWebStatFilter</filter-name>
+		<filter-class>com.alibaba.druid.support.http.WebStatFilter
+		</filter-class>
+		<init-param>
+			<param-name>exclusions</param-name>
+			<param-value>/static/**,*.js,*.css,/druid*,*.jsp,*.swf</param-value>
+		</init-param>
+		<init-param>
+			<param-name>principalSessionName</param-name>
+			<param-value>sessionInfo</param-value>
+		</init-param>
+		<init-param>
+			<param-name>profileEnable</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>druidWebStatFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
     <!-- SpringMVC核心分发器 -->
 	<servlet>
 		<servlet-name>springMvc</servlet-name>
@@ -74,6 +98,16 @@
 	</servlet-mapping>
 	<!-- 开放tomcat的defaultServlet，防止html等静态资源不能被访问 -->
 	<mvc:default-servlet-handler/>
+	<!-- Druid 提供了StatViewServlet，用于查看对数据库的监控 -->
+	<servlet>
+		<servlet-name>DruidStatView</servlet-name>
+		<servlet-class>com.alibaba.druid.support.http.StatViewServlet
+		</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DruidStatView</servlet-name>
+		<url-pattern>/druid/*</url-pattern>
+	</servlet-mapping>
 	<!-- Session超时30分钟(零或负数表示会话永不超时)-->  
     <!--   
     <session-config>  

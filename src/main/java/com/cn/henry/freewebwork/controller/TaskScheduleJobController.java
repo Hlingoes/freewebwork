@@ -105,15 +105,15 @@ public class TaskScheduleJobController
 			baseResult.setMsg(msg.toString());
 			return baseResult;
 		}
-		try
-		{
-			CronScheduleBuilder.cronSchedule(scheduleJob.getCronExpression());
-		}
-		catch (Exception e)
-		{
-			baseResult.setMsg("cron表达式有误，不能被解析！");
-			return baseResult;
-		}
+//		try
+//		{
+//			CronScheduleBuilder.cronSchedule(scheduleJob.getCronExpression());
+//		}
+//		catch (Exception e)
+//		{
+//			baseResult.setMsg("cron表达式有误，不能被解析！");
+//			return baseResult;
+//		}
 		Object obj = null;
 		try
 		{

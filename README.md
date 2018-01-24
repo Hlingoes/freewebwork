@@ -3,6 +3,7 @@
 用creat_user_t.sql和User.java做基础测试用例，调试版本和常用配置文件，后续使用ssm-crm.sql和quartz-demo.sql运行。<br>
 项目启动后访问：localhost:8080/freewebwork/register 账号：158，密码：123123 <br>
 定时任务页面：localhost:8080/freewebwork/static/html/task/taskPage.html <br>
+druid的监控页面: localhost:8080/freewebwork/druid/index.html <br>
 项目用maven构建，建议使用jdk1.8，tomcat 8.0，spring 4.0，mybatis 3.0，mysql 5.6，shirio 1.4，配置过程中务必要注意jar版本。
 CRM项目使用jsp的方式做权限控制，定时任务管理使用静态html配合ajax的形式渲染。前端页面基于[bootstrap](http://www.bootcss.com/)，[jquery](https://jquery.com/)，表格使用[jqGrid](http://www.guriddo.net/demo/bootstrap/)，[datatables](https://datatables.net/examples/),字体文件[font-awesome](http://fontawesome.dashgame.com/)等比较常用的插件，以使用顺手为主。
 #### 项目结构和功能展示
@@ -40,10 +41,13 @@ CRM项目使用jsp的方式做权限控制，定时任务管理使用静态html�
 6.2 [在SSM中使用shiro实现登录验证（附密码加密）](http://blog.csdn.net/xiangwanpeng/article/details/54793768)<br>
 6.3 [30分钟学会如何使用Shiro](https://www.cnblogs.com/learnhow/p/5694876.html)<br>
 6.4 [shrio 权限管理filterChainDefinitions过滤器配置 ](http://www.cppblog.com/guojingjia2006/archive/2014/05/14/206956.html)
-#### 7. 前端插件
-7.1 [bootstrap-validator 小巧的表单验证插件，无需引入额外的css，api不易用](https://github.com/1000hz/bootstrap-validator)<br>
-7.2 [bootstrap-fileinput 契合bootstrap样式的文件上传插件，比较好用](https://github.com/kartik-v/bootstrap-fileinput)<br>
-7.3 [Bootstrap fileinput.js，最好用的文件上传组件 ](http://blog.csdn.net/qing_gee/article/details/48949701)
+#### 7. 整合druid数据库监控
+7.1 [Spring+Mybatis+Druid 整合Demo](http://blog.csdn.net/vbirdbest/article/details/72821114)<br>
+7.2 [Druid 介绍及配置](https://www.cnblogs.com/niejunlei/p/5977895.html)
+#### 8. 前端插件
+8.1 [bootstrap-validator 小巧的表单验证插件，无需引入额外的css，api不易用](https://github.com/1000hz/bootstrap-validator)<br>
+8.2 [bootstrap-fileinput 契合bootstrap样式的文件上传插件，比较好用](https://github.com/kartik-v/bootstrap-fileinput)<br>
+8.3 [Bootstrap fileinput.js，最好用的文件上传组件 ](http://blog.csdn.net/qing_gee/article/details/48949701)
 
 ## 参考项目
 1. [snailxr/quartz-spring_demo, SSM框架做的客户关系管理系统](https://github.com/fankay/crm)<br>

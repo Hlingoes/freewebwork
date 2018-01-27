@@ -3,6 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>Henry</groupId>
 	<artifactId>freewebwork</artifactId>
+	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>freewebwork Maven Webapp</name>
 	<url>http://maven.apache.org</url>
@@ -267,15 +268,15 @@
             <properties>
                 <env>local</env>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
         </profile>
         <profile>
             <id>dev</id>
             <properties>
                 <env>dev</env>
             </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
         </profile>
         <profile>
             <id>prod</id>
@@ -287,24 +288,28 @@
 
 	<build>
         <resources>
+            <!-- 清空编译后class文件夹中指定的配置文件 -->
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>local/*</exclude>
+		            <exclude>dev/*</exclude>
+            		<exclude>prod/*</exclude>
+            		<exclude>sql/*</exclude>
+            		<exclude>*.properties</exclude>
+                </excludes>
+            </resource>
+            <!-- 按profile将src/main/resources/${env}文件夹中的所有配置文件复制到class文件夹 -->
+            <resource>
+                <directory>src/main/resources/${env}</directory>
+            </resource>
+            <!-- 复制src/main/java文件夹中的配置文件到编译后的class文件夹 -->
         	<resource>
                 <directory>src/main/java</directory>
                 <includes>  
                     <include>**/*.properties</include> 
                     <include>**/*.xml</include>  
                 </includes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <excludes>
-                    <exclude>local/*.properties</exclude>
-		            <exclude>dev/*.properties</exclude>
-            		<exclude>prod/*.properties</exclude>
-            		<exclude>sql/*</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>src/main/resources/${env}</directory>
             </resource>
         </resources>
         
@@ -359,5 +364,4 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	<packaging>war</packaging>
 </project>

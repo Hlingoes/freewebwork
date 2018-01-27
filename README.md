@@ -26,8 +26,9 @@ CRM项目使用jsp的方式做权限控制，定时任务管理使用静态html�
 2.9 [MyBatis--Map实现多条件查询](http://blog.csdn.net/sinat_27115575/article/details/70144177)
 #### 3. 整合定时任务
 [Spring回顾之七 —— 和Quartz一起进行定时任务](http://veiking.iteye.com/blog/2371511)
-#### 4. 配置项目静态文件
-[Maven工程JSP页面无法加载.js文件的解决方案](http://blog.csdn.net/javaee_sunny/article/details/52513160)
+#### 4. maven配置项目静态文件和打包
+4.1 [Maven工程JSP页面无法加载.js文件的解决方案](http://blog.csdn.net/javaee_sunny/article/details/52513160)<br>
+4.2 [maven profile切换正式环境和测试环境](https://www.cnblogs.com/nfcm/p/7550772.html)<br>
 #### 5. 常用工具类
 5.1 [Java下利用Jackson进行JSON解析和序列化](https://www.cnblogs.com/winner-0715/p/6109225.html)<br>
 5.2 [Jackson介绍（1）-jackson2.x与Jackson1.9的比较](http://blog.csdn.net/u011179993/article/details/46454059)<br>

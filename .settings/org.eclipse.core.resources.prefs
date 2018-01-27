@@ -1,6 +1,11 @@
 eclipse.preferences.version=1
+encoding//src/main/java=UTF-8
+encoding//src/main/resources=UTF-8
+encoding//src/main/resources/dev=UTF-8
 encoding//src/main/resources/dev/log4j.properties=UTF-8
 encoding//src/main/resources/local/log4j.properties=UTF-8
 encoding//src/main/resources/log4j.properties=UTF-8
 encoding//src/main/resources/prod/log4j.properties=UTF-8
 encoding//src/main/resources/validationMessages.properties=UTF-8
+encoding//src/test/java=UTF-8
+encoding/<project>=UTF-8

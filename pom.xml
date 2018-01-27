@@ -3,7 +3,6 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>Henry</groupId>
 	<artifactId>freewebwork</artifactId>
-	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>freewebwork Maven Webapp</name>
 	<url>http://maven.apache.org</url>
@@ -262,42 +261,64 @@
 		
 	</dependencies>
 
+	<profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <env>local</env>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <env>dev</env>
+            </properties>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <env>prod</env>
+            </properties>
+        </profile>
+	</profiles>
+
 	<build>
-		<finalName>freewebwork</finalName>
+        <resources>
+        	<resource>
+                <directory>src/main/java</directory>
+                <includes>  
+                    <include>**/*.properties</include> 
+                    <include>**/*.xml</include>  
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>local/*.properties</exclude>
+		            <exclude>dev/*.properties</exclude>
+            		<exclude>prod/*.properties</exclude>
+            		<exclude>sql/*</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources/${env}</directory>
+            </resource>
+        </resources>
+        
+        <finalName>${project.artifactId}</finalName>
 		<pluginManagement>
 			<plugins>
-				<!-- maven打包编译配置 -->
-		      	<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>2.3.2</version>
-					<configuration>
-						<source>1.8</source>
-						<target>1.8</target>
-						<encoding>UTF-8</encoding>
-					</configuration>
-				</plugin>
-				<plugin>
+                <!-- 跳过单元测试直接生成war包 -->
+                <plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>2.4.2</version>
 					<configuration>
 						<skipTests>true</skipTests>
 					</configuration>
-				</plugin>
-	            <plugin>
-	                <groupId>org.apache.maven.plugins</groupId>
-	                <artifactId>maven-source-plugin</artifactId>
-	                <version>2.4</version>
-	                <executions>
-	                    <execution>
-	                        <id>attach-sources</id>
-	                        <phase>install</phase>
-	                        <goals>
-	                            <goal>jar-no-fork</goal>
-	                        </goals>
-	                    </execution>
-	                </executions>
 				</plugin>
 			    <!-- mybatis自动生成代码的配置 -->
 				<plugin>
@@ -338,4 +359,5 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	<packaging>war</packaging>
 </project>

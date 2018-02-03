@@ -280,7 +280,6 @@ public class ExcelUtil {
             T t = (T) it.next();
             try {
             	if (t instanceof Map) {
-                    @SuppressWarnings("unchecked")
                     Map<String, Object> map = (Map<String, Object>) t;
                     int cellNum = 0;
                     //遍历列名

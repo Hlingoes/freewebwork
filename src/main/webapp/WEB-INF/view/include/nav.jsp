@@ -49,9 +49,10 @@
                     <a href="${pageContext.request.contextPath}/task"><i class="fa fa-edit fa-fw"></i> 待办</a>
                 </li>
                 <li>
-                    <a href="chart.html"><i class="fa fa-bar-chart"></i> 统计</a>
-
-                    <!-- /.nav-second-level -->
+                    <a href="${pageContext.request.contextPath}/taskSchedule/taskPage" target=_blank><i class="fa fa-tasks fa-fw"></i> 定时任务</a>
+                </li>
+                <li>
+                    <a href="${pageContext.request.contextPath}/druid/index.html" target=_blank><i class="fa fa-database fa-fw"></i> 数据库监控</a>
                 </li>
                 <shiro:hasRole name="管理员">
                     <li>

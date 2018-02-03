@@ -11,6 +11,7 @@ import javax.annotation.Resource;
 import org.apache.log4j.Logger;
 import org.quartz.CronScheduleBuilder;
 import org.quartz.CronTrigger;
+import org.quartz.Job;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
 import org.quartz.JobKey;
@@ -137,8 +138,9 @@ public class TaskScheduleJobServiceImpl implements TaskScheduleJobService{
 
 		// 不存在，创建一个
 		if (null == trigger) {
-			Class clazz = TaskScheduleJob.CONCURRENT_IS.equals(job.getIsConcurrent()) ? QuartzJobFactory.class : QuartzJobFactoryDisallowConcurrentExecution.class;
-			JobDetail jobDetail = JobBuilder.newJob(clazz).withIdentity(job.getJobName(), job.getJobGroup()).build();
+			Class<?> clazz = TaskScheduleJob.CONCURRENT_IS.equals(job.getIsConcurrent()) ? QuartzJobFactory.class : QuartzJobFactoryDisallowConcurrentExecution.class;
+			@SuppressWarnings("unchecked")
+			JobDetail jobDetail = JobBuilder.newJob((Class<? extends Job>) clazz).withIdentity(job.getJobName(), job.getJobGroup()).build();
 			jobDetail.getJobDataMap().put("scheduleJob", job);
 			CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(job.getCronExpression());
 			trigger = TriggerBuilder.newTrigger().withIdentity(job.getJobName(), job.getJobGroup()).withSchedule(scheduleBuilder).build();

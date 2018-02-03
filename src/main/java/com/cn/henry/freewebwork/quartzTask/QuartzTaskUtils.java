@@ -24,7 +24,7 @@ public class QuartzTaskUtils {
 	 */
 	public static void invokMethod(TaskScheduleJob scheduleJob) {
 		Object object = null;
-		Class clazz = null;
+		Class<?> clazz = null;
 		if (StringUtils.isNotEmpty(scheduleJob.getSpringId())) {
 			object = SpringUtils.getBean(scheduleJob.getSpringId());
 		} else if (StringUtils.isNotEmpty(scheduleJob.getBeanClass())) {
@@ -32,7 +32,6 @@ public class QuartzTaskUtils {
 				clazz = Class.forName(scheduleJob.getBeanClass());
 				object = clazz.newInstance();
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -47,23 +46,19 @@ public class QuartzTaskUtils {
 		} catch (NoSuchMethodException e) {
 			log.error("任务名称 = [" + scheduleJob.getJobName() + "]---------------未启动成功，方法名设置错误！！！");
 		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if (method != null) {
 			try {
 				method.invoke(object);
 			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IllegalArgumentException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		System.out.println("任务名称 = [" + scheduleJob.getJobName() + "]----------启动成功");
+		log.info("任务名称 = [" + scheduleJob.getJobName() + "]----------启动成功");
 	}
 }

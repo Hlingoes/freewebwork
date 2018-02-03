@@ -44,7 +44,7 @@ import com.github.pagehelper.PageInfo;
  * @time 2017-8-17 23:12:55
  */
 @Controller
-@RequestMapping("static/html/task")
+@RequestMapping("taskSchedule")
 public class TaskScheduleJobController
 {
 
@@ -56,7 +56,7 @@ public class TaskScheduleJobController
 	/**
 	 * 后台的分发器，定位到jsp页面。前端没有使用jsp，直接使用的静态html，通过ajax获取数据，jqGrig渲染出表格
 	 */
-	@RequestMapping("/taskSchedule")
+	@RequestMapping("/taskPage")
 	public String taskSchedule()
 	{
 		return "quartzTask/taskPage";
@@ -71,7 +71,7 @@ public class TaskScheduleJobController
 	 */
 	@RequestMapping("/showJobs")
 	@ResponseBody
-	public JqGridPage showJobs(@RequestParam(value = "rows", required = true, defaultValue = "10") int pageSize,
+	public JqGridPage<TaskScheduleJob> showJobs(@RequestParam(value = "rows", required = true, defaultValue = "10") int pageSize,
 			@RequestParam(value = "page", required = true, defaultValue = "1") int pageNum,
 			@RequestParam(value = "sidx", required = false, defaultValue = "update_time") String sidx,
 			@RequestParam(value = "sord", required = false, defaultValue = "desc") String sord)
@@ -84,7 +84,7 @@ public class TaskScheduleJobController
 		List<TaskScheduleJob> list = this.taskScheduleJobService.selectByCondition(condition);
 		// 用PageInfo对结果进行包装
 		PageInfo<TaskScheduleJob> pageInfo = new PageInfo<TaskScheduleJob>(list);
-		return new JqGridPage(pageInfo);
+		return new JqGridPage<TaskScheduleJob>(pageInfo);
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
@@ -95,7 +95,6 @@ public class TaskScheduleJobController
 		if (result.hasErrors())
 		{
 			baseResult.setFlag(false);
-
 			StringBuffer msg = new StringBuffer();
 			List<ObjectError> errorObjects = result.getAllErrors();
 			for (ObjectError objectError : errorObjects)
@@ -103,17 +102,18 @@ public class TaskScheduleJobController
 				msg.append(objectError.getDefaultMessage());
 			}
 			baseResult.setMsg(msg.toString());
+			log.error(baseResult);
 			return baseResult;
 		}
-//		try
-//		{
-//			CronScheduleBuilder.cronSchedule(scheduleJob.getCronExpression());
-//		}
-//		catch (Exception e)
-//		{
-//			baseResult.setMsg("cron表达式有误，不能被解析！");
-//			return baseResult;
-//		}
+		try
+		{
+			CronScheduleBuilder.cronSchedule(scheduleJob.getCronExpression());
+		}
+		catch (Exception e)
+		{
+			baseResult.setMsg("cron表达式有误，不能被解析！");
+			return baseResult;
+		}
 		Object obj = null;
 		try
 		{
@@ -123,7 +123,7 @@ public class TaskScheduleJobController
 			}
 			else
 			{
-				Class clazz = Class.forName(scheduleJob.getBeanClass());
+				Class<?> clazz = Class.forName(scheduleJob.getBeanClass());
 				obj = clazz.newInstance();
 			}
 		}
@@ -138,7 +138,7 @@ public class TaskScheduleJobController
 		}
 		else
 		{
-			Class clazz = obj.getClass();
+			Class<? extends Object> clazz = obj.getClass();
 			Method method = null;
 			try
 			{

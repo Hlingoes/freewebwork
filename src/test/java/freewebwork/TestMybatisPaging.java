@@ -39,7 +39,7 @@ public class TestMybatisPaging {
 		Map<String, String> condition = new HashMap<String, String> ();
         condition.put("sidx", "updateTime");
         condition.put("sord", "desc");
-        condition.put("jobGroup", "test"); // 用作对条件查询的测试
+        condition.put("jobGroup", jobGroup); // 用作对条件查询的测试
 		List<TaskScheduleJob> list = this.taskScheduleJobService.selectByCondition(condition);
 		// 用PageInfo对结果进行包装
 		PageInfo<TaskScheduleJob> page = new PageInfo<TaskScheduleJob>(list);

@@ -108,12 +108,10 @@
 		<servlet-name>DruidStatView</servlet-name>
 		<url-pattern>/druid/*</url-pattern>
 	</servlet-mapping>
-	<!-- Session超时30分钟(零或负数表示会话永不超时)-->  
-    <!--   
-    <session-config>  
-        <session-timeout>30</session-timeout>  
-    </session-config>  
-     -->  
+	<!-- Session超时30分钟(零或负数表示会话永不超时)，和shiro整合后，超时控制可以交给shiro处理 -->  
+<!--     <session-config>  
+        <session-timeout>30</session-timeout>
+    </session-config> -->
     <!-- 默认欢迎页 -->
     <!-- Servlet2.5中可直接在此处执行Servlet应用,如<welcome-file>servlet/InitSystemParamServlet</welcome-file> -->  
     <!-- 这里使用了SpringMVC提供的<mvc:view-controller>标签,实现了首页隐藏的目的,详见applicationContext.xml -->  

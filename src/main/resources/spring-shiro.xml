@@ -6,21 +6,55 @@
 	default-lazy-init="true">
 	<!-- 继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的MyShiroRealm.java -->  
     <bean id="MyShiroRealm" class="com.cn.henry.freewebwork.controller.MyShiroRealm" />
+   	<!-- 定义Session ID生成管理器 --> 
+	<bean id="sessionIdGenerator" class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator" />
+	<!-- 配置Session DAO的操作处理 --> 
+	<bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO"> 
+	    <!-- 设置session缓存的名字，这个名字可以任意 --> 
+	    <property name="activeSessionsCacheName" value="shiro-activeSessionCache"/> 
+	    <!-- 定义该Session DAO操作中所使用的ID生成器 --> 
+	    <property name="sessionIdGenerator" ref="sessionIdGenerator"/> 
+	</bean>
+	<!-- 配置需要向Cookie中保存数据的配置模版 --> 
+	<bean id="sessionIdCookie" class="org.apache.shiro.web.servlet.SimpleCookie"> 
+	    <!-- 在Tomcat运行下默认使用的Cookie的名字为JSESSIONID --> 
+	    <constructor-arg value="mldn-session-id"/>
+	    <!-- 保证该系统不会受到跨域的脚本操作供给 --> 
+	    <property name="httpOnly" value="true"/> 
+	    <!-- 定义Cookie的过期时间，单位为秒，如果设置为-1表示浏览器关闭，则Cookie消失 --> 
+	    <property name="maxAge" value="-1"/> 
+	</bean>
     <!-- 定义缓存管理器 --> 
    	<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" /> 
    	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
-     	<!-- session的失效时长，单位毫秒 -->
-	     <property name="globalSessionTimeout" value="600000"/>
-	     <!-- 删除失效的session -->
-	     <property name="deleteInvalidSessions" value="true"/>
+     	<!-- 定义的是全局的session会话超时时间(单位毫秒)，此操作会覆盖web.xml文件中的超时时间配置 -->
+     	<property name="globalSessionTimeout" value="60000"/>
+     	<!-- 删除所有无效的Session对象，此时的session被保存在了内存里面 -->
+     	<property name="deleteInvalidSessions" value="true"/>
+     	<!-- 定义要使用的无效的Session定时调度器 -->
+        <property name="sessionValidationScheduler" ref="sessionValidationScheduler"/>
+        <!-- 需要让此session可以使用该定时调度器进行检测 -->
+        <property name="sessionValidationSchedulerEnabled" value="true"/>
+        <!-- 定义Session可以进行序列化的工具类 -->
+        <property name="sessionDAO" ref="sessionDAO"/>
+        <!-- 所有的session一定要将id设置到Cookie之中，需要提供有Cookie的操作模版 -->
+        <property name="sessionIdCookie" ref="sessionIdCookie"/>
+        <!-- 定义sessionIdCookie模版可以进行操作的启用 -->
+        <property name="sessionIdCookieEnabled" value="true"/>
    	</bean>
+   	<!-- 配置session的定时验证检测程序类，以让无效的session释放 -->
+    <bean id="sessionValidationScheduler" class="com.cn.henry.freewebwork.quartzTask.MyQuartzSessionValidationScheduler">  
+        <property name="sessionManager" ref="sessionManager"/>  
+        <!-- 设置调度时间间隔，单位毫秒，默认是1小时    -->
+        <property name="sessionValidationInterval" value="20000"/>
+    </bean>
     <!-- Shiro默认会使用Servlet容器的Session,可通过sessionMode属性来指定使用Shiro原生Session -->  
     <!-- 即<property name="sessionMode" value="native"/>,详细说明见官方文档 -->  
     <!-- 这里主要是设置自定义的单Realm应用,若有多个Realm,可使用'realms'属性代替 -->  
     <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">  
         <property name="realm" ref="MyShiroRealm"/>
         <!-- 使用配置的缓存管理器 --> 
-     	<property name="cacheManager" ref="cacheManager"></property> 
+     	<property name="cacheManager" ref="cacheManager" /> 
      	<!-- 会话管理 -->
      	<property name="sessionManager" ref="sessionManager" />
   	</bean>  

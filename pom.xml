@@ -260,10 +260,18 @@
             <artifactId>shiro-web</artifactId>
             <version>${shiro.version}</version>
         </dependency>
-        <dependency>
+		<dependency>
 		    <groupId>org.apache.shiro</groupId>
 		    <artifactId>shiro-quartz</artifactId>
 		    <version>${shiro.version}</version>
+	    	<!-- 解决 shiro-quartz默认使用的是quartz-1.6.1.jar和quartz-2.2.3.jar冲突-->
+	   		<exclusions>
+	      		<exclusion>
+         			<groupId>org.opensymphony.quartz</groupId>
+         			<artifactId>quartz</artifactId>
+         			<version>1.6.1</version>
+	      		</exclusion>
+		   </exclusions>
 		</dependency>
 		
 		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->

@@ -41,7 +41,10 @@ CRM项目使用jsp的方式做权限控制，定时任务管理使用静态html�
 6.1 [SpringMVC+Shiro整合配置文件详解](http://blog.csdn.net/dawangxiong123/article/details/53020424)<br>
 6.2 [在SSM中使用shiro实现登录验证（附密码加密）](http://blog.csdn.net/xiangwanpeng/article/details/54793768)<br>
 6.3 [30分钟学会如何使用Shiro](https://www.cnblogs.com/learnhow/p/5694876.html)<br>
-6.4 [shrio 权限管理filterChainDefinitions过滤器配置 ](http://www.cppblog.com/guojingjia2006/archive/2014/05/14/206956.html)
+6.4 [shrio 权限管理filterChainDefinitions过滤器配置 ](http://www.cppblog.com/guojingjia2006/archive/2014/05/14/206956.html)<br>
+6.5 [shiro和spring quartz 冲突 ](http://blog.csdn.net/rogerjava/article/details/72628631)<br>
+6.6 [解决 shiro和quartz 冲突](http://blog.csdn.net/heywakeup/article/details/62886680)<br>
+6.7 [Shiro在Spring的会话管理（session）](http://blog.csdn.net/u012737182/article/details/53147097)
 #### 7. 整合druid数据库监控
 7.1 [Spring+Mybatis+Druid 整合Demo](http://blog.csdn.net/vbirdbest/article/details/72821114)<br>
 7.2 [Druid 介绍及配置](https://www.cnblogs.com/niejunlei/p/5977895.html)

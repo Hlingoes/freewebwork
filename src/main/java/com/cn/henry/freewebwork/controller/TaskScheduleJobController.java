@@ -18,7 +18,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.log4j.Logger;
 import org.quartz.CronScheduleBuilder;
-import org.quartz.JobExecutionContext;
 import org.quartz.SchedulerException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -49,7 +48,7 @@ public class TaskScheduleJobController
 {
 
 	private final Logger log = Logger.getLogger(this.getClass());
-	
+
 	@Resource
 	private TaskScheduleJobService taskScheduleJobService;
 
@@ -57,8 +56,7 @@ public class TaskScheduleJobController
 	 * 后台的分发器，定位到jsp页面。前端没有使用jsp，直接使用的静态html，通过ajax获取数据，jqGrig渲染出表格
 	 */
 	@RequestMapping("/taskPage")
-	public String taskSchedule()
-	{
+	public String taskSchedule() {
 		return "quartzTask/taskPage";
 	}
 
@@ -71,11 +69,11 @@ public class TaskScheduleJobController
 	 */
 	@RequestMapping("/showJobs")
 	@ResponseBody
-	public JqGridPage<TaskScheduleJob> showJobs(@RequestParam(value = "rows", required = true, defaultValue = "10") int pageSize,
+	public JqGridPage<TaskScheduleJob> showJobs(
+			@RequestParam(value = "rows", required = true, defaultValue = "10") int pageSize,
 			@RequestParam(value = "page", required = true, defaultValue = "1") int pageNum,
 			@RequestParam(value = "sidx", required = false, defaultValue = "update_time") String sidx,
-			@RequestParam(value = "sord", required = false, defaultValue = "desc") String sord)
-	{
+			@RequestParam(value = "sord", required = false, defaultValue = "desc") String sord) {
 		PageHelper.startPage(pageNum, pageSize);
 		Map<String, String> condition = new HashMap<String, String>();
 		condition.put("sidx", sidx);
@@ -89,8 +87,7 @@ public class TaskScheduleJobController
 
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	@ResponseBody
-	public BaseResult addTask(@Valid TaskScheduleJob scheduleJob, BindingResult result) throws IOException
-	{
+	public BaseResult addTask(@Valid TaskScheduleJob scheduleJob, BindingResult result) throws IOException {
 		BaseResult baseResult = new BaseResult();
 		if (result.hasErrors())
 		{
@@ -142,8 +139,7 @@ public class TaskScheduleJobController
 			Method method = null;
 			try
 			{
-				method = clazz.getMethod(scheduleJob.getMethodName(), new Class<?>[]
-				{ JobExecutionContext.class });
+				method = clazz.getMethod(scheduleJob.getMethodName());
 			}
 			catch (Exception e)
 			{
@@ -175,8 +171,7 @@ public class TaskScheduleJobController
 
 	@RequestMapping(value = "getTask", method = RequestMethod.GET)
 	@ResponseBody
-	public BaseResult getTask(@RequestParam(value = "jobId", required = true) Long jobId)
-	{
+	public BaseResult getTask(@RequestParam(value = "jobId", required = true) Long jobId) {
 		BaseResult baseResult = new BaseResult();
 		baseResult.setFlag(true);
 		baseResult.setObj(this.taskScheduleJobService.selectByPrimaryKey(jobId));
@@ -186,8 +181,7 @@ public class TaskScheduleJobController
 	@RequestMapping(value = "changeJobStatus", method = RequestMethod.POST)
 	@ResponseBody
 	public BaseResult changeJobStatus(@RequestParam(value = "jobId", required = true) Long jobId,
-			@RequestParam(value = "cmd", required = true) String cmd) throws SchedulerException
-	{
+			@RequestParam(value = "cmd", required = true) String cmd) throws SchedulerException {
 		BaseResult baseResult = new BaseResult();
 		this.taskScheduleJobService.changeStatus(jobId, cmd);
 		baseResult.setFlag(true);
@@ -196,8 +190,7 @@ public class TaskScheduleJobController
 
 	@RequestMapping("updateCron")
 	@ResponseBody
-	public BaseResult updateCron(HttpServletRequest request, Long jobId, String cron)
-	{
+	public BaseResult updateCron(HttpServletRequest request, Long jobId, String cron) {
 		BaseResult baseResult = new BaseResult();
 		baseResult.setFlag(false);
 		try
@@ -225,8 +218,7 @@ public class TaskScheduleJobController
 	@RequestMapping(value = "testHandlerException", method = RequestMethod.POST)
 	@ResponseBody
 	public BaseResult testHandlerException(@RequestParam(value = "jobId", required = true) Long jobId)
-			throws SchedulerException
-	{
+			throws SchedulerException {
 		BaseResult baseResult = new BaseResult();
 		if (jobId < 10)
 		{
@@ -239,8 +231,7 @@ public class TaskScheduleJobController
 	@RequestMapping(value = "/exportExcel ")
 	public void exportExcel(@RequestParam(value = "sidx", required = false, defaultValue = "update_time") String sidx,
 			@RequestParam(value = "sord", required = false, defaultValue = "desc") String sord,
-			HttpServletResponse response) throws IOException, SchedulerException
-	{
+			HttpServletResponse response) throws IOException, SchedulerException {
 		Map<String, String> condition = new HashMap<>();
 		condition.put("sidx", sidx);
 		condition.put("sord", sord);

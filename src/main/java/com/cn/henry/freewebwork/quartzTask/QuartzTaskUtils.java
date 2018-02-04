@@ -15,50 +15,73 @@ import com.cn.henry.freewebwork.utils.SpringUtils;
  * @author Administrator
  * @cite https://github.com/snailxr/quartz-spring_demo
  */
-public class QuartzTaskUtils {
+public class QuartzTaskUtils
+{
 	public final static Logger log = Logger.getLogger(TaskUtils.class);
+	public final static String SCHEDULE_JOB_KEY = "scheduleJob";
 
 	/**
 	 * 通过反射调用scheduleJob中定义的方法
+	 * 
 	 * @param scheduleJob
 	 */
 	public static void invokMethod(TaskScheduleJob scheduleJob) {
 		Object object = null;
 		Class<?> clazz = null;
-		if (StringUtils.isNotEmpty(scheduleJob.getSpringId())) {
+		if (StringUtils.isNotEmpty(scheduleJob.getSpringId()))
+		{
 			object = SpringUtils.getBean(scheduleJob.getSpringId());
-		} else if (StringUtils.isNotEmpty(scheduleJob.getBeanClass())) {
-			try {
+		}
+		else if (StringUtils.isNotEmpty(scheduleJob.getBeanClass()))
+		{
+			try
+			{
 				clazz = Class.forName(scheduleJob.getBeanClass());
 				object = clazz.newInstance();
-			} catch (Exception e) {
-				e.printStackTrace();
+			}
+			catch (Exception e)
+			{
+				log.error("任务名称 = [" + scheduleJob.getBeanClass() + "]---------------未启动成功，请检查是否配置正确！！！", e);
 			}
 		}
-		if (object == null) {
+		if (object == null)
+		{
 			log.error("任务名称 = [" + scheduleJob.getJobName() + "]---------------未启动成功，请检查是否配置正确！！！");
 			return;
 		}
 		clazz = object.getClass();
 		Method method = null;
-		try {
+		try
+		{
 			method = clazz.getDeclaredMethod(scheduleJob.getMethodName());
-		} catch (NoSuchMethodException e) {
-			log.error("任务名称 = [" + scheduleJob.getJobName() + "]---------------未启动成功，方法名设置错误！！！");
-		} catch (SecurityException e) {
-			e.printStackTrace();
 		}
-		if (method != null) {
-			try {
+		catch (NoSuchMethodException e)
+		{
+			log.error("任务名称 = [" + scheduleJob.getJobName() + "]---------------未启动成功，方法名设置错误！！！", e);
+		}
+		catch (SecurityException e)
+		{
+			log.error("任务名称 = [" + scheduleJob.getJobName() + "]---------------未启动成功，方法名设置错误！！！", e);
+		}
+		if (method != null)
+		{
+			try
+			{
 				method.invoke(object);
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
+				log.info("任务名称 = [" + scheduleJob.getJobName() + "]----------启动成功");
+			}
+			catch (IllegalAccessException e)
+			{
+				log.info("任务名称 = [" + scheduleJob.getJobName() + "]----------启动是失败", e);
+			}
+			catch (IllegalArgumentException e)
+			{
+				log.info("任务名称 = [" + scheduleJob.getJobName() + "]----------启动是失败", e);
+			}
+			catch (InvocationTargetException e)
+			{
+				log.info("任务名称 = [" + scheduleJob.getJobName() + "]----------启动是失败", e);
 			}
 		}
-		log.info("任务名称 = [" + scheduleJob.getJobName() + "]----------启动成功");
 	}
 }

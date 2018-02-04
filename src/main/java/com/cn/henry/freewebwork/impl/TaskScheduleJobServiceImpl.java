@@ -29,6 +29,7 @@ import com.cn.henry.freewebwork.dao.TaskScheduleJobMapper;
 import com.cn.henry.freewebwork.entity.TaskScheduleJob;
 import com.cn.henry.freewebwork.quartzTask.QuartzJobFactory;
 import com.cn.henry.freewebwork.quartzTask.QuartzJobFactoryDisallowConcurrentExecution;
+import com.cn.henry.freewebwork.quartzTask.QuartzTaskUtils;
 import com.cn.henry.freewebwork.service.TaskScheduleJobService;
 
 @Service("taskScheduleJobService")
@@ -141,7 +142,7 @@ public class TaskScheduleJobServiceImpl implements TaskScheduleJobService{
 			Class<?> clazz = TaskScheduleJob.CONCURRENT_IS.equals(job.getIsConcurrent()) ? QuartzJobFactory.class : QuartzJobFactoryDisallowConcurrentExecution.class;
 			@SuppressWarnings("unchecked")
 			JobDetail jobDetail = JobBuilder.newJob((Class<? extends Job>) clazz).withIdentity(job.getJobName(), job.getJobGroup()).build();
-			jobDetail.getJobDataMap().put("scheduleJob", job);
+			jobDetail.getJobDataMap().put(QuartzTaskUtils.SCHEDULE_JOB_KEY, job);
 			CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule(job.getCronExpression());
 			trigger = TriggerBuilder.newTrigger().withIdentity(job.getJobName(), job.getJobGroup()).withSchedule(scheduleBuilder).build();
 			scheduler.scheduleJob(jobDetail, trigger);

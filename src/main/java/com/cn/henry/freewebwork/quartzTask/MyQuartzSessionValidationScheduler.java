@@ -71,8 +71,12 @@ public class MyQuartzSessionValidationScheduler implements SessionValidationSche
         }  
 
         try {  
-            SimpleTrigger trigger = TriggerBuilder.newTrigger().startNow().withIdentity(JOB_NAME, Scheduler.DEFAULT_GROUP)  
-                    .withSchedule(SimpleScheduleBuilder.simpleSchedule().withIntervalInMilliseconds(sessionValidationInterval))  
+            SimpleTrigger trigger = TriggerBuilder.newTrigger()
+            		.startNow()
+            		.withIdentity(JOB_NAME, Scheduler.DEFAULT_GROUP)  
+                    .withSchedule(SimpleScheduleBuilder.simpleSchedule()
+                    		.withIntervalInMilliseconds(sessionValidationInterval)
+                    		.repeatForever())
                     .build();
             JobDetail detail = JobBuilder.newJob(MyQuartzSessionValidationJob.class)
                     .withIdentity(JOB_NAME, Scheduler.DEFAULT_GROUP).build();  

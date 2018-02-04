@@ -28,12 +28,12 @@
    	<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager" /> 
    	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
      	<!-- 定义的是全局的session会话超时时间(单位毫秒)，此操作会覆盖web.xml文件中的超时时间配置 -->
-     	<property name="globalSessionTimeout" value="60000"/>
-     	<!-- 删除所有无效的Session对象，此时的session被保存在了内存里面 -->
+     	<property name="globalSessionTimeout" value="1800000"/>
+     	<!-- 删除所有无效的Session对象，此时的session被保存在了内存里面 ，默认是开启的-->
      	<property name="deleteInvalidSessions" value="true"/>
      	<!-- 定义要使用的无效的Session定时调度器 -->
         <property name="sessionValidationScheduler" ref="sessionValidationScheduler"/>
-        <!-- 需要让此session可以使用该定时调度器进行检测 -->
+        <!-- 需要让此session可以使用该定时调度器进行检测 ，默认是开启的-->
         <property name="sessionValidationSchedulerEnabled" value="true"/>
         <!-- 定义Session可以进行序列化的工具类 -->
         <property name="sessionDAO" ref="sessionDAO"/>
@@ -46,7 +46,7 @@
     <bean id="sessionValidationScheduler" class="com.cn.henry.freewebwork.quartzTask.MyQuartzSessionValidationScheduler">  
         <property name="sessionManager" ref="sessionManager"/>  
         <!-- 设置调度时间间隔，单位毫秒，默认是1小时    -->
-        <property name="sessionValidationInterval" value="20000"/>
+        <property name="sessionValidationInterval" value="300000"/>
     </bean>
     <!-- Shiro默认会使用Servlet容器的Session,可通过sessionMode属性来指定使用Shiro原生Session -->  
     <!-- 即<property name="sessionMode" value="native"/>,详细说明见官方文档 -->  

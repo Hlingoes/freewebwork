@@ -1,17 +1,15 @@
 # freewebwork
-项目的主要功能：整合客户关系管理(CRM)和内容管理(CMS)的基本结构，融合定时管理和其他通用框架功能。<br>
-用creat_user_t.sql和User.java做基础测试用例，调试版本和常用配置文件，后续使用ssm-crm.sql和quartz-demo.sql运行。<br>
+项目的主要功能：整合客户关系管理(CRM)和内容管理(CMS)的基本结构，融合定时管理和其他通用框架体系。<br>
+用creat_user_t.sql和User.java做基础测试用例，调试版本和常用配置文件，项目主体使用ssm-crm.sql和quartz-demo.sql运行。<br>
 项目启动后访问：localhost:8080/freewebwork/register 账号：158，密码：123123 <br>
-定时任务页面：localhost:8080/freewebwork/static/html/task/taskPage.html <br>
-druid的监控页面: localhost:8080/freewebwork/druid/index.html <br>
-项目用maven构建，建议使用jdk1.8，tomcat 8.0，spring 4.0，mybatis 3.0，mysql 5.6，shirio 1.4，配置过程中务必要注意jar版本。
-CRM项目使用jsp的方式做权限控制，定时任务管理使用静态html配合ajax的形式渲染。前端页面基于[bootstrap](http://www.bootcss.com/)，[jquery](https://jquery.com/)，表格使用[jqGrid](http://www.guriddo.net/demo/bootstrap/)，[datatables](https://datatables.net/examples/),字体文件[font-awesome](http://fontawesome.dashgame.com/)等比较常用的插件，以使用顺手为主。
+项目用maven构建，建议使用jdk1.8，tomcat 8.0，spring 4.0，mybatis 3.0，mysql 5.6，shiro 1.4，quartz 2.2.3 配置过程中务必要注意jar版本。
+项目以shiro作为权限控制和session管理基础，综合了quartz定时任务和druid数据库监控，有完整的逻辑实现，可以直接clone之后运行。前端页面使用jsp，采用[bootstrap](http://www.bootcss.com/)的整体风格，主要基于[jquery](https://jquery.com/)插件体系，表格使用[jqGrid](http://www.guriddo.net/demo/bootstrap/)，[datatables](https://datatables.net/examples/),字体文件[font-awesome](http://fontawesome.dashgame.com/)等比较成熟的插件，完备CRUD，上传下载等功能。
 #### 项目结构和功能展示
 ![project_frame](https://github.com/Hlingoes/freewebwork/blob/master/introduction/project_frame.png)
 ![login_page](https://github.com/Hlingoes/freewebwork/blob/master/introduction/login_page.png)
 ![user_manage](https://github.com/Hlingoes/freewebwork/blob/master/introduction/user_manage.png)
 ![quartz_task](https://github.com/Hlingoes/freewebwork/blob/master/introduction/quartz_task.png)
-## 参考博客
+## 参考博客（感谢各位博主和开源作者的奉献）
 #### 1. 主线配置Spring+SpringMVC+MyBatis(注意jar包版本)
 [SSM框架——详细整合教程（Spring+SpringMVC+MyBatis）](http://blog.csdn.net/zhshulin/article/details/37956105) 
 #### 2. 副线配置mybatis的代码自动生成和分页查询

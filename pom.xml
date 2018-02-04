@@ -7,8 +7,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>freewebwork Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	<maven_mirror>http://maven.aliyun.com/nexus/content/groups/public</maven_mirror>
 	<properties>
+		<!-- 阿里云的maven仓库 -->
+		<maven_mirror>http://maven.aliyun.com/nexus/content/groups/public</maven_mirror>
 		<!-- spring版本号 -->
 		<spring.version>4.0.2.RELEASE</spring.version>
 		<!-- mybatis相关包 -->
@@ -270,7 +271,7 @@
 	      		<exclusion>
          			<groupId>org.opensymphony.quartz</groupId>
          			<artifactId>quartz</artifactId>
-         			<version>1.6.1</version>
+         			<!-- <version>1.6.1</version> -->
 	      		</exclusion>
 		   </exclusions>
 		</dependency>

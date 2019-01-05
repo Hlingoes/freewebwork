@@ -33,7 +33,7 @@
 		<!-- 对象验证 -->
 		<hibernate-validator.version>5.0.2.Final</hibernate-validator.version>
 		<!-- json格式化对象 -->
-		<jackson.version>2.9.5</jackson.version>
+		<jackson.version>2.9.8</jackson.version>
 		<!-- java基础包 -->
 		<javaee-api.version>7.0</javaee-api.version>
 		<jstl.version>1.2</jstl.version>
@@ -43,7 +43,7 @@
 		<commons-collections.version>4.1</commons-collections.version>
 		<commons-beanutils.version>1.9.3</commons-beanutils.version>
 		<commons-codec.version>1.9</commons-codec.version>
-		<commons-fileupload.version>1.3.1</commons-fileupload.version>
+		<commons-fileupload.version>1.4</commons-fileupload.version>
 		<!-- http包 -->
 		<org.apache.httpcomponents.version>4.1.2</org.apache.httpcomponents.version>
 		<!-- 设置maven的编码格式 -->

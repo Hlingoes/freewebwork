@@ -29,7 +29,7 @@
 		<!-- excel工具包 -->
 		<poi.version>3.17</poi.version>
 		<!-- 定时任务包 -->
-		<quartz.version>2.2.3</quartz.version>
+		<quartz.version>2.3.2</quartz.version>
 		<!-- 对象验证 -->
 		<hibernate-validator.version>5.0.2.Final</hibernate-validator.version>
 		<!-- json格式化对象 -->

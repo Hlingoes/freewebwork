@@ -41,7 +41,7 @@
 		<commons-io.version>2.4</commons-io.version>
 		<commons-lang3.version>3.4</commons-lang3.version>
 		<commons-collections.version>4.1</commons-collections.version>
-		<commons-beanutils.version>1.9.3</commons-beanutils.version>
+		<commons-beanutils.version>1.9.4</commons-beanutils.version>
 		<commons-codec.version>1.9</commons-codec.version>
 		<commons-fileupload.version>1.4</commons-fileupload.version>
 		<!-- http包 -->

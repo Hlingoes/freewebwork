@@ -27,7 +27,7 @@
 		<shiro.version>1.8.0</shiro.version>
 		<junit.version>4.13.1</junit.version>
 		<!-- excel工具包 -->
-		<poi.version>3.17</poi.version>
+		<poi.version>4.1.1</poi.version>
 		<!-- 定时任务包 -->
 		<quartz.version>2.3.2</quartz.version>
 		<!-- 对象验证 -->

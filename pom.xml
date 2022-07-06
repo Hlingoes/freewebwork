@@ -24,7 +24,7 @@
 		<slf4j.version>1.7.7</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
 		<!-- shrio权限控制包版本 -->
-		<shiro.version>1.8.0</shiro.version>
+		<shiro.version>1.9.1</shiro.version>
 		<junit.version>4.13.1</junit.version>
 		<!-- excel工具包 -->
 		<poi.version>3.17</poi.version>

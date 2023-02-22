@@ -43,7 +43,7 @@
 		<commons-collections.version>4.1</commons-collections.version>
 		<commons-beanutils.version>1.9.4</commons-beanutils.version>
 		<commons-codec.version>1.9</commons-codec.version>
-		<commons-fileupload.version>1.4</commons-fileupload.version>
+		<commons-fileupload.version>1.5</commons-fileupload.version>
 		<!-- http包 -->
 		<org.apache.httpcomponents.version>4.1.2</org.apache.httpcomponents.version>
 		<!-- 设置maven的编码格式 -->
